@@ -13,23 +13,32 @@ PulseAI Band là vòng tay thông minh hỗ trợ theo dõi nhịp tim, giấc n
 - [Framer Motion](https://www.framer.com/motion/) – Animation & Micro-interactions
 - [Lucide React](https://lucide.dev/) – Icon library
 - [React Hot Toast](https://react-hot-toast.com/) – Toast notifications
+- [Vercel](https://vercel.com/) – Deployment platform
 
 ## Tính năng chính
 
-- **Landing Page UI Hiện Đại**: Giao diện đẹp, chuyên nghiệp, responsive hoàn toàn trên Mobile, Tablet và Desktop. Thiết kế bóng bẩy với gradient, glassmorphism và shadow chuẩn mực.
-- **Dark Mode**: Chế độ tối hoàn chỉnh, tích hợp tính năng ngăn FOUC (chớp trắng) khi tải trang, tự lưu trữ vào `localStorage` và tự động nhận diện giao diện hệ thống.
-- **Newsletter Form**: Form đăng ký email có validation chặt chẽ, hỗ trợ webhook qua `.env` và có fallback UX thông minh khi không có webhook.
-- **Rule-based Chatbot**: Tích hợp Assistant nổi ở góc trang với giao diện chat trực quan, tự động gợi ý câu hỏi và phản hồi thông minh, linh hoạt.
-- **Animations & Micro-interactions**: Tối ưu cuộn trang mượt mà (Scrollytelling) và tạo hiệu ứng tương tác tinh tế trên nút bấm, các thẻ sản phẩm và khung chat bằng `framer-motion`.
-- **User Tracking**: Gắn các sự kiện (track events) cho CTA click, form submit, chatbot interactions, và section view.
+- **Hero Section**: Mở đầu ấn tượng với 3D-like Mockup và thông điệp nổi bật.
+- **Feature Section**: Các tính năng theo dõi sức khỏe.
+- **AI Insight Section**: Thể hiện khả năng phân tích dữ liệu chuyên sâu bằng AI.
+- **Technical Specs**: Trình bày thông số kỹ thuật rõ ràng.
+- **Scrollytelling Story Section**: Kể chuyện trải nghiệm người dùng theo thời gian trong ngày.
+- **Newsletter Form**: Form đăng ký nhận tin với validation chặt chẽ.
+- **Webhook-ready integration**: Hỗ trợ gửi data về webhook (Discord, Make, Zapier...).
+- **User behavior tracking**: Theo dõi các hành động (click, submit, cuộn tới vùng nội dung).
+- **Dark Mode**: Chế độ nền tối chuẩn mực, hỗ trợ lưu trữ và đồng bộ với OS.
+- **Chatbot Widget**: Assistant ảo với các rule cơ bản gợi ý tư vấn.
+- **Scroll animations**: Chuyển động xuất hiện mượt mà bằng Framer Motion.
+- **Responsive Design**: Tương thích tốt với Mobile, Tablet và Desktop.
+- **SEO Meta Tags**: Cấu hình đầy đủ thẻ Meta, Open Graph, Twitter Cards.
 
 ## Điểm cộng đã làm (Bonus)
 
-- Code chia theo components, hooks, và utils rất clean.
-- Đảm bảo TypeScript type an toàn 100%.
-- Không dùng bừa bãi nhiều thư viện nặng ngoài Framer Motion cần thiết cho animation mượt.
-- Viewport animation được cấu hình để chỉ chạy một lần, tránh giật lag hoặc ngốn CPU khi scroll lên xuống nhiều.
-- Các file chuẩn bị sẵn sàng cho deploy (có `.env.example`, file `index.html` có cấu hình SEO chuẩn).
+- Dark Mode hoàn chỉnh không bị FOUC.
+- Webhook-ready form (có mock fallback).
+- Click/scroll tracking mechanism.
+- Micro-interactions (hover, tap state mượt mà).
+- Scrollytelling section.
+- Rule-based chatbot.
 
 ## Cách chạy local
 
@@ -56,12 +65,27 @@ Mở trình duyệt tại `http://localhost:5173`
 npm run build
 ```
 
-Output sẽ nằm trong thư mục `dist/`. Để xem bản production ở local:
+Output sẽ nằm trong thư mục `dist/`.
+
+Để xem bản production preview ở local:
 ```bash
 npm run preview
 ```
 
+## Environment variables
+
+Bạn có thể cấu hình link nhận dữ liệu từ form bằng cách sửa file `.env`:
+```txt
+VITE_WEBHOOK_URL=
+```
+
+## Deployment note
+
+- **Platform**: Vercel
+- **Build command**: `npm run build`
+- **Output directory**: `dist`
+
 ## Links
 
 - **GitHub**: [https://github.com/datle0910/pulseai-band-landing-page](https://github.com/datle0910/pulseai-band-landing-page)
-- **Deploy**: _Coming soon_
+- **Deploy**: _Updating after Vercel deployment_
