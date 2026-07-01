@@ -109,7 +109,7 @@ export default function NewsletterForm() {
   return (
     <section id="newsletter" className="relative py-20 sm:py-28 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-cyan-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-cyan-500 dark:from-teal-900 dark:to-cyan-900" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.15),transparent_50%)]" />
 
       <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -227,7 +227,7 @@ export default function NewsletterForm() {
                   <option
                     key={opt.value}
                     value={opt.value}
-                    className="bg-teal-700 text-white"
+                    className="bg-teal-700 dark:bg-teal-900 text-white"
                   >
                     {opt.label}
                   </option>

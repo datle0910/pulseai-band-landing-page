@@ -11,29 +11,29 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-teal-50/40 to-cyan-50/30" />
-      <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-teal-400/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-400/10 rounded-full blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-teal-50/40 to-cyan-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950" />
+      <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-teal-400/10 dark:bg-teal-400/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-400/10 dark:bg-cyan-400/5 rounded-full blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Text content */}
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-100/80 text-teal-700 text-xs font-semibold mb-6 border border-teal-200/60">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-100/80 dark:bg-teal-500/10 text-teal-700 dark:text-teal-400 text-xs font-semibold mb-6 border border-teal-200/60 dark:border-teal-500/20">
               <Sparkles size={14} />
               Công nghệ AI thế hệ mới
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight">
               Pulse<span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">AI</span>{' '}
               Band
             </h1>
 
-            <p className="mt-4 text-xl sm:text-2xl font-semibold text-slate-700">
+            <p className="mt-4 text-xl sm:text-2xl font-semibold text-slate-700 dark:text-slate-200">
               Vòng tay thông minh theo dõi sức khỏe bằng AI
             </p>
 
-            <p className="mt-4 text-base sm:text-lg text-slate-500 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+            <p className="mt-4 text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-lg mx-auto lg:mx-0 leading-relaxed">
               Hiểu cơ thể bạn tốt hơn mỗi ngày với công nghệ AI Health Tracking. Theo dõi nhịp tim, giấc ngủ và vận động – tất cả trong một thiết bị nhỏ gọn trên cổ tay.
             </p>
 
@@ -48,7 +48,7 @@ export default function HeroSection() {
               </a>
               <a
                 href="#specs"
-                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-semibold text-slate-700 bg-white border border-slate-200 hover:border-teal-300 hover:text-teal-600 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-teal-300 dark:hover:border-teal-500/50 hover:text-teal-600 dark:hover:text-teal-400 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
               >
                 Xem thông số
               </a>
@@ -59,7 +59,7 @@ export default function HeroSection() {
               {badges.map((badge) => (
                 <div
                   key={badge.label}
-                  className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/80 border border-slate-200/60 shadow-sm text-sm text-slate-600"
+                  className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/80 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/50 shadow-sm text-sm text-slate-600 dark:text-slate-300"
                 >
                   <badge.icon size={16} className="text-teal-500" />
                   {badge.label}
@@ -72,12 +72,12 @@ export default function HeroSection() {
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
               {/* Glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-400/20 to-cyan-400/20 rounded-full blur-3xl scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-br from-teal-400/20 to-cyan-400/20 dark:from-teal-400/10 dark:to-cyan-400/10 rounded-full blur-3xl scale-110" />
 
               {/* Watch body */}
               <div className="relative w-56 h-72 sm:w-64 sm:h-80">
                 {/* Top band */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-b from-slate-300 to-slate-400 rounded-t-2xl" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-b from-slate-300 to-slate-400 dark:from-slate-600 dark:to-slate-700 rounded-t-2xl" />
 
                 {/* Watch case */}
                 <div className="absolute top-14 left-1/2 -translate-x-1/2 w-44 h-44 sm:w-52 sm:h-52 rounded-[2rem] bg-gradient-to-br from-slate-800 to-slate-900 shadow-2xl shadow-slate-900/50 border border-slate-700/50 flex items-center justify-center p-3">
@@ -118,7 +118,7 @@ export default function HeroSection() {
                 <div className="absolute top-20 -right-0.5 sm:top-24 w-1.5 h-8 bg-gradient-to-b from-slate-600 to-slate-700 rounded-r-sm" />
 
                 {/* Bottom band */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-t from-slate-300 to-slate-400 rounded-b-2xl" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-t from-slate-300 to-slate-400 dark:from-slate-600 dark:to-slate-700 rounded-b-2xl" />
               </div>
             </div>
           </div>
