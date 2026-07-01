@@ -122,7 +122,7 @@ export default function ChatbotWidget() {
     <>
       {/* Chat window */}
       {isOpen && (
-        <div className="fixed bottom-20 right-4 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-96 max-h-[calc(100vh-120px)] flex flex-col rounded-2xl bg-white border border-slate-200/80 shadow-2xl shadow-slate-900/10 overflow-hidden">
+        <div className="fixed bottom-20 right-4 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-96 max-h-[calc(100vh-120px)] flex flex-col rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-2xl shadow-slate-900/10 dark:shadow-black/50 overflow-hidden">
           {/* Header */}
           <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-teal-500 to-cyan-500 flex-shrink-0">
             <div className="flex items-center gap-3">
@@ -155,8 +155,8 @@ export default function ChatbotWidget() {
                   <div
                     className={`w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center ${
                       msg.sender === 'bot'
-                        ? 'bg-teal-100 text-teal-600'
-                        : 'bg-slate-100 text-slate-500'
+                        ? 'bg-teal-100 dark:bg-teal-900/50 text-teal-600 dark:text-teal-400'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
                     }`}
                   >
                     {msg.sender === 'bot' ? <Bot size={14} /> : <User size={14} />}
@@ -166,7 +166,7 @@ export default function ChatbotWidget() {
                   <div
                     className={`px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
                       msg.sender === 'bot'
-                        ? 'bg-slate-100 text-slate-700 rounded-tl-md'
+                        ? 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-tl-md'
                         : 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-tr-md'
                     }`}
                   >
@@ -180,10 +180,10 @@ export default function ChatbotWidget() {
             {isTyping && (
               <div className="flex justify-start">
                 <div className="flex items-start gap-2 max-w-[85%]">
-                  <div className="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center bg-teal-100 text-teal-600">
+                  <div className="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center bg-teal-100 dark:bg-teal-900/50 text-teal-600 dark:text-teal-400">
                     <Bot size={14} />
                   </div>
-                  <div className="px-4 py-3 rounded-2xl rounded-tl-md bg-slate-100">
+                  <div className="px-4 py-3 rounded-2xl rounded-tl-md bg-slate-100 dark:bg-slate-800">
                     <div className="flex gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: '0ms' }} />
                       <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -209,7 +209,7 @@ export default function ChatbotWidget() {
                     key={i}
                     onClick={() => handleSuggestionClick(item.question)}
                     disabled={isTyping}
-                    className="px-3 py-1.5 rounded-full text-xs font-medium text-teal-700 bg-teal-50 border border-teal-200/60 hover:bg-teal-100 hover:border-teal-300/60 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-3 py-1.5 rounded-full text-xs font-medium text-teal-700 dark:text-teal-400 bg-teal-50 dark:bg-teal-500/10 border border-teal-200/60 dark:border-teal-500/20 hover:bg-teal-100 dark:hover:bg-teal-500/20 hover:border-teal-300/60 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {item.question}
                   </button>
@@ -219,7 +219,7 @@ export default function ChatbotWidget() {
           )}
 
           {/* Input */}
-          <div className="px-4 py-3 border-t border-slate-100 flex-shrink-0">
+          <div className="px-4 py-3 border-t border-slate-100 dark:border-slate-800 flex-shrink-0">
             <div className="flex items-center gap-2">
               <input
                 ref={inputRef}
@@ -229,7 +229,7 @@ export default function ChatbotWidget() {
                 onKeyDown={handleKeyDown}
                 placeholder="Nhập câu hỏi của bạn..."
                 disabled={isTyping}
-                className="flex-1 px-4 py-2.5 rounded-xl bg-slate-100 text-sm text-slate-700 placeholder-slate-400 border border-transparent focus:border-teal-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all disabled:opacity-60"
+                className="flex-1 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-sm text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 border border-transparent focus:border-teal-300 dark:focus:border-teal-600 focus:bg-white dark:focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500/20 dark:focus:ring-teal-500/10 transition-all disabled:opacity-60"
               />
               <button
                 onClick={handleSend}
