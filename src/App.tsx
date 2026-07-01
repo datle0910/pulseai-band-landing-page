@@ -8,8 +8,29 @@ import StorySection from './components/StorySection'
 import NewsletterForm from './components/NewsletterForm'
 import Footer from './components/Footer'
 import ChatbotWidget from './components/ChatbotWidget'
+import MiniStoreSection from './components/MiniStoreSection'
+import CartDrawer from './components/CartDrawer'
+import { useMiniCart } from './hooks/useMiniCart'
 
 function App() {
+  const {
+    cartItems,
+    favoriteIds,
+    recentlyViewedIds,
+    isCartOpen,
+    cartTotal,
+    cartCount,
+    setIsCartOpen,
+    addToCart,
+    removeFromCart,
+    increaseQuantity,
+    decreaseQuantity,
+    toggleFavorite,
+    markProductViewed,
+    toggleCart,
+    consultCheckout,
+  } = useMiniCart()
+
   return (
     <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-950 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-50">
       <Navbar />
@@ -17,10 +38,29 @@ function App() {
       <FeatureSection />
       <AiInsightSection />
       <SpecsSection />
+      <MiniStoreSection
+        favoriteIds={favoriteIds}
+        recentlyViewedIds={recentlyViewedIds}
+        onToggleFavorite={toggleFavorite}
+        onAddToCart={addToCart}
+        onViewProduct={markProductViewed}
+      />
       <StorySection />
       <NewsletterForm />
       <Footer />
       <ChatbotWidget />
+      <CartDrawer
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        onToggle={toggleCart}
+        cartItems={cartItems}
+        cartTotal={cartTotal}
+        cartCount={cartCount}
+        onIncrease={increaseQuantity}
+        onDecrease={decreaseQuantity}
+        onRemove={removeFromCart}
+        onConsult={consultCheckout}
+      />
       <Toaster />
     </main>
   )

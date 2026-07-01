@@ -30,6 +30,7 @@ PulseAI Band là vòng tay thông minh hỗ trợ theo dõi nhịp tim, giấc n
 - **Scroll animations**: Chuyển động xuất hiện mượt mà bằng Framer Motion.
 - **Responsive Design**: Tương thích tốt với Mobile, Tablet và Desktop.
 - **SEO Meta Tags**: Cấu hình đầy đủ thẻ Meta, Open Graph, Twitter Cards.
+- **Mini product selection and cart drawer**: Mini e-commerce experience right on the landing page.
 
 ## Điểm cộng đã làm (Bonus)
 
@@ -39,6 +40,7 @@ PulseAI Band là vòng tay thông minh hỗ trợ theo dõi nhịp tim, giấc n
 - Micro-interactions (hover, tap state mượt mà).
 - Scrollytelling section.
 - Rule-based chatbot.
+- Mini e-commerce experience with cart, favorites and recently viewed products.
 
 ## Cách chạy local
 
