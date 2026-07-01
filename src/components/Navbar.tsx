@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import { trackCtaClick } from '../utils/tracking'
 
 const navLinks = [
   { label: 'Tính năng', href: '#features' },
@@ -41,6 +42,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <a
             href="#newsletter"
+            onClick={() => trackCtaClick('navbar')}
             className="hidden md:inline-flex items-center px-5 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 shadow-md shadow-teal-500/25 hover:shadow-lg hover:shadow-teal-500/30 transition-all"
           >
             Đăng ký nhận tin
@@ -73,7 +75,7 @@ export default function Navbar() {
             ))}
             <a
               href="#newsletter"
-              onClick={() => setMobileOpen(false)}
+              onClick={() => { trackCtaClick('navbar'); setMobileOpen(false) }}
               className="block text-center mt-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 shadow-md"
             >
               Đăng ký nhận tin

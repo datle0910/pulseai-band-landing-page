@@ -1,8 +1,14 @@
 import { specs } from '../data/specs'
+import { useSectionTracking } from '../hooks/useSectionTracking'
 
 export default function SpecsSection() {
+  const sectionRef = useSectionTracking(
+    'specs',
+    'Bạn đang xem thông số kỹ thuật của PulseAI Band.'
+  )
+
   return (
-    <section id="specs" className="relative py-20 sm:py-28 overflow-hidden">
+    <section id="specs" ref={sectionRef} className="relative py-20 sm:py-28 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-slate-50/80 to-white" />
 

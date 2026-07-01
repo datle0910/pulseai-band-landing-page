@@ -1,4 +1,5 @@
 import { Sparkles, BatteryFull, Droplets } from 'lucide-react'
+import { trackCtaClick } from '../utils/tracking'
 
 const badges = [
   { icon: Sparkles, label: 'AI Health Tracking' },
@@ -40,6 +41,7 @@ export default function HeroSection() {
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
                 href="#features"
+                onClick={() => trackCtaClick('hero')}
                 className="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 shadow-lg shadow-teal-500/25 hover:shadow-xl hover:shadow-teal-500/30 transition-all hover:-translate-y-0.5"
               >
                 Khám phá tính năng
