@@ -5,6 +5,7 @@ import { validateNewsletterForm } from '../utils/validation'
 import { trackEvent } from '../utils/tracking'
 import { motion } from 'framer-motion'
 import { fadeUp, viewportConfig } from '../utils/animations'
+import { submitToWebhook } from '../utils/webhook'
 import type { NewsletterFormData, FormErrors } from '../utils/validation'
 
 const interestOptions = [
@@ -57,55 +58,40 @@ export default function NewsletterForm() {
       email: formData.email.trim(),
       phone: formData.phone.trim() || undefined,
       interest: formData.interest,
-      source: 'PulseAI Band Landing Page',
+      source: 'PulseAI Band Landing Page' as const,
       submittedAt: new Date().toISOString(),
     }
 
-    const webhookUrl = import.meta.env.VITE_WEBHOOK_URL
+    const response = await submitToWebhook(payload)
 
-    try {
-      if (webhookUrl) {
-        const response = await fetch(webhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        })
-
-        if (!response.ok) {
-          throw new Error(`Webhook responded with status ${response.status}`)
-        }
-      } else {
-        // No webhook configured — simulate success for demo
-        console.log(
-          '%c[PulseAI] %cWebhook not configured. Simulating successful submission.',
-          'color: #14b8a6; font-weight: bold;',
-          'color: #64748b;'
-        )
-        console.log('%c[PulseAI] %cForm data:', 'color: #14b8a6; font-weight: bold;', 'color: #0f172a;', payload)
-        // Small delay to simulate network request
-        await new Promise((resolve) => setTimeout(resolve, 800))
-      }
-
-      // Track successful submission
-      trackEvent('newsletter_submit', {
-        email: formData.email.trim(),
-        interest: formData.interest,
-      })
-
-      toast.success(
-        'Đăng ký thành công! PulseAI Band sẽ gửi thông tin mới nhất đến bạn.',
-        { duration: 4000 }
-      )
-
-      setFormData(initialFormData)
-    } catch (error) {
-      console.error('[PulseAI] Webhook submission failed:', error)
-      toast.error('Không thể gửi đăng ký. Vui lòng thử lại sau.', {
+    if (response.status === 'error') {
+      toast.error(response.message || 'Không thể gửi đăng ký. Vui lòng thử lại sau.', {
         duration: 4000,
       })
-    } finally {
       setIsSubmitting(false)
+      return
     }
+
+    if (response.status === 'demo') {
+      toast.success(
+        'Đăng ký thành công ở chế độ demo. Bạn có thể cấu hình webhook thật trong .env.',
+        { duration: 4000 }
+      )
+    } else {
+      toast.success(
+        'Đăng ký thành công! Dữ liệu đã được gửi tới hệ thống tư vấn PulseAI Band.',
+        { duration: 4000 }
+      )
+    }
+
+    // Track successful submission
+    trackEvent('newsletter_submit', {
+      email: formData.email.trim(),
+      interest: formData.interest,
+    })
+
+    setFormData(initialFormData)
+    setIsSubmitting(false)
   }
 
   return (
@@ -268,6 +254,9 @@ export default function NewsletterForm() {
 
         <p className="mt-4 text-center text-xs text-teal-200/60">
           Chúng tôi tôn trọng quyền riêng tư của bạn. Hủy đăng ký bất cứ lúc nào.
+        </p>
+        <p className="mt-2 text-center text-[10px] text-teal-200/40">
+          Webhook-ready: Dữ liệu có thể gửi tới Google Sheets, Formspree, Web3Forms hoặc Make.
         </p>
       </motion.div>
     </section>

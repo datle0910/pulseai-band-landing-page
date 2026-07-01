@@ -41,6 +41,20 @@ PulseAI Band là vòng tay thông minh hỗ trợ theo dõi nhịp tim, giấc n
 - Scrollytelling section.
 - Rule-based chatbot.
 - Mini e-commerce experience with cart, favorites and recently viewed products.
+- Real webhook-ready integration for storing newsletter leads externally.
+
+## Webhook Integration
+
+Newsletter Form supports real webhook submission through environment variables.
+
+Supported providers:
+- Generic API endpoint
+- Make.com
+- Formspree
+- Web3Forms
+- Google Apps Script + Google Sheets
+
+See [docs/WEBHOOK_SETUP.md](file:///docs/WEBHOOK_SETUP.md) for details.
 
 ## Cách chạy local
 
