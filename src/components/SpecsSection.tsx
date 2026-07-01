@@ -1,4 +1,6 @@
 import { specs } from '../data/specs'
+import { motion } from 'framer-motion'
+import { fadeUp, staggerContainer, viewportConfig } from '../utils/animations'
 import { useSectionTracking } from '../hooks/useSectionTracking'
 
 export default function SpecsSection() {
@@ -14,7 +16,13 @@ export default function SpecsSection() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-16"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+        >
           <span className="inline-block px-4 py-1.5 rounded-full bg-cyan-100/80 dark:bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 text-xs font-semibold mb-4 border border-cyan-200/60 dark:border-cyan-500/20">
             Thông số kỹ thuật
           </span>
@@ -24,13 +32,20 @@ export default function SpecsSection() {
               nổi bật
             </span>
           </h2>
-        </div>
+        </motion.div>
 
         {/* Specs grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+        >
           {specs.map((spec, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={fadeUp}
               className="group relative bg-white dark:bg-slate-900/50 rounded-2xl p-6 border border-slate-200/60 dark:border-slate-800/60 shadow-sm hover:shadow-xl hover:shadow-cyan-500/5 hover:border-cyan-200/60 dark:hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1"
             >
               <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-500 flex items-center justify-center shadow-md shadow-cyan-500/20 group-hover:shadow-lg group-hover:shadow-cyan-500/30 transition-shadow mb-4">
@@ -41,9 +56,9 @@ export default function SpecsSection() {
                 {spec.label}
               </div>
               <div className="text-base font-bold text-slate-900 dark:text-white">{spec.value}</div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

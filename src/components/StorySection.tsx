@@ -1,5 +1,8 @@
 import { Sunrise, Sun, Sunset, Moon } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { fadeUp, staggerContainer, viewportConfig } from '../utils/animations'
+import { useSectionTracking } from '../hooks/useSectionTracking'
 
 interface StoryItem {
   icon: LucideIcon
@@ -55,14 +58,22 @@ const storyItems: StoryItem[] = [
 ]
 
 export default function StorySection() {
+  const sectionRef = useSectionTracking('story', 'Bạn đang xem trải nghiệm một ngày cùng PulseAI Band.')
+
   return (
-    <section id="story" className="relative py-20 sm:py-28 overflow-hidden">
+    <section id="story" ref={sectionRef} className="relative py-20 sm:py-28 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-teal-50/20 to-slate-50/80 dark:from-slate-950 dark:via-teal-900/10 dark:to-slate-900/80" />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-16"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+        >
           <span className="inline-block px-4 py-1.5 rounded-full bg-violet-100/80 dark:bg-violet-500/10 text-violet-700 dark:text-violet-400 text-xs font-semibold mb-4 border border-violet-200/60 dark:border-violet-500/20">
             Trải nghiệm
           </span>
@@ -72,16 +83,22 @@ export default function StorySection() {
               PulseAI Band
             </span>
           </h2>
-        </div>
+        </motion.div>
 
         {/* Timeline */}
         <div className="relative">
           {/* Timeline line */}
           <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-slate-200 via-teal-200 to-slate-200 dark:from-slate-800 dark:via-teal-800/50 dark:to-slate-800" />
 
-          <div className="space-y-8 sm:space-y-12">
+          <motion.div
+            className="space-y-8 sm:space-y-12"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportConfig}
+          >
             {storyItems.map((item, index) => (
-              <div key={index} className="relative flex gap-6 sm:gap-8 group">
+              <motion.div key={index} variants={fadeUp} className="relative flex gap-6 sm:gap-8 group">
                 {/* Timeline dot */}
                 <div className="relative z-10 flex-shrink-0">
                   <div
@@ -105,9 +122,9 @@ export default function StorySection() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
