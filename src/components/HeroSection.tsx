@@ -1,5 +1,7 @@
 import { Sparkles, BatteryFull, Droplets } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { trackCtaClick } from '../utils/tracking'
+import { fadeUp, scaleIn, staggerContainer, viewportConfig } from '../utils/animations'
 
 const badges = [
   { icon: Sparkles, label: 'AI Health Tracking' },
@@ -18,27 +20,36 @@ export default function HeroSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Text content */}
-          <div className="text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-100/80 dark:bg-teal-500/10 text-teal-700 dark:text-teal-400 text-xs font-semibold mb-6 border border-teal-200/60 dark:border-teal-500/20">
+          <motion.div
+            className="text-center lg:text-left"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportConfig}
+          >
+            <motion.div
+              variants={fadeUp}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-100/80 dark:bg-teal-500/10 text-teal-700 dark:text-teal-400 text-xs font-semibold mb-6 border border-teal-200/60 dark:border-teal-500/20"
+            >
               <Sparkles size={14} />
               Công nghệ AI thế hệ mới
-            </div>
+            </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight">
+            <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight">
               Pulse<span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">AI</span>{' '}
               Band
-            </h1>
+            </motion.h1>
 
-            <p className="mt-4 text-xl sm:text-2xl font-semibold text-slate-700 dark:text-slate-200">
+            <motion.p variants={fadeUp} className="mt-4 text-xl sm:text-2xl font-semibold text-slate-700 dark:text-slate-200">
               Vòng tay thông minh theo dõi sức khỏe bằng AI
-            </p>
+            </motion.p>
 
-            <p className="mt-4 text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+            <motion.p variants={fadeUp} className="mt-4 text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-lg mx-auto lg:mx-0 leading-relaxed">
               Hiểu cơ thể bạn tốt hơn mỗi ngày với công nghệ AI Health Tracking. Theo dõi nhịp tim, giấc ngủ và vận động – tất cả trong một thiết bị nhỏ gọn trên cổ tay.
-            </p>
+            </motion.p>
 
             {/* CTA Buttons */}
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <motion.div variants={fadeUp} className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
                 href="#features"
                 onClick={() => trackCtaClick('hero')}
@@ -52,10 +63,10 @@ export default function HeroSection() {
               >
                 Xem thông số
               </a>
-            </div>
+            </motion.div>
 
             {/* Badges */}
-            <div className="mt-10 flex flex-wrap gap-3 justify-center lg:justify-start">
+            <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-3 justify-center lg:justify-start">
               {badges.map((badge) => (
                 <div
                   key={badge.label}
@@ -65,11 +76,17 @@ export default function HeroSection() {
                   {badge.label}
                 </div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Product Mockup - CSS only smartband */}
-          <div className="flex justify-center lg:justify-end">
+          <motion.div
+            className="flex justify-center lg:justify-end"
+            variants={scaleIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportConfig}
+          >
             <div className="relative">
               {/* Glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-teal-400/20 to-cyan-400/20 dark:from-teal-400/10 dark:to-cyan-400/10 rounded-full blur-3xl scale-110" />
@@ -121,7 +138,7 @@ export default function HeroSection() {
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-t from-slate-300 to-slate-400 dark:from-slate-600 dark:to-slate-700 rounded-b-2xl" />
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

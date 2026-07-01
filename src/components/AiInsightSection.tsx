@@ -1,4 +1,6 @@
 import { Moon, Heart, Zap } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { fadeUp, scaleIn, staggerContainer, viewportConfig } from '../utils/animations'
 
 const metrics = [
   { icon: Moon, label: 'Sleep Score', value: '86', color: 'text-violet-400', bg: 'bg-violet-500/10' },
@@ -17,22 +19,27 @@ export default function AiInsightSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Text */}
-          <div>
-            <span className="inline-block px-4 py-1.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-semibold mb-4 border border-teal-500/20">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportConfig}
+          >
+            <motion.span variants={fadeUp} className="inline-block px-4 py-1.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-semibold mb-4 border border-teal-500/20">
               AI Health Insight
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+            </motion.span>
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
               AI Health Insight giúp bạn{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">
                 hiểu cơ thể mình rõ hơn
               </span>
-            </h2>
-            <p className="mt-5 text-base sm:text-lg text-slate-400 leading-relaxed">
+            </motion.h2>
+            <motion.p variants={fadeUp} className="mt-5 text-base sm:text-lg text-slate-400 leading-relaxed">
               PulseAI Band phân tích dữ liệu nhịp tim, giấc ngủ và vận động hằng ngày để đưa ra gợi ý cá nhân hóa, giúp bạn cải thiện thói quen sống một cách khoa học hơn.
-            </p>
+            </motion.p>
 
             {/* Metrics */}
-            <div className="mt-8 flex flex-wrap gap-4">
+            <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-4">
               {metrics.map((metric) => (
                 <div
                   key={metric.label}
@@ -47,11 +54,17 @@ export default function AiInsightSection() {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Dashboard mock */}
-          <div className="flex justify-center">
+          <motion.div
+            className="flex justify-center"
+            variants={scaleIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportConfig}
+          >
             <div className="w-full max-w-md">
               {/* Main insight card */}
               <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-6 sm:p-8 shadow-2xl">
@@ -89,7 +102,7 @@ export default function AiInsightSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -3,6 +3,8 @@ import { Mail, Loader2, User, Phone, ChevronDown } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { validateNewsletterForm } from '../utils/validation'
 import { trackEvent } from '../utils/tracking'
+import { motion } from 'framer-motion'
+import { fadeUp, viewportConfig } from '../utils/animations'
 import type { NewsletterFormData, FormErrors } from '../utils/validation'
 
 const interestOptions = [
@@ -112,7 +114,13 @@ export default function NewsletterForm() {
       <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-cyan-500 dark:from-teal-900 dark:to-cyan-900" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.15),transparent_50%)]" />
 
-      <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportConfig}
+      >
         {/* Header */}
         <div className="text-center mb-10">
           <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mx-auto mb-6 border border-white/20">
@@ -240,7 +248,9 @@ export default function NewsletterForm() {
           </div>
 
           {/* Submit */}
-          <button
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={isSubmitting}
             className="w-full flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white text-teal-600 text-sm font-semibold shadow-lg shadow-teal-700/20 hover:shadow-xl hover:bg-teal-50 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
@@ -253,13 +263,13 @@ export default function NewsletterForm() {
             ) : (
               'Đăng ký nhận tin'
             )}
-          </button>
+          </motion.button>
         </form>
 
         <p className="mt-4 text-center text-xs text-teal-200/60">
           Chúng tôi tôn trọng quyền riêng tư của bạn. Hủy đăng ký bất cứ lúc nào.
         </p>
-      </div>
+      </motion.div>
     </section>
   )
 }

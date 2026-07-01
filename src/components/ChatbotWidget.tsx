@@ -3,6 +3,7 @@ import { MessageCircle, X, Send, Bot, User } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { chatbotAnswers, findAnswer, WELCOME_MESSAGE } from '../data/chatbotAnswers'
 import { trackEvent } from '../utils/tracking'
+import { motion, AnimatePresence } from 'framer-motion'
 
 interface Message {
   id: number
@@ -121,8 +122,15 @@ export default function ChatbotWidget() {
   return (
     <>
       {/* Chat window */}
-      {isOpen && (
-        <div className="fixed bottom-20 right-4 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-96 max-h-[calc(100vh-120px)] flex flex-col rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-2xl shadow-slate-900/10 dark:shadow-black/50 overflow-hidden">
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ duration: 0.2 }}
+            className="fixed bottom-20 right-4 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-96 max-h-[calc(100vh-120px)] flex flex-col rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-2xl shadow-slate-900/10 dark:shadow-black/50 overflow-hidden"
+          >
           {/* Header */}
           <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-teal-500 to-cyan-500 flex-shrink-0">
             <div className="flex items-center gap-3">
@@ -219,6 +227,7 @@ export default function ChatbotWidget() {
           )}
 
           {/* Input */}
+          {/* Input */}
           <div className="px-4 py-3 border-t border-slate-100 dark:border-slate-800 flex-shrink-0">
             <div className="flex items-center gap-2">
               <input
@@ -241,16 +250,19 @@ export default function ChatbotWidget() {
               </button>
             </div>
           </div>
-        </div>
-      )}
+        </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Floating button */}
-      <button
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         onClick={isOpen ? handleClose : handleOpen}
-        className={`fixed bottom-5 right-4 sm:right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-xl transition-all ${
+        className={`fixed bottom-5 right-4 sm:right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-xl transition-colors ${
           isOpen
             ? 'bg-slate-700 hover:bg-slate-800 shadow-slate-700/30'
-            : 'bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 shadow-teal-500/30 hover:shadow-teal-500/40 hover:scale-105'
+            : 'bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 shadow-teal-500/30 hover:shadow-teal-500/40'
         }`}
         aria-label={isOpen ? 'Đóng chatbot' : 'Mở chatbot'}
       >
@@ -259,7 +271,7 @@ export default function ChatbotWidget() {
         ) : (
           <MessageCircle size={22} className="text-white" />
         )}
-      </button>
+      </motion.button>
     </>
   )
 }
