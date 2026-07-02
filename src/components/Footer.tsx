@@ -2,7 +2,8 @@ export default function Footer() {
   return (
     <footer className="relative py-16 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-950" />
+      <div className="absolute inset-0 bg-white dark:bg-slate-950" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
@@ -20,9 +21,9 @@ export default function Footer() {
             Vòng tay thông minh theo dõi sức khỏe bằng AI.
           </p>
 
-          <div className="mt-8 pt-8 border-t border-slate-200/80 dark:border-slate-800/80">
-            <p className="text-xs text-slate-400 dark:text-slate-500">
-              Built for Helicorp IT Website Intern Test.
+          <div className="mt-12 pt-8">
+            <p className="text-xs text-slate-400 dark:text-slate-500 font-medium">
+              Designed & Built for Helicorp IT Website Intern Test.
             </p>
             <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">
               © 2026 PulseAI Band. All rights reserved.

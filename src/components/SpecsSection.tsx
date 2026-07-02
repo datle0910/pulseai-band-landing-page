@@ -11,8 +11,9 @@ export default function SpecsSection() {
 
   return (
     <section id="specs" ref={sectionRef} className="relative py-20 sm:py-28 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-50/80 to-white dark:from-slate-900/80 dark:to-slate-950" />
+      {/* Premium Background */}
+      <div className="absolute inset-0 bg-slate-50 dark:bg-slate-950" />
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTQ4LCAxNjMsIDE4NCwgMC4wNCkiLz48L3N2Zz4=')] opacity-50 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -46,16 +47,20 @@ export default function SpecsSection() {
             <motion.div
               key={index}
               variants={fadeUp}
-              className="group relative bg-white dark:bg-slate-900/50 rounded-2xl p-6 border border-slate-200/60 dark:border-slate-800/60 shadow-sm hover:shadow-xl hover:shadow-cyan-500/5 hover:border-cyan-200/60 dark:hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1"
+              className="group relative bg-white/60 dark:bg-slate-900/40 backdrop-blur-xl rounded-2xl p-6 border border-white/40 dark:border-slate-700/50 shadow-[0_2px_10px_rgba(0,0,0,0.02)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.2)] hover:shadow-2xl hover:shadow-cyan-500/10 dark:hover:shadow-cyan-400/5 transition-all duration-500 hover:-translate-y-1.5 overflow-hidden"
             >
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-500 flex items-center justify-center shadow-md shadow-cyan-500/20 group-hover:shadow-lg group-hover:shadow-cyan-500/30 transition-shadow mb-4">
-                <spec.icon size={20} className="text-white" />
+              {/* Hover glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-transparent to-teal-500/0 group-hover:from-cyan-500/5 group-hover:to-teal-500/5 dark:group-hover:from-cyan-400/5 dark:group-hover:to-teal-400/5 transition-colors duration-500 pointer-events-none" />
+
+              <div className="relative w-11 h-11 rounded-xl bg-cyan-50 dark:bg-slate-800 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-500 border border-cyan-100 dark:border-slate-700">
+                <div className="absolute inset-0 bg-cyan-400/20 dark:bg-cyan-400/10 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <spec.icon size={20} className="text-cyan-600 dark:text-cyan-400 relative z-10" />
               </div>
 
-              <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+              <div className="relative z-10 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300">
                 {spec.label}
               </div>
-              <div className="text-base font-bold text-slate-900 dark:text-white">{spec.value}</div>
+              <div className="relative z-10 text-base font-bold text-slate-900 dark:text-white leading-snug">{spec.value}</div>
             </motion.div>
           ))}
         </motion.div>

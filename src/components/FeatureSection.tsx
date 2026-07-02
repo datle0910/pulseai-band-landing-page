@@ -5,8 +5,9 @@ import { fadeUp, staggerContainer, viewportConfig } from '../utils/animations'
 export default function FeatureSection() {
   return (
     <section id="features" className="relative py-20 sm:py-28 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white to-slate-50/80 dark:from-slate-950 dark:to-slate-900/80" />
+      {/* Premium Background with subtle noise */}
+      <div className="absolute inset-0 bg-slate-50 dark:bg-slate-950" />
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTQ4LCAxNjMsIDE4NCwgMC4wNSkiLz48L3N2Zz4=')] opacity-50 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -40,15 +41,19 @@ export default function FeatureSection() {
             <motion.div
               key={index}
               variants={fadeUp}
-              className="group relative bg-white dark:bg-slate-900/50 rounded-2xl p-6 sm:p-8 border border-slate-200/60 dark:border-slate-800/60 shadow-sm hover:shadow-xl hover:shadow-teal-500/5 hover:border-teal-200/60 dark:hover:border-teal-500/30 transition-all duration-300 hover:-translate-y-1"
+              className="group relative bg-white/60 dark:bg-slate-900/40 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-white/40 dark:border-slate-700/50 shadow-sm hover:shadow-2xl hover:shadow-teal-500/10 dark:hover:shadow-teal-400/5 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
             >
+              {/* Subtle hover gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-teal-500/0 via-transparent to-cyan-500/0 group-hover:from-teal-500/5 group-hover:to-cyan-500/5 dark:group-hover:from-teal-400/5 dark:group-hover:to-cyan-400/5 transition-colors duration-500 pointer-events-none" />
+
               {/* Icon */}
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center shadow-md shadow-teal-500/20 group-hover:shadow-lg group-hover:shadow-teal-500/30 transition-shadow mb-5">
-                <feature.icon size={22} className="text-white" />
+              <div className="relative w-12 h-12 rounded-full bg-teal-50 dark:bg-slate-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 border border-teal-100 dark:border-slate-700">
+                <div className="absolute inset-0 bg-teal-400/20 dark:bg-teal-400/10 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <feature.icon size={20} className="text-teal-600 dark:text-teal-400 relative z-10" />
               </div>
 
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{feature.title}</h3>
-              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{feature.description}</p>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-300">{feature.title}</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}
         </motion.div>

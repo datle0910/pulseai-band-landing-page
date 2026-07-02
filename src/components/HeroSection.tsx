@@ -2,7 +2,7 @@ import { Sparkles, BatteryFull, Droplets } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { trackCtaClick } from '../utils/tracking'
 import { fadeUp, scaleIn, staggerContainer, viewportConfig } from '../utils/animations'
-
+import Product3DMockup from './Product3DMockup'
 const badges = [
   { icon: Sparkles, label: 'AI Health Tracking' },
   { icon: BatteryFull, label: 'Pin 10 ngày' },
@@ -12,10 +12,12 @@ const badges = [
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-teal-50/40 to-cyan-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950" />
-      <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-teal-400/10 dark:bg-teal-400/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-400/10 dark:bg-cyan-400/5 rounded-full blur-3xl" />
+      {/* Premium Background */}
+      <div className="absolute inset-0 bg-slate-50 dark:bg-slate-950 overflow-hidden">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(20,184,166,0.15),transparent_50%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(20,184,166,0.08),transparent_50%)] -translate-y-1/3 translate-x-1/3" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.15),transparent_50%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.08),transparent_50%)] translate-y-1/3 -translate-x-1/3" />
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTQ4LCAxNjMsIDE4NCwgMC4xKSIvPjwvc3ZnPg==')] [mask-image:linear-gradient(to_bottom,white,transparent)] dark:[mask-image:linear-gradient(to_bottom,white,transparent)] opacity-40 dark:opacity-20 pointer-events-none" />
+      </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -79,65 +81,15 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Product Mockup - CSS only smartband */}
+          {/* Product Mockup - CSS 3D */}
           <motion.div
-            className="flex justify-center lg:justify-end"
+            className="flex justify-center lg:justify-end w-full"
             variants={scaleIn}
             initial="hidden"
             whileInView="visible"
             viewport={viewportConfig}
           >
-            <div className="relative">
-              {/* Glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-400/20 to-cyan-400/20 dark:from-teal-400/10 dark:to-cyan-400/10 rounded-full blur-3xl scale-110" />
-
-              {/* Watch body */}
-              <div className="relative w-56 h-72 sm:w-64 sm:h-80">
-                {/* Top band */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-b from-slate-300 to-slate-400 dark:from-slate-600 dark:to-slate-700 rounded-t-2xl" />
-
-                {/* Watch case */}
-                <div className="absolute top-14 left-1/2 -translate-x-1/2 w-44 h-44 sm:w-52 sm:h-52 rounded-[2rem] bg-gradient-to-br from-slate-800 to-slate-900 shadow-2xl shadow-slate-900/50 border border-slate-700/50 flex items-center justify-center p-3">
-                  {/* Screen */}
-                  <div className="w-full h-full rounded-[1.4rem] bg-gradient-to-br from-slate-950 to-slate-900 border border-slate-700/30 flex flex-col items-center justify-center gap-2 p-4 overflow-hidden">
-                    {/* Screen content */}
-                    <div className="text-[10px] text-slate-500 font-medium">PulseAI Band</div>
-                    <div className="text-3xl sm:text-4xl font-bold text-white">72</div>
-                    <div className="text-xs text-teal-400 font-medium">BPM</div>
-
-                    {/* Heart animation line */}
-                    <svg viewBox="0 0 120 30" className="w-full mt-1 opacity-80">
-                      <polyline
-                        fill="none"
-                        stroke="#14b8a6"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        points="0,15 20,15 25,15 30,5 35,25 40,10 45,20 50,15 70,15 75,15 80,5 85,25 90,10 95,20 100,15 120,15"
-                      />
-                    </svg>
-
-                    {/* Bottom stats */}
-                    <div className="flex gap-4 mt-1">
-                      <div className="text-center">
-                        <div className="text-[10px] text-cyan-400 font-semibold">SpO2</div>
-                        <div className="text-xs text-white font-bold">98%</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-[10px] text-violet-400 font-semibold">Sleep</div>
-                        <div className="text-xs text-white font-bold">86</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Side button */}
-                <div className="absolute top-20 -right-0.5 sm:top-24 w-1.5 h-8 bg-gradient-to-b from-slate-600 to-slate-700 rounded-r-sm" />
-
-                {/* Bottom band */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-t from-slate-300 to-slate-400 dark:from-slate-600 dark:to-slate-700 rounded-b-2xl" />
-              </div>
-            </div>
+            <Product3DMockup />
           </motion.div>
         </div>
       </div>

@@ -136,10 +136,10 @@ export default function NewsletterForm() {
                 value={formData.fullName}
                 onChange={handleChange}
                 placeholder="Họ tên *"
-                className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/15 backdrop-blur-sm border text-white placeholder-white/50 text-sm focus:outline-none focus:ring-2 transition-all ${
+                className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 backdrop-blur-md border text-white placeholder-white/60 text-sm focus:outline-none focus:ring-2 focus:bg-white/20 transition-all duration-300 ${
                   errors.fullName
-                    ? 'border-red-300 focus:ring-red-300/50'
-                    : 'border-white/20 focus:ring-white/30'
+                    ? 'border-red-400 focus:ring-red-400/50'
+                    : 'border-white/20 focus:ring-teal-300/50 hover:border-white/40'
                 }`}
               />
             </div>
@@ -161,10 +161,10 @@ export default function NewsletterForm() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Email *"
-                className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/15 backdrop-blur-sm border text-white placeholder-white/50 text-sm focus:outline-none focus:ring-2 transition-all ${
+                className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 backdrop-blur-md border text-white placeholder-white/60 text-sm focus:outline-none focus:ring-2 focus:bg-white/20 transition-all duration-300 ${
                   errors.email
-                    ? 'border-red-300 focus:ring-red-300/50'
-                    : 'border-white/20 focus:ring-white/30'
+                    ? 'border-red-400 focus:ring-red-400/50'
+                    : 'border-white/20 focus:ring-cyan-300/50 hover:border-white/40'
                 }`}
               />
             </div>
@@ -186,10 +186,10 @@ export default function NewsletterForm() {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="Số điện thoại (không bắt buộc)"
-                className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/15 backdrop-blur-sm border text-white placeholder-white/50 text-sm focus:outline-none focus:ring-2 transition-all ${
+                className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 backdrop-blur-md border text-white placeholder-white/60 text-sm focus:outline-none focus:ring-2 focus:bg-white/20 transition-all duration-300 ${
                   errors.phone
-                    ? 'border-red-300 focus:ring-red-300/50'
-                    : 'border-white/20 focus:ring-white/30'
+                    ? 'border-red-400 focus:ring-red-400/50'
+                    : 'border-white/20 focus:ring-teal-300/50 hover:border-white/40'
                 }`}
               />
             </div>
@@ -209,12 +209,12 @@ export default function NewsletterForm() {
                 name="interest"
                 value={formData.interest}
                 onChange={handleChange}
-                className={`w-full appearance-none px-4 py-3.5 rounded-xl bg-white/15 backdrop-blur-sm border text-sm focus:outline-none focus:ring-2 transition-all ${
-                  formData.interest ? 'text-white' : 'text-white/50'
+                className={`w-full appearance-none px-4 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 backdrop-blur-md border text-sm focus:outline-none focus:ring-2 focus:bg-white/20 transition-all duration-300 ${
+                  formData.interest ? 'text-white' : 'text-white/60'
                 } ${
                   errors.interest
-                    ? 'border-red-300 focus:ring-red-300/50'
-                    : 'border-white/20 focus:ring-white/30'
+                    ? 'border-red-400 focus:ring-red-400/50'
+                    : 'border-white/20 focus:ring-cyan-300/50 hover:border-white/40'
                 }`}
               >
                 {interestOptions.map((opt) => (
@@ -239,12 +239,12 @@ export default function NewsletterForm() {
             whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={isSubmitting}
-            className="w-full flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white text-teal-600 text-sm font-semibold shadow-lg shadow-teal-700/20 hover:shadow-xl hover:bg-teal-50 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+            className="w-full flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-teal-400 to-cyan-400 text-slate-900 text-sm font-bold shadow-lg shadow-teal-500/30 hover:shadow-xl hover:shadow-cyan-500/40 transition-all disabled:opacity-70 disabled:cursor-not-allowed border border-white/20"
           >
             {isSubmitting ? (
               <>
                 <Loader2 size={18} className="animate-spin" />
-                Đang gửi...
+                Đang xử lý...
               </>
             ) : (
               'Đăng ký nhận tin'
@@ -252,10 +252,10 @@ export default function NewsletterForm() {
           </motion.button>
         </form>
 
-        <p className="mt-4 text-center text-xs text-teal-200/60">
-          Chúng tôi tôn trọng quyền riêng tư của bạn. Hủy đăng ký bất cứ lúc nào.
+        <p className="mt-5 text-center text-xs text-white/70 font-medium">
+          Không spam. Chỉ gửi thông tin ra mắt và tư vấn phù hợp.
         </p>
-        <p className="mt-2 text-center text-[10px] text-teal-200/40">
+        <p className="mt-2 text-center text-[10px] text-white/40">
           Webhook-ready: Dữ liệu có thể gửi tới Google Sheets, Formspree, Web3Forms hoặc Make.
         </p>
       </motion.div>
