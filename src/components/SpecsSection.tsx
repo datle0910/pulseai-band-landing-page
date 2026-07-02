@@ -23,10 +23,7 @@ export default function SpecsSection() {
           whileInView="visible"
           viewport={viewportConfig}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-cyan-100/80 dark:bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 text-xs font-semibold mb-4 border border-cyan-200/60 dark:border-cyan-500/20">
-            Thông số kỹ thuật
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white leading-tight">
             Thông số kỹ thuật{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">
               nổi bật
