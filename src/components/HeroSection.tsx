@@ -45,9 +45,9 @@ export default function HeroSection() {
             {/* Subheadline */}
             <motion.p
               variants={fadeUp}
-              className="mt-6 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed font-medium"
+              className="mt-6 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed font-medium"
             >
-              PulseAI Band theo dõi nhịp tim, giấc ngủ, vận động và mức độ phục hồi hằng ngày, sau đó chuyển dữ liệu thành những gợi ý sức khỏe dễ hiểu bằng AI.
+              Theo dõi giấc ngủ, nhịp tim và phục hồi hằng ngày, chuyển hóa dữ liệu thành gợi ý sức khỏe thông minh bằng AI.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -69,42 +69,6 @@ export default function HeroSection() {
                 Khám phá tính năng
               </a>
             </motion.div>
-
-            {/* Support Stat Icons / Trust indicators */}
-            <motion.div
-              variants={fadeUp}
-              className="mt-12 pt-8 border-t border-slate-200/60 dark:border-slate-800/60 w-full flex flex-wrap justify-center lg:justify-start gap-8"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-teal-950/40 flex items-center justify-center border border-teal-100 dark:border-teal-900/30 text-teal-600 dark:text-teal-400">
-                  <BatteryFull size={20} />
-                </div>
-                <div>
-                  <div className="text-sm font-extrabold text-slate-900 dark:text-white">10 ngày</div>
-                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Sử dụng pin liên tục</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-cyan-50 dark:bg-cyan-950/40 flex items-center justify-center border border-cyan-100 dark:border-cyan-900/30 text-cyan-600 dark:text-cyan-400">
-                  <ShieldAlert size={20} />
-                </div>
-                <div>
-                  <div className="text-sm font-extrabold text-slate-900 dark:text-white">IP68</div>
-                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Chống nước & Bụi tối đa</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-violet-50 dark:bg-violet-950/40 flex items-center justify-center border border-violet-100 dark:border-violet-900/30 text-violet-600 dark:text-violet-400">
-                  <Sparkles size={20} />
-                </div>
-                <div>
-                  <div className="text-sm font-extrabold text-slate-900 dark:text-white">24/7 AI</div>
-                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Theo dõi chủ động</div>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* Graphic Right (lg:col-span-5) */}
@@ -113,7 +77,46 @@ export default function HeroSection() {
           </div>
 
         </div>
-      </div>
+
+        {/* Support Stat Icons / Trust indicators - Separated as a horizontal brand strip at the bottom */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportConfig}
+          className="mt-20 pt-8 border-t border-slate-200/60 dark:border-slate-800/60 w-full flex flex-wrap justify-center gap-12 sm:gap-16"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-teal-950/40 flex items-center justify-center border border-teal-100 dark:border-teal-900/30 text-teal-600 dark:text-teal-400">
+              <BatteryFull size={20} />
+            </div>
+            <div>
+              <div className="text-sm font-extrabold text-slate-900 dark:text-white">10 ngày pin</div>
+              <div className="text-[11px] text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider">Sử dụng liên tục</div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-cyan-50 dark:bg-cyan-950/40 flex items-center justify-center border border-cyan-100 dark:border-cyan-900/30 text-cyan-600 dark:text-cyan-400">
+              <ShieldAlert size={20} />
+            </div>
+            <div>
+              <div className="text-sm font-extrabold text-slate-900 dark:text-white">IP68 chống nước</div>
+              <div className="text-[11px] text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider">Chống nước & Bụi</div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-violet-50 dark:bg-violet-950/40 flex items-center justify-center border border-violet-100 dark:border-violet-900/30 text-violet-600 dark:text-violet-400">
+              <Sparkles size={20} />
+            </div>
+            <div>
+              <div className="text-sm font-extrabold text-slate-900 dark:text-white">24/7 health tracking</div>
+              <div className="text-[11px] text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider">AI theo dõi chủ động</div>
+            </div>
+          </div>
+        </motion.div>
+
+        </div>
     </section>
   )
 }

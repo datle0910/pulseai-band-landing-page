@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Sparkles, Moon, Heart, Zap, Activity, Brain } from 'lucide-react'
+import { Sparkles, Moon, Heart, Zap, Activity } from 'lucide-react'
 import { fadeUp, scaleIn, staggerContainer, viewportConfig } from '../utils/animations'
 import { healthMetrics } from '../data/healthMetrics'
 
@@ -22,13 +22,7 @@ export default function AiInsightSection() {
             viewport={viewportConfig}
             className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left"
           >
-            <motion.span
-              variants={fadeUp}
-              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-bold uppercase tracking-wider mb-4 border border-teal-500/20"
-            >
-              <Brain size={14} />
-              AI Health Insight
-            </motion.span>
+
 
             <motion.h2
               variants={fadeUp}

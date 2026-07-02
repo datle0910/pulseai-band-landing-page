@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ShoppingBag, Clock } from 'lucide-react'
+import { Clock } from 'lucide-react'
 import { fadeUp, staggerContainer, viewportConfig } from '../utils/animations'
 import { products } from '../data/products'
 import type { Product } from '../data/products'
@@ -40,13 +40,6 @@ export default function MiniStoreSection({
           viewport={viewportConfig}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <motion.div
-            variants={fadeUp}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-100/80 dark:bg-teal-500/10 text-teal-700 dark:text-teal-400 text-xs font-bold uppercase tracking-wider mb-4 border border-teal-200/50 dark:border-teal-500/20"
-          >
-            <ShoppingBag size={14} />
-            Bộ sưu tập thiết bị
-          </motion.div>
           
           <motion.h2
             variants={fadeUp}

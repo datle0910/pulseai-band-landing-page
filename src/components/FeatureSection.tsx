@@ -19,15 +19,15 @@ export default function FeatureSection() {
           whileInView="visible"
           viewport={viewportConfig}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/40 text-teal-700 dark:text-teal-400 text-xs font-bold uppercase tracking-wider mb-4 border border-teal-200/45 dark:border-teal-900/40">
-            Tính năng nổi bật
-          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white leading-tight">
-            Theo dõi sức khỏe toàn diện <br className="hidden sm:block" />
+            Sức khỏe của bạn, <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">
-              trong một thiết bị nhỏ gọn
+              được giải thích bằng dữ liệu.
             </span>
           </h2>
+          <p className="mt-6 text-base sm:text-lg text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
+            PulseAI Band kết hợp cảm biến sức khỏe, dữ liệu giấc ngủ và AI Health Insight để biến các chỉ số hằng ngày thành gợi ý dễ hiểu.
+          </p>
         </motion.div>
 
         {/* Bento Grid Layout */}
@@ -39,10 +39,10 @@ export default function FeatureSection() {
           viewport={viewportConfig}
         >
           
-          {/* Card 1: AI Health Insight (Large - 3 cols / 2 rows) */}
+          {/* Card 1: AI Health Insight (Large - 3 cols / 2 rows - Dark Visual Theme) */}
           <motion.div
             variants={fadeUp}
-            className="md:col-span-3 md:row-span-2 group relative rounded-3xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 p-8 flex flex-col justify-between overflow-hidden hover:shadow-xl dark:hover:shadow-teal-500/5 hover:border-teal-200/60 dark:hover:border-teal-500/30 transition-all duration-300"
+            className="md:col-span-3 md:row-span-2 group relative rounded-3xl bg-slate-900 dark:bg-slate-900/40 border border-slate-800 dark:border-slate-800/60 p-8 flex flex-col justify-between overflow-hidden hover:shadow-xl dark:hover:shadow-teal-500/5 hover:border-teal-500/40 dark:hover:border-teal-500/30 transition-all duration-300"
           >
             {/* Visual element top */}
             <div className="flex justify-between items-start mb-6">
@@ -51,31 +51,31 @@ export default function FeatureSection() {
               </div>
               
               {/* Mock AI Suggestion Chip */}
-              <div className="px-3.5 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/25 flex items-center gap-1.5">
+              <div className="px-3.5 py-1.5 rounded-full bg-teal-500/20 border border-teal-500/30 flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-teal-400 animate-ping" />
-                <span className="text-[10px] text-teal-600 dark:text-teal-400 font-extrabold uppercase tracking-wider">AI Suggestion</span>
+                <span className="text-[10px] text-teal-400 font-extrabold uppercase tracking-wider">AI Suggestion</span>
               </div>
             </div>
 
             <div className="relative z-10">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">AI Health Insight</h3>
-              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+              <h3 className="text-xl font-bold text-white mb-2">AI Health Insight</h3>
+              <p className="text-sm text-slate-400 leading-relaxed">
                 Phân tích nhịp tim nghỉ, giấc ngủ sâu và mức độ phục hồi để đưa ra gợi ý sinh hoạt dễ dàng thực hiện từng ngày, nâng cao thể lực.
               </p>
             </div>
 
             {/* Subtle Abstract Graph */}
-            <div className="absolute right-0 bottom-0 opacity-10 dark:opacity-20 pointer-events-none">
+            <div className="absolute right-0 bottom-0 opacity-20 pointer-events-none">
               <svg width="200" height="150" viewBox="0 0 200 150">
                 <path d="M10,130 Q40,40 80,100 T150,20 T200,90" fill="none" stroke="currentColor" strokeWidth="8" className="text-teal-500" />
               </svg>
             </div>
           </motion.div>
 
-          {/* Card 2: Sleep & Recovery (Large - 3 cols / 2 rows) */}
+          {/* Card 2: Sleep & Recovery (Large - 3 cols / 2 rows - Indigo/Violet Gradient Theme) */}
           <motion.div
             variants={fadeUp}
-            className="md:col-span-3 md:row-span-2 group relative rounded-3xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 p-8 flex flex-col justify-between overflow-hidden hover:shadow-xl hover:border-teal-200/60 dark:hover:border-teal-500/30 transition-all duration-300"
+            className="md:col-span-3 md:row-span-2 group relative rounded-3xl bg-gradient-to-br from-indigo-50/50 to-violet-50/50 dark:from-slate-900/30 dark:to-indigo-950/20 border border-violet-100 dark:border-violet-950/50 p-8 flex flex-col justify-between overflow-hidden hover:shadow-xl hover:border-violet-300 dark:hover:border-violet-500/30 transition-all duration-300"
           >
             <div className="flex justify-between items-start mb-6">
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-500 flex items-center justify-center text-white shadow-md">
@@ -152,10 +152,10 @@ export default function FeatureSection() {
             </div>
           </motion.div>
 
-          {/* Card 5: Battery (Small - 3 cols / 1 row) */}
+          {/* Card 5: Battery (Small - 3 cols / 1 row - Tinted Teal Theme) */}
           <motion.div
             variants={fadeUp}
-            className="md:col-span-3 group relative rounded-3xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 p-6 flex items-center gap-6 overflow-hidden hover:shadow-xl hover:border-teal-200/60 dark:hover:border-teal-500/30 transition-all duration-300"
+            className="md:col-span-3 group relative rounded-3xl bg-teal-50/40 dark:bg-teal-950/10 border border-teal-100 dark:border-teal-950/30 p-6 flex items-center gap-6 overflow-hidden hover:shadow-xl hover:border-teal-300 dark:hover:border-teal-500/30 transition-all duration-300"
           >
             <div className="w-12 h-12 rounded-2xl bg-teal-500/10 flex items-center justify-center text-teal-500 shrink-0">
               <Battery size={24} />
@@ -168,10 +168,10 @@ export default function FeatureSection() {
             </div>
           </motion.div>
 
-          {/* Card 6: Water Resistance (Small - 3 cols / 1 row) */}
+          {/* Card 6: Water Resistance (Small - 3 cols / 1 row - Tinted Cyan Theme) */}
           <motion.div
             variants={fadeUp}
-            className="md:col-span-3 group relative rounded-3xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 p-6 flex items-center gap-6 overflow-hidden hover:shadow-xl hover:border-teal-200/60 dark:hover:border-teal-500/30 transition-all duration-300"
+            className="md:col-span-3 group relative rounded-3xl bg-cyan-50/40 dark:bg-cyan-950/10 border border-cyan-100 dark:border-cyan-950/30 p-6 flex items-center gap-6 overflow-hidden hover:shadow-xl hover:border-cyan-300 dark:hover:border-cyan-500/30 transition-all duration-300"
           >
             <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-500 shrink-0">
               <Droplets size={24} />

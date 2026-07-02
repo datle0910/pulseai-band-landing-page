@@ -20,9 +20,7 @@ export default function TrustSection() {
           whileInView="visible"
           viewport={viewportConfig}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/40 text-teal-700 dark:text-teal-400 text-xs font-bold uppercase tracking-wider mb-4 border border-teal-200/50 dark:border-teal-900/40">
-            Đối tượng sử dụng
-          </span>
+
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white leading-tight">
             Được thiết kế cho những người <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">

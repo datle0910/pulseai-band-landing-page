@@ -91,9 +91,7 @@ export default function StorySection() {
           whileInView="visible"
           viewport={viewportConfig}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-violet-50 dark:bg-violet-950/40 text-violet-700 dark:text-violet-400 text-xs font-bold uppercase tracking-wider mb-4 border border-violet-200/50 dark:border-violet-900/40">
-            Trải nghiệm thực tế
-          </span>
+
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white leading-tight">
             Một ngày thông minh hơn cùng <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">
