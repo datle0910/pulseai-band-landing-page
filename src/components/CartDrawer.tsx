@@ -41,7 +41,7 @@ export default function CartDrawer({
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={onToggle}
-        className={`fixed bottom-24 right-4 sm:right-6 z-40 w-14 h-14 rounded-full flex items-center justify-center shadow-xl transition-colors bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-teal-600 dark:text-teal-400 hover:border-teal-300 dark:hover:border-teal-600`}
+        className="fixed bottom-[5.5rem] right-4 sm:right-6 z-40 w-14 h-14 rounded-full flex items-center justify-center shadow-xl shadow-slate-900/10 dark:shadow-black/40 transition-colors bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:border-teal-100 dark:hover:border-teal-900/50"
         aria-label="Giỏ hàng"
       >
         <ShoppingCart size={22} />

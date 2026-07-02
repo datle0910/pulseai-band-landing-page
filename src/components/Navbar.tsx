@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react'
 import { trackCtaClick } from '../utils/tracking'
 import ThemeToggle from './ThemeToggle'
 import BrandLogo from './BrandLogo'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
   { label: 'Tính năng', href: '#features' },
@@ -63,29 +64,37 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden border-t border-slate-200/50 dark:border-slate-800/50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl">
-          <div className="px-4 py-4 space-y-1">
-            {navLinks.map((link) => (
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="md:hidden border-t border-slate-200/50 dark:border-slate-800/50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl overflow-hidden"
+          >
+            <div className="px-4 py-4 space-y-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="block px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
               <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="block px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                href="#store"
+                onClick={() => { trackCtaClick('navbar'); setMobileOpen(false) }}
+                className="block text-center mt-3 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-slate-900 dark:bg-white dark:text-slate-900"
               >
-                {link.label}
+                Mua ngay
               </a>
-            ))}
-            <a
-              href="#store"
-              onClick={() => { trackCtaClick('navbar'); setMobileOpen(false) }}
-              className="block text-center mt-3 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-slate-900 dark:bg-white dark:text-slate-900"
-            >
-              Mua ngay
-            </a>
-          </div>
-        </div>
-      )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   )
 }
