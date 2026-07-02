@@ -1,52 +1,68 @@
 import { motion } from 'framer-motion'
-import { Heart, Activity, Moon, BrainCircuit } from 'lucide-react'
+import { Heart, Moon } from 'lucide-react'
 
 export default function PremiumProductVisual() {
   return (
-    <div className="relative w-full max-w-lg mx-auto flex items-center justify-center min-h-[450px]">
+    <div className="relative w-full max-w-md mx-auto flex items-center justify-center min-h-[420px]">
       
-      {/* Background Glows */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-teal-500/20 to-cyan-500/20 blur-3xl -z-10 rounded-full opacity-60 dark:opacity-100" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-teal-400/30 rounded-full blur-[80px] -z-10" />
+      {/* Subtle background glow - very restrained */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-teal-500/[0.07] rounded-full blur-[80px] dark:bg-teal-500/[0.12]" />
 
-      {/* Main Smartband Device */}
-      <div className="relative z-10 w-[180px] sm:w-[220px]">
-        {/* Top Strap */}
-        <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-14 sm:w-16 h-20 bg-gradient-to-b from-slate-200 to-slate-400 dark:from-slate-700 dark:to-slate-800 rounded-t-2xl shadow-[inset_0_4px_10px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_4px_10px_rgba(0,0,0,0.5)] z-0" />
+      {/* Main Device */}
+      <div className="relative z-10 w-[160px] sm:w-[190px]">
         
-        {/* Main Body */}
-        <div className="relative w-full aspect-[4/5] rounded-[2.5rem] bg-gradient-to-br from-slate-300 via-slate-400 to-slate-600 dark:from-slate-700 dark:via-slate-800 dark:to-slate-900 p-2 sm:p-[6px] shadow-2xl shadow-slate-900/40 dark:shadow-black/60 z-10 border border-white/40 dark:border-slate-600/50">
-          
-          {/* Inner Screen Bezel */}
-          <div className="relative w-full h-full rounded-[2.2rem] bg-black p-1.5 sm:p-2 overflow-hidden shadow-[inset_0_0_15px_rgba(0,0,0,0.9)]">
-            
-            {/* Screen Content - Glass effect */}
-            <div className="relative w-full h-full rounded-[1.8rem] bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-700/50 flex flex-col items-center justify-center overflow-hidden">
-              
-              {/* Screen Reflection */}
-              <div className="absolute top-0 right-0 w-[150%] h-1/2 bg-gradient-to-b from-white/10 to-transparent rotate-12 origin-top-right translate-x-4 -translate-y-4 pointer-events-none" />
+        {/* Top Strap - textured */}
+        <div className="absolute -top-14 left-1/2 -translate-x-1/2 w-12 sm:w-14 h-[4.5rem]">
+          <div className="w-full h-full bg-gradient-to-b from-[#3a3a3c] via-[#48484a] to-[#3a3a3c] dark:from-[#2c2c2e] dark:via-[#3a3a3c] dark:to-[#2c2c2e] rounded-t-xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)]" />
+          {/* Strap texture lines */}
+          <div className="absolute inset-x-1 top-2 bottom-0 flex flex-col gap-[3px] opacity-20">
+            {[...Array(8)].map((_, i) => (
+              <div key={i} className="w-full h-px bg-white/30" />
+            ))}
+          </div>
+        </div>
 
-              {/* UI: PulseAI Ring */}
-              <div className="relative w-28 h-28 sm:w-32 sm:h-32 mb-2">
+        {/* Device Body - graphite metal frame */}
+        <div className="relative w-full aspect-[4/5] rounded-[2rem] sm:rounded-[2.2rem] bg-gradient-to-b from-[#636366] via-[#48484a] to-[#3a3a3c] p-[3px] shadow-[0_20px_60px_rgba(0,0,0,0.25),0_4px_16px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.6),0_4px_16px_rgba(0,0,0,0.4)] z-10 border border-white/10">
+          
+          {/* Inner bezel */}
+          <div className="relative w-full h-full rounded-[1.8rem] sm:rounded-[2rem] bg-[#1c1c1e] p-[5px] overflow-hidden">
+            
+            {/* Screen */}
+            <div className="relative w-full h-full rounded-[1.5rem] sm:rounded-[1.7rem] bg-[#0a0a0a] flex flex-col items-center justify-center overflow-hidden">
+              
+              {/* Screen reflection - subtle diagonal */}
+              <div className="absolute top-0 right-0 w-full h-[45%] bg-gradient-to-bl from-white/[0.06] to-transparent pointer-events-none" />
+              
+              {/* Time */}
+              <div className="text-[10px] font-medium text-white/40 mb-1 tracking-widest">09:41</div>
+
+              {/* Activity Ring */}
+              <div className="relative w-24 h-24 sm:w-28 sm:h-28 mb-3">
                 <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-                  <circle cx="50" cy="50" r="40" fill="none" stroke="#1f2937" strokeWidth="8" />
-                  <circle cx="50" cy="50" r="40" fill="none" stroke="#14b8a6" strokeWidth="8" strokeDasharray="251" strokeDashoffset="40" strokeLinecap="round" className="drop-shadow-[0_0_8px_rgba(20,184,166,0.5)]" />
+                  {/* Track */}
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#1c1c1e" strokeWidth="7" />
+                  <circle cx="50" cy="50" r="32" fill="none" stroke="#1c1c1e" strokeWidth="7" />
+                  {/* Filled arcs */}
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#0d9488" strokeWidth="7" strokeDasharray="251" strokeDashoffset="60" strokeLinecap="round" />
+                  <circle cx="50" cy="50" r="32" fill="none" stroke="#06b6d4" strokeWidth="7" strokeDasharray="201" strokeDashoffset="80" strokeLinecap="round" opacity="0.8" />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-[10px] text-teal-400 font-bold uppercase tracking-widest mb-0.5">Energy</span>
-                  <span className="text-3xl sm:text-4xl font-black text-white leading-none">84</span>
+                  <span className="text-[28px] sm:text-[32px] font-bold text-white leading-none tracking-tight" style={{ fontVariantNumeric: 'tabular-nums' }}>84</span>
+                  <span className="text-[8px] text-teal-500/80 font-semibold uppercase tracking-[0.15em] mt-0.5">Readiness</span>
                 </div>
               </div>
 
-              {/* UI: Bottom Stats */}
-              <div className="flex gap-4 mt-2 px-4 w-full">
-                <div className="flex-1 bg-slate-800/80 rounded-xl py-1.5 px-2 flex items-center justify-between border border-slate-700/50">
-                  <Heart size={10} className="text-rose-500" />
-                  <span className="text-xs font-bold text-white">72</span>
+              {/* Bottom stat pills */}
+              <div className="flex gap-2 px-3 w-full">
+                <div className="flex-1 flex items-center gap-1.5 bg-white/[0.06] rounded-lg py-1.5 px-2 border border-white/[0.04]">
+                  <Heart size={9} className="text-rose-400" />
+                  <span className="text-[11px] font-semibold text-white/80" style={{ fontVariantNumeric: 'tabular-nums' }}>72</span>
+                  <span className="text-[8px] text-white/30">bpm</span>
                 </div>
-                <div className="flex-1 bg-slate-800/80 rounded-xl py-1.5 px-2 flex items-center justify-between border border-slate-700/50">
-                  <Moon size={10} className="text-indigo-400" />
-                  <span className="text-xs font-bold text-white">8h</span>
+                <div className="flex-1 flex items-center gap-1.5 bg-white/[0.06] rounded-lg py-1.5 px-2 border border-white/[0.04]">
+                  <Moon size={9} className="text-indigo-400" />
+                  <span className="text-[11px] font-semibold text-white/80">7h42</span>
                 </div>
               </div>
 
@@ -54,78 +70,50 @@ export default function PremiumProductVisual() {
           </div>
         </div>
 
-        {/* Side Button */}
-        <div className="absolute top-1/3 -right-[3px] w-[5px] h-10 bg-gradient-to-b from-slate-400 to-slate-600 dark:from-slate-600 dark:to-slate-800 rounded-r-md z-0 shadow-md" />
+        {/* Side button */}
+        <div className="absolute top-[30%] -right-[2px] w-[3px] h-8 bg-gradient-to-b from-[#636366] to-[#48484a] rounded-r-sm z-0" />
 
         {/* Bottom Strap */}
-        <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-14 sm:w-16 h-20 bg-gradient-to-t from-slate-200 to-slate-400 dark:from-slate-700 dark:to-slate-800 rounded-b-2xl shadow-[inset_0_-4px_10px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_-4px_10px_rgba(0,0,0,0.5)] z-0" />
+        <div className="absolute -bottom-14 left-1/2 -translate-x-1/2 w-12 sm:w-14 h-[4.5rem]">
+          <div className="w-full h-full bg-gradient-to-t from-[#3a3a3c] via-[#48484a] to-[#3a3a3c] dark:from-[#2c2c2e] dark:via-[#3a3a3c] dark:to-[#2c2c2e] rounded-b-xl shadow-[inset_0_-2px_4px_rgba(0,0,0,0.3)]" />
+          <div className="absolute inset-x-1 top-0 bottom-2 flex flex-col gap-[3px] opacity-20">
+            {[...Array(8)].map((_, i) => (
+              <div key={i} className="w-full h-px bg-white/30" />
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* Floating Chips */}
-      {/* Heart Rate Chip */}
-      <motion.div 
-        animate={{ y: [0, -8, 0] }}
-        transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-        className="absolute top-[10%] left-0 sm:left-4 z-20"
-      >
-        <div className="flex items-center gap-2.5 px-3 py-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xl shadow-slate-200/50 dark:shadow-none">
-          <div className="w-8 h-8 rounded-full bg-rose-100 dark:bg-rose-500/20 flex items-center justify-center">
-            <Heart size={16} className="text-rose-500" />
-          </div>
-          <div className="pr-1">
-            <div className="text-[10px] font-bold text-slate-500 uppercase">Nhịp tim</div>
-            <div className="text-sm font-black text-slate-900 dark:text-white leading-tight">72 <span className="text-[10px] font-medium text-slate-500">bpm</span></div>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* SpO2 Chip */}
-      <motion.div 
-        animate={{ y: [0, 8, 0] }}
-        transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-        className="absolute top-[25%] right-0 sm:-right-4 z-20"
-      >
-        <div className="flex items-center gap-2.5 px-3 py-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xl shadow-slate-200/50 dark:shadow-none">
-          <div className="w-8 h-8 rounded-full bg-cyan-100 dark:bg-cyan-500/20 flex items-center justify-center">
-            <Activity size={16} className="text-cyan-500" />
-          </div>
-          <div className="pr-1">
-            <div className="text-[10px] font-bold text-slate-500 uppercase">SpO2</div>
-            <div className="text-sm font-black text-slate-900 dark:text-white leading-tight">98%</div>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Sleep Score Chip */}
-      <motion.div 
+      {/* Floating data chip - Heart Rate */}
+      <motion.div
         animate={{ y: [0, -6, 0] }}
-        transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut", delay: 0.5 }}
-        className="absolute bottom-[20%] left-2 sm:-left-2 z-20"
+        transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+        className="absolute top-[15%] left-0 sm:left-2 z-20"
       >
-        <div className="flex items-center gap-2.5 px-3 py-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xl shadow-slate-200/50 dark:shadow-none">
-          <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-500/20 flex items-center justify-center">
-            <Moon size={16} className="text-indigo-500" />
+        <div className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-md text-left">
+          <div className="w-7 h-7 rounded-lg bg-rose-50 dark:bg-rose-500/10 flex items-center justify-center">
+            <Heart size={13} className="text-rose-500" />
           </div>
-          <div className="pr-1">
-            <div className="text-[10px] font-bold text-slate-500 uppercase">Giấc ngủ</div>
-            <div className="text-sm font-black text-slate-900 dark:text-white leading-tight">86 <span className="text-[10px] font-medium text-slate-500">điểm</span></div>
+          <div>
+            <div className="text-[10px] text-slate-400 font-medium leading-none mb-0.5">Nhịp tim</div>
+            <div className="text-xs font-bold text-slate-800 dark:text-white leading-none">72 bpm</div>
           </div>
         </div>
       </motion.div>
 
-      {/* Recovery Chip */}
-      <motion.div 
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 5.5, ease: "easeInOut", delay: 1.5 }}
-        className="absolute bottom-[5%] right-2 sm:right-0 z-20"
+      {/* Floating data chip - Sleep */}
+      <motion.div
+        animate={{ y: [0, 6, 0] }}
+        transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-[18%] right-0 sm:right-2 z-20"
       >
-        <div className="flex items-center gap-2.5 px-3 py-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-teal-200 dark:border-teal-900/50 shadow-xl shadow-teal-500/10">
-          <div className="w-8 h-8 rounded-full bg-teal-100 dark:bg-teal-500/20 flex items-center justify-center">
-            <BrainCircuit size={16} className="text-teal-500" />
+        <div className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-md text-left">
+          <div className="w-7 h-7 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center">
+            <Moon size={13} className="text-indigo-500" />
           </div>
-          <div className="pr-1">
-            <div className="text-[10px] font-bold text-slate-500 uppercase">Phục hồi</div>
-            <div className="text-sm font-black text-teal-600 dark:text-teal-400 leading-tight">Tuyệt vời</div>
+          <div>
+            <div className="text-[10px] text-slate-400 font-medium leading-none mb-0.5">Giấc ngủ</div>
+            <div className="text-xs font-bold text-slate-800 dark:text-white leading-none">7h 42m</div>
           </div>
         </div>
       </motion.div>

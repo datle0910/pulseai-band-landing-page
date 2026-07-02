@@ -1,30 +1,27 @@
-export default function BrandLogo() {
+export default function BrandLogo({ compact = false }: { compact?: boolean }) {
   return (
-    <div className="flex items-center gap-2 group cursor-pointer">
-      {/* Brand Icon */}
-      <div className="relative w-8 h-8 flex items-center justify-center">
-        {/* Outer Glowing Ring */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-teal-500 to-cyan-500 blur-[2px] opacity-70 group-hover:opacity-100 transition-opacity" />
-        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-teal-500 to-cyan-500" />
-        
-        {/* Inner Dark/Light Cutout */}
-        <div className="absolute inset-[3px] rounded-full bg-white dark:bg-slate-950 flex items-center justify-center">
-          {/* Pulse / Heartbeat Line */}
-          <svg viewBox="0 0 24 24" className="w-5 h-5 text-teal-500" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-          </svg>
-        </div>
-        
-        {/* Little AI dot */}
-        <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-cyan-400 rounded-full border-2 border-white dark:border-slate-950 shadow-sm" />
-      </div>
+    <div className="flex items-center gap-2.5 cursor-pointer select-none">
+      {/* Icon Mark: Simplified ring with pulse */}
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+        {/* Outer ring */}
+        <circle cx="14" cy="14" r="12.5" stroke="currentColor" strokeWidth="1.5" className="text-slate-300 dark:text-slate-600" />
+        {/* Accent arc */}
+        <path d="M14 1.5A12.5 12.5 0 0 1 26.5 14" stroke="#0d9488" strokeWidth="2.5" strokeLinecap="round" />
+        {/* Pulse line */}
+        <polyline points="6,14 10,14 12,9 16,19 18,14 22,14" fill="none" stroke="#0d9488" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        {/* AI dot */}
+        <circle cx="22" cy="6" r="2.5" fill="#0d9488" />
+        <circle cx="22" cy="6" r="1.2" fill="white" className="dark:fill-slate-950" />
+      </svg>
 
-      {/* Brand Wordmark */}
-      <div className="text-xl font-extrabold tracking-tight hidden sm:flex items-center gap-1">
-        <span className="text-slate-900 dark:text-white">Pulse</span>
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">AI</span>
-        <span className="text-slate-400 dark:text-slate-500 font-semibold text-lg ml-0.5">Band</span>
-      </div>
+      {/* Wordmark */}
+      {!compact && (
+        <span className="text-[17px] font-semibold tracking-tight hidden sm:inline">
+          <span className="text-slate-800 dark:text-slate-100">Pulse</span>
+          <span className="text-teal-600 dark:text-teal-400">AI</span>
+          <span className="text-slate-400 dark:text-slate-500 ml-0.5 font-normal">Band</span>
+        </span>
+      )}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Send, CheckCircle, Loader2, ShieldCheck } from 'lucide-react'
+import { Send, CheckCircle, Loader2 } from 'lucide-react'
 import { trackEvent } from '../utils/tracking'
 import toast from 'react-hot-toast'
 import { fadeUp, viewportConfig } from '../utils/animations'
@@ -65,29 +65,25 @@ export default function NewsletterForm() {
   }
 
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden bg-slate-900 flex items-center justify-center">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/20 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+    <section id="newsletter" className="relative py-24 sm:py-32 bg-[#0f172a] dark:bg-[#020617]">
+      <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="bg-white/10 dark:bg-slate-900/40 backdrop-blur-2xl rounded-[3rem] p-8 sm:p-16 border border-white/20 shadow-2xl text-center"
         >
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6">
-            Sẵn sàng trải nghiệm <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">sức khỏe thông minh hơn?</span>
+          <p className="text-teal-500 text-sm font-semibold mb-4 tracking-wide text-center">Đăng ký sớm</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4 text-center">
+            Nhận thông tin ra mắt{' '}
+            <span className="text-slate-400">và ưu đãi dành riêng cho bạn.</span>
           </h2>
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-10">
-            Đăng ký ngay để nhận ưu đãi sớm nhất khi PulseAI Band chính thức ra mắt và các kiến thức chăm sóc sức khỏe độc quyền.
+          <p className="text-base text-slate-400 max-w-lg mx-auto mb-10 text-center leading-relaxed">
+            Để lại email để nhận thông báo khi PulseAI Band chính thức mở bán, kèm hướng dẫn chọn phiên bản phù hợp.
           </p>
 
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto relative mb-6">
-            <div className="relative group">
+          <form onSubmit={handleSubmit} className="max-w-md mx-auto relative mb-5">
+            <div className="relative">
               <input
                 type="email"
                 value={email}
@@ -95,21 +91,24 @@ export default function NewsletterForm() {
                   setEmail(e.target.value)
                   setError('')
                 }}
-                placeholder="Nhập email của bạn..."
-                className="w-full h-14 pl-6 pr-32 rounded-full bg-slate-900/50 border border-slate-700/50 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500/50 transition-all shadow-inner"
+                placeholder="you@email.com"
+                className="w-full h-12 pl-4 pr-28 rounded-xl bg-white/[0.06] border border-white/10 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-teal-500/50 focus:border-teal-500/50 transition-all"
                 disabled={status === 'loading' || status === 'success'}
               />
               <button
                 type="submit"
                 disabled={status === 'loading' || status === 'success'}
-                className="absolute right-1.5 top-1.5 bottom-1.5 px-6 rounded-full bg-teal-500 hover:bg-teal-400 text-white font-semibold flex items-center justify-center transition-colors disabled:opacity-70"
+                className="absolute right-1.5 top-1.5 bottom-1.5 px-5 rounded-lg bg-teal-600 hover:bg-teal-700 text-white text-sm font-semibold flex items-center justify-center gap-2 transition-colors disabled:opacity-60"
               >
                 {status === 'loading' ? (
-                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <Loader2 className="w-4 h-4 animate-spin" />
                 ) : status === 'success' ? (
-                  <CheckCircle className="w-5 h-5" />
+                  <CheckCircle className="w-4 h-4" />
                 ) : (
-                  <Send className="w-5 h-5" />
+                  <>
+                    Đăng ký
+                    <Send className="w-3.5 h-3.5" />
+                  </>
                 )}
               </button>
             </div>
@@ -117,10 +116,10 @@ export default function NewsletterForm() {
             <AnimatePresence>
               {error && (
                 <motion.p
-                  initial={{ opacity: 0, y: -10 }}
+                  initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="absolute -bottom-6 left-0 w-full text-center text-rose-400 text-sm font-medium"
+                  exit={{ opacity: 0, y: -8 }}
+                  className="absolute -bottom-6 left-0 w-full text-center text-rose-400 text-xs font-medium"
                 >
                   {error}
                 </motion.p>
@@ -128,10 +127,9 @@ export default function NewsletterForm() {
             </AnimatePresence>
           </form>
 
-          <div className="flex items-center justify-center gap-2 text-sm text-slate-400 font-medium">
-            <ShieldCheck size={16} className="text-teal-400" />
+          <p className="text-center text-[11px] text-slate-500">
             Không spam. Chỉ gửi thông tin ra mắt và tư vấn phù hợp.
-          </div>
+          </p>
         </motion.div>
       </div>
     </section>

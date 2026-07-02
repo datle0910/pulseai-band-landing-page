@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Clock, ShieldCheck, Headset, SmartphoneNfc } from 'lucide-react'
+import { Clock } from 'lucide-react'
 import { fadeUp, staggerContainer, viewportConfig } from '../utils/animations'
 import { products } from '../data/products'
 import type { Product } from '../data/products'
@@ -25,11 +25,7 @@ export default function MiniStoreSection({
     .filter((p): p is Product => p !== undefined)
 
   return (
-    <section id="store" className="py-24 sm:py-32 bg-slate-50 dark:bg-slate-950 overflow-hidden relative">
-      
-      {/* Background decoration */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(20,184,166,0.08),transparent_70%)] rounded-full blur-3xl pointer-events-none" />
+    <section id="store" className="py-24 sm:py-32 bg-[#f7f8fa] dark:bg-[#020617] overflow-hidden relative">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -39,32 +35,30 @@ export default function MiniStoreSection({
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="max-w-2xl mb-14"
         >
+          <motion.p variants={fadeUp} className="text-teal-600 dark:text-teal-400 text-sm font-semibold mb-3 tracking-wide">
+            Chọn phiên bản
+          </motion.p>
           <motion.h2
             variants={fadeUp}
-            className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6"
+            className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight mb-4"
           >
-            Chọn phiên bản PulseAI Band phù hợp với nhịp sống của bạn
+            Chọn PulseAI Band phù hợp{' '}
+            <span className="text-slate-400 dark:text-slate-500">với nhịp sống của bạn.</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-lg text-slate-600 dark:text-slate-400 mb-8"
+            className="text-base text-slate-500 dark:text-slate-400 leading-relaxed mb-6"
           >
-            Từ theo dõi sức khỏe cơ bản đến AI Health Insight chuyên sâu, mỗi phiên bản được thiết kế cho một nhu cầu khác nhau.
+            Từ theo dõi sức khỏe cơ bản đến phân tích phục hồi chuyên sâu bằng AI — mỗi phiên bản được thiết kế cho một nhu cầu khác nhau.
           </motion.p>
 
-          {/* Trust Badges */}
-          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
-            <div className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
-              <Headset className="w-5 h-5 text-teal-500" /> Miễn phí tư vấn
-            </div>
-            <div className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
-              <ShieldCheck className="w-5 h-5 text-teal-500" /> Bảo hành 12 tháng
-            </div>
-            <div className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
-              <SmartphoneNfc className="w-5 h-5 text-teal-500" /> Đồng bộ iOS & Android
-            </div>
+          {/* Trust line */}
+          <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400">
+            <span>✓ Miễn phí tư vấn</span>
+            <span>✓ Bảo hành 12 tháng</span>
+            <span>✓ Đồng bộ iOS & Android</span>
           </motion.div>
         </motion.div>
 
@@ -74,7 +68,7 @@ export default function MiniStoreSection({
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mb-10"
         >
           {products.map((product) => (
             <motion.div key={product.id} variants={fadeUp}>
@@ -89,54 +83,53 @@ export default function MiniStoreSection({
           ))}
         </motion.div>
 
-        {/* Comparison Strip */}
+        {/* Comparison strip */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportConfig}
-          className="max-w-4xl mx-auto bg-white/60 dark:bg-slate-900/60 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm"
+          className="max-w-3xl border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden"
         >
-          <h4 className="text-center text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">So sánh nhanh tính năng chính</h4>
-          <div className="grid grid-cols-3 gap-4 text-center divide-x divide-slate-200 dark:divide-slate-700">
-            <div>
-              <div className="font-bold text-slate-900 dark:text-white mb-1">Lite</div>
-              <div className="text-xs text-slate-500">Theo dõi sức khỏe cơ bản</div>
+          <div className="px-5 py-3 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">So sánh nhanh</span>
+          </div>
+          <div className="grid grid-cols-3 divide-x divide-slate-200 dark:divide-slate-800 bg-white dark:bg-[#0f172a]">
+            <div className="p-4 text-center">
+              <div className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Lite</div>
+              <div className="text-[11px] text-slate-400 leading-relaxed">Nhịp tim, giấc ngủ, pin 7 ngày</div>
             </div>
-            <div>
-              <div className="font-bold text-teal-600 dark:text-teal-400 mb-1">Pro</div>
-              <div className="text-xs text-slate-500">AI Insight đầy đủ</div>
+            <div className="p-4 text-center">
+              <div className="text-sm font-semibold text-teal-600 dark:text-teal-400 mb-1">Pro</div>
+              <div className="text-[11px] text-slate-400 leading-relaxed">AI Insight, SpO2, IP68, pin 10 ngày</div>
             </div>
-            <div>
-              <div className="font-bold text-slate-900 dark:text-white mb-1">Elite</div>
-              <div className="text-xs text-slate-500">Phục hồi chuyên sâu</div>
+            <div className="p-4 text-center">
+              <div className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Elite</div>
+              <div className="text-[11px] text-slate-400 leading-relaxed">Recovery Score, premium strap, pin 14 ngày</div>
             </div>
           </div>
         </motion.div>
 
-        {/* Recently Viewed - Clean integration */}
+        {/* Recently Viewed */}
         {recentlyViewedProducts.length > 0 && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewportConfig}
-            className="mt-16 max-w-2xl mx-auto"
+            className="mt-12 max-w-xl"
           >
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 p-3 rounded-full bg-slate-100/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
-              <div className="flex items-center gap-2 text-sm font-semibold text-slate-500 dark:text-slate-400 pl-4">
-                <Clock size={16} />
-                <span>Bạn vừa xem:</span>
-              </div>
-              <div className="flex flex-wrap justify-center gap-2 pr-2">
-                {recentlyViewedProducts.map((p) => (
-                  <div
-                    key={p.id}
-                    className="flex items-center gap-2 px-4 py-1 bg-white dark:bg-slate-900 rounded-full border border-slate-200 dark:border-slate-700 shadow-sm text-xs font-bold text-slate-700 dark:text-slate-300"
-                  >
-                    <div className={`w-2 h-2 rounded-full ${p.isBestValue ? 'bg-teal-500' : 'bg-slate-400'}`} />
-                    {p.name}
-                  </div>
-                ))}
-              </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="flex items-center gap-1.5 text-xs text-slate-400 font-medium">
+                <Clock size={13} />
+                Bạn vừa xem:
+              </span>
+              {recentlyViewedProducts.map((p) => (
+                <span
+                  key={p.id}
+                  className="px-3 py-1 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-600 dark:text-slate-400"
+                >
+                  {p.name}
+                </span>
+              ))}
             </div>
           </motion.div>
         )}
