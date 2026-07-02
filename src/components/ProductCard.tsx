@@ -29,15 +29,19 @@ export default function ProductCard({
   const watchVariant = product.id.includes('lite') ? 'lite' : product.id.includes('pro') ? 'pro' : 'elite'
 
   return (
-    <motion.div
-      whileHover={{ y: -6 }}
-      onMouseEnter={() => onView(product)}
-      className={`relative flex flex-col p-8 rounded-[2.5rem] bg-white dark:bg-slate-900 transition-all duration-500 overflow-hidden ${
-        product.isBestValue
-          ? 'border-2 border-teal-500/80 shadow-2xl shadow-teal-500/10'
-          : 'border border-slate-200 dark:border-slate-800 shadow-lg shadow-slate-200/40 dark:shadow-none hover:border-slate-300 dark:hover:border-slate-700'
-      }`}
-    >
+    <div className="relative group">
+      {/* Aceternity UI: Spotlight Glow Backdrop */}
+      <div className="absolute -inset-1 rounded-[2.6rem] bg-gradient-to-r from-teal-500 to-cyan-500 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-25 blur-xl transition-all duration-500 pointer-events-none z-0" />
+      
+      <motion.div
+        whileHover={{ y: -6 }}
+        onMouseEnter={() => onView(product)}
+        className={`relative flex flex-col p-8 rounded-[2.5rem] bg-white dark:bg-slate-900 transition-all duration-500 overflow-hidden z-10 ${
+          product.isBestValue
+            ? 'border-2 border-teal-500/80 shadow-2xl shadow-teal-500/10'
+            : 'border border-slate-200 dark:border-slate-800 shadow-lg shadow-slate-200/40 dark:shadow-none hover:border-slate-300 dark:hover:border-slate-700'
+        }`}
+      >
       {/* Top Gradient Accent Bar for Best Value */}
       {product.isBestValue && (
         <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-teal-400 via-teal-500 to-cyan-400" />
@@ -134,6 +138,7 @@ export default function ProductCard({
         <ShoppingCart size={15} />
         Thêm vào giỏ
       </motion.button>
-    </motion.div>
+      </motion.div>
+    </div>
   )
 }

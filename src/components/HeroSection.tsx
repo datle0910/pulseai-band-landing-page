@@ -8,10 +8,34 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-20 pb-16 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
       
-      {/* Background Gradients */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-teal-50/20 to-cyan-50/30 dark:from-slate-950 dark:via-slate-900/10 dark:to-slate-950/80 pointer-events-none" />
-      <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-teal-400/5 dark:bg-teal-500/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-400/5 dark:bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
+      {/* Background Gradients & Aceternity UI Background Beams */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-teal-50/20 to-cyan-50/30 dark:from-slate-950 dark:via-slate-900/10 dark:to-slate-950/80 pointer-events-none z-0" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <motion.div
+          animate={{
+            x: [0, 80, -40, 0],
+            y: [0, -60, 90, 0],
+          }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-teal-500/5 dark:bg-teal-500/5 rounded-full blur-[120px]"
+        />
+        <motion.div
+          animate={{
+            x: [0, -90, 60, 0],
+            y: [0, 80, -60, 0],
+          }}
+          transition={{
+            duration: 26,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute bottom-1/4 left-1/4 w-[450px] h-[450px] bg-cyan-500/5 dark:bg-cyan-500/5 rounded-full blur-[100px]"
+        />
+      </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
