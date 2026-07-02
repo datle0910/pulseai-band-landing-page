@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { trackCtaClick } from '../utils/tracking'
 import ThemeToggle from './ThemeToggle'
+import BrandLogo from './BrandLogo'
 
 const navLinks = [
   { label: 'Tính năng', href: '#features' },
@@ -18,13 +19,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-500 to-cyan-400 flex items-center justify-center shadow-md shadow-teal-500/25 group-hover:shadow-lg group-hover:shadow-teal-500/30 transition-shadow">
-              <span className="text-white font-bold text-sm">P</span>
-            </div>
-            <span className="text-lg font-bold text-slate-900 dark:text-white">
-              Pulse<span className="text-teal-500">AI</span> Band
-            </span>
+          <a href="#" className="flex-shrink-0">
+            <BrandLogo />
           </a>
 
           {/* Desktop Nav */}
@@ -44,11 +40,11 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
             <a
-              href="#newsletter"
-              onClick={() => trackCtaClick('navbar')}
-              className="inline-flex items-center px-5 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 shadow-md shadow-teal-500/25 hover:shadow-lg hover:shadow-teal-500/30 transition-all"
+              href="#store"
+              onClick={() => trackCtaClick('navbar_buy')}
+              className="inline-flex items-center px-6 py-2.5 rounded-full text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 transition-all shadow-sm"
             >
-              Đăng ký nhận tin
+              Mua ngay
             </a>
           </div>
 
@@ -81,11 +77,11 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#newsletter"
-              onClick={() => { trackCtaClick('navbar'); setMobileOpen(false) }}
-              className="block text-center mt-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 shadow-md"
+              href="#store"
+              onClick={() => { trackCtaClick('navbar_buy_mobile'); setMobileOpen(false) }}
+              className="block text-center mt-4 px-5 py-3 rounded-full text-sm font-bold text-white bg-slate-900 dark:bg-white dark:text-slate-900 shadow-sm"
             >
-              Đăng ký nhận tin
+              Mua ngay
             </a>
           </div>
         </div>
