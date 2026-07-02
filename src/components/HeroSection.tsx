@@ -1,96 +1,84 @@
-import { Sparkles, BatteryFull, Droplets } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { trackCtaClick } from '../utils/tracking'
 import { fadeUp, scaleIn, staggerContainer, viewportConfig } from '../utils/animations'
-import Product3DMockup from './Product3DMockup'
-const badges = [
-  { icon: Sparkles, label: 'AI Health Tracking' },
-  { icon: BatteryFull, label: 'Pin 10 ngày' },
-  { icon: Droplets, label: 'Chống nước IP68' },
-]
+import PremiumProductVisual from './PremiumProductVisual'
+import { ArrowRight } from 'lucide-react'
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
-      {/* Premium Background */}
-      <div className="absolute inset-0 bg-slate-50 dark:bg-slate-950 overflow-hidden">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(20,184,166,0.15),transparent_50%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(20,184,166,0.08),transparent_50%)] -translate-y-1/3 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.15),transparent_50%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.08),transparent_50%)] translate-y-1/3 -translate-x-1/3" />
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTQ4LCAxNjMsIDE4NCwgMC4xKSIvPjwvc3ZnPg==')] [mask-image:linear-gradient(to_bottom,white,transparent)] dark:[mask-image:linear-gradient(to_bottom,white,transparent)] opacity-40 dark:opacity-20 pointer-events-none" />
+    <section className="relative min-h-[100svh] flex items-center overflow-hidden pt-20 pb-12 sm:pt-24 sm:pb-16 bg-white dark:bg-slate-950">
+      {/* Cinematic Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Glow behind text */}
+        <div className="absolute top-1/4 left-1/4 w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(20,184,166,0.12),transparent_50%)] rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 dark:opacity-70 opacity-100" />
+        
+        {/* Glow behind product */}
+        <div className="absolute top-1/2 right-0 w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.15),transparent_50%)] rounded-full blur-3xl translate-x-1/3 -translate-y-1/2 dark:opacity-70 opacity-100" />
+        
+        {/* Subtle Noise Texture */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTQ4LCAxNjMsIDE4NCwgMC4wNSkiLz48L3N2Zz4=')] [mask-image:linear-gradient(to_bottom,white,transparent)] opacity-60 dark:opacity-30" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Text content */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          {/* Text content (7 columns on desktop) */}
           <motion.div
-            className="text-center lg:text-left"
+            className="text-center lg:text-left lg:col-span-6 xl:col-span-5"
             variants={staggerContainer}
             initial="hidden"
-            whileInView="visible"
+            animate="visible"
             viewport={viewportConfig}
           >
-            <motion.div
-              variants={fadeUp}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-100/80 dark:bg-teal-500/10 text-teal-700 dark:text-teal-400 text-xs font-semibold mb-6 border border-teal-200/60 dark:border-teal-500/20"
-            >
-              <Sparkles size={14} />
-              Công nghệ AI thế hệ mới
+            <motion.div variants={fadeUp} className="mb-6 inline-block">
+              <span className="text-sm font-bold tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">
+                PulseAI Band
+              </span>
             </motion.div>
 
-            <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight">
-              Pulse<span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">AI</span>{' '}
-              Band
+            <motion.h1 
+              variants={fadeUp} 
+              className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white leading-[1.1] tracking-tight"
+            >
+              Hiểu cơ thể bạn <br />
+              <span className="text-slate-400 dark:text-slate-500 font-bold">trước khi cơ thể lên tiếng.</span>
             </motion.h1>
 
-            <motion.p variants={fadeUp} className="mt-4 text-xl sm:text-2xl font-semibold text-slate-700 dark:text-slate-200">
-              Vòng tay thông minh theo dõi sức khỏe bằng AI
-            </motion.p>
-
-            <motion.p variants={fadeUp} className="mt-4 text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-              Hiểu cơ thể bạn tốt hơn mỗi ngày với công nghệ AI Health Tracking. Theo dõi nhịp tim, giấc ngủ và vận động – tất cả trong một thiết bị nhỏ gọn trên cổ tay.
+            <motion.p variants={fadeUp} className="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
+              Vòng tay thông minh theo dõi nhịp tim, giấc ngủ, vận động và đưa ra gợi ý sức khỏe cá nhân hóa bằng thuật toán AI tiên tiến.
             </motion.p>
 
             {/* CTA Buttons */}
-            <motion.div variants={fadeUp} className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <motion.div variants={fadeUp} className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
                 href="#features"
-                onClick={() => trackCtaClick('hero')}
-                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 shadow-lg shadow-teal-500/25 hover:shadow-xl hover:shadow-teal-500/30 transition-all hover:-translate-y-0.5"
+                onClick={() => trackCtaClick('hero_explore')}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-bold text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 shadow-xl shadow-slate-900/20 dark:shadow-white/10 transition-all hover:scale-105"
               >
-                Khám phá tính năng
+                Khám phá sản phẩm
+                <ArrowRight size={18} />
               </a>
               <a
-                href="#specs"
-                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-teal-300 dark:hover:border-teal-500/50 hover:text-teal-600 dark:hover:text-teal-400 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+                href="#newsletter"
+                onClick={() => trackCtaClick('hero_newsletter')}
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"
               >
-                Xem thông số
+                Đăng ký nhận tin
               </a>
             </motion.div>
-
-            {/* Badges */}
-            <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-3 justify-center lg:justify-start">
-              {badges.map((badge) => (
-                <div
-                  key={badge.label}
-                  className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/80 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/50 shadow-sm text-sm text-slate-600 dark:text-slate-300"
-                >
-                  <badge.icon size={16} className="text-teal-500" />
-                  {badge.label}
-                </div>
-              ))}
-            </motion.div>
           </motion.div>
 
-          {/* Product Mockup - CSS 3D */}
+          {/* Product Mockup (6 columns on desktop) */}
           <motion.div
-            className="flex justify-center lg:justify-end w-full"
+            className="lg:col-span-6 xl:col-span-7 flex justify-center lg:justify-end"
             variants={scaleIn}
             initial="hidden"
-            whileInView="visible"
+            animate="visible"
             viewport={viewportConfig}
           >
-            <Product3DMockup />
+            <PremiumProductVisual />
           </motion.div>
+
         </div>
       </div>
     </section>

@@ -95,170 +95,167 @@ export default function NewsletterForm() {
   }
 
   return (
-    <section id="newsletter" className="relative py-20 sm:py-28 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-cyan-500 dark:from-teal-900 dark:to-cyan-900" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.15),transparent_50%)]" />
+    <section id="newsletter" className="relative py-24 sm:py-32 overflow-hidden bg-slate-900">
+      {/* Dynamic Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-teal-900/50 to-slate-950" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-500/20 rounded-full blur-3xl translate-x-1/3 -translate-y-1/2" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-500/20 rounded-full blur-3xl -translate-x-1/3 translate-y-1/2" />
 
       <motion.div
-        className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={viewportConfig}
       >
-        {/* Header */}
-        <div className="text-center mb-10">
-          <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mx-auto mb-6 border border-white/20">
-            <Mail size={24} className="text-white" />
-          </div>
-
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
-            Đăng ký nhận tin từ PulseAI Band
-          </h2>
-          <p className="mt-3 text-base text-teal-100/80">
-            Nhận thông tin mới nhất về sản phẩm, ưu đãi đặc biệt và mẹo chăm sóc sức khỏe.
-          </p>
-        </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} noValidate className="space-y-4">
-          {/* Full name */}
-          <div>
-            <div className="relative">
-              <User
-                size={18}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none"
-              />
-              <input
-                type="text"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                placeholder="Họ tên *"
-                className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 backdrop-blur-md border text-white placeholder-white/60 text-sm focus:outline-none focus:ring-2 focus:bg-white/20 transition-all duration-300 ${
-                  errors.fullName
-                    ? 'border-red-400 focus:ring-red-400/50'
-                    : 'border-white/20 focus:ring-teal-300/50 hover:border-white/40'
-                }`}
-              />
+        <div className="bg-slate-950/40 backdrop-blur-3xl rounded-[3rem] border border-white/10 p-8 sm:p-12 lg:p-16 shadow-2xl">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            {/* Header */}
+            <div>
+              <h2 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6 tracking-tight">
+                Sẵn sàng trải nghiệm <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">
+                  sức khỏe thông minh hơn?
+                </span>
+              </h2>
+              <p className="text-lg text-slate-400 mb-8">
+                Đăng ký ngay để nhận thông tin mới nhất về sản phẩm, ưu đãi đặc biệt dành cho khách hàng đặt trước.
+              </p>
+              
+              <div className="hidden lg:flex flex-col gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-teal-500/10 flex items-center justify-center border border-teal-500/20">
+                    <CheckIcon />
+                  </div>
+                  <span className="text-sm font-medium text-slate-300">Không spam. Hủy đăng ký bất kỳ lúc nào.</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
+                    <CheckIcon />
+                  </div>
+                  <span className="text-sm font-medium text-slate-300">Tư vấn chuyên sâu từ chuyên gia.</span>
+                </div>
+              </div>
             </div>
-            {errors.fullName && (
-              <p className="mt-1.5 text-xs text-red-200 pl-1">{errors.fullName}</p>
-            )}
-          </div>
 
-          {/* Email */}
-          <div>
-            <div className="relative">
-              <Mail
-                size={18}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none"
-              />
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Email *"
-                className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 backdrop-blur-md border text-white placeholder-white/60 text-sm focus:outline-none focus:ring-2 focus:bg-white/20 transition-all duration-300 ${
-                  errors.email
-                    ? 'border-red-400 focus:ring-red-400/50'
-                    : 'border-white/20 focus:ring-cyan-300/50 hover:border-white/40'
-                }`}
-              />
-            </div>
-            {errors.email && (
-              <p className="mt-1.5 text-xs text-red-200 pl-1">{errors.email}</p>
-            )}
-          </div>
+            {/* Form */}
+            <form onSubmit={handleSubmit} noValidate className="space-y-4">
+              {/* Full name */}
+              <div>
+                <div className="relative">
+                  <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+                  <input
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    placeholder="Họ tên *"
+                    className={`w-full pl-11 pr-4 py-4 rounded-2xl bg-white/5 hover:bg-white/10 backdrop-blur-md border text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:bg-white/10 transition-all duration-300 ${
+                      errors.fullName ? 'border-red-500/50 focus:ring-red-500/50' : 'border-white/10 focus:ring-teal-500/50'
+                    }`}
+                  />
+                </div>
+                {errors.fullName && <p className="mt-2 text-xs text-red-400 pl-1">{errors.fullName}</p>}
+              </div>
 
-          {/* Phone */}
-          <div>
-            <div className="relative">
-              <Phone
-                size={18}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none"
-              />
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="Số điện thoại (không bắt buộc)"
-                className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 backdrop-blur-md border text-white placeholder-white/60 text-sm focus:outline-none focus:ring-2 focus:bg-white/20 transition-all duration-300 ${
-                  errors.phone
-                    ? 'border-red-400 focus:ring-red-400/50'
-                    : 'border-white/20 focus:ring-teal-300/50 hover:border-white/40'
-                }`}
-              />
-            </div>
-            {errors.phone && (
-              <p className="mt-1.5 text-xs text-red-200 pl-1">{errors.phone}</p>
-            )}
-          </div>
+              {/* Email */}
+              <div>
+                <div className="relative">
+                  <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Email *"
+                    className={`w-full pl-11 pr-4 py-4 rounded-2xl bg-white/5 hover:bg-white/10 backdrop-blur-md border text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:bg-white/10 transition-all duration-300 ${
+                      errors.email ? 'border-red-500/50 focus:ring-red-500/50' : 'border-white/10 focus:ring-teal-500/50'
+                    }`}
+                  />
+                </div>
+                {errors.email && <p className="mt-2 text-xs text-red-400 pl-1">{errors.email}</p>}
+              </div>
 
-          {/* Interest */}
-          <div>
-            <div className="relative">
-              <ChevronDown
-                size={18}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none"
-              />
-              <select
-                name="interest"
-                value={formData.interest}
-                onChange={handleChange}
-                className={`w-full appearance-none px-4 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 backdrop-blur-md border text-sm focus:outline-none focus:ring-2 focus:bg-white/20 transition-all duration-300 ${
-                  formData.interest ? 'text-white' : 'text-white/60'
-                } ${
-                  errors.interest
-                    ? 'border-red-400 focus:ring-red-400/50'
-                    : 'border-white/20 focus:ring-cyan-300/50 hover:border-white/40'
-                }`}
-              >
-                {interestOptions.map((opt) => (
-                  <option
-                    key={opt.value}
-                    value={opt.value}
-                    className="bg-teal-700 dark:bg-teal-900 text-white"
+              {/* Phone */}
+              <div>
+                <div className="relative">
+                  <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Số điện thoại (không bắt buộc)"
+                    className={`w-full pl-11 pr-4 py-4 rounded-2xl bg-white/5 hover:bg-white/10 backdrop-blur-md border text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:bg-white/10 transition-all duration-300 ${
+                      errors.phone ? 'border-red-500/50 focus:ring-red-500/50' : 'border-white/10 focus:ring-teal-500/50'
+                    }`}
+                  />
+                </div>
+                {errors.phone && <p className="mt-2 text-xs text-red-400 pl-1">{errors.phone}</p>}
+              </div>
+
+              {/* Interest */}
+              <div>
+                <div className="relative">
+                  <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+                  <select
+                    name="interest"
+                    value={formData.interest}
+                    onChange={handleChange}
+                    className={`w-full appearance-none px-4 py-4 rounded-2xl bg-white/5 hover:bg-white/10 backdrop-blur-md border text-sm focus:outline-none focus:ring-2 focus:bg-white/10 transition-all duration-300 ${
+                      formData.interest ? 'text-white' : 'text-slate-500'
+                    } ${
+                      errors.interest ? 'border-red-500/50 focus:ring-red-500/50' : 'border-white/10 focus:ring-teal-500/50'
+                    }`}
                   >
-                    {opt.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-            {errors.interest && (
-              <p className="mt-1.5 text-xs text-red-200 pl-1">{errors.interest}</p>
-            )}
+                    {interestOptions.map((opt) => (
+                      <option key={opt.value} value={opt.value} className="bg-slate-800 text-white">
+                        {opt.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                {errors.interest && <p className="mt-2 text-xs text-red-400 pl-1">{errors.interest}</p>}
+              </div>
+
+              {/* Submit */}
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full flex items-center justify-center gap-2 px-7 py-4 mt-2 rounded-2xl bg-gradient-to-r from-teal-400 to-cyan-400 text-slate-950 text-sm font-bold shadow-xl shadow-teal-500/20 hover:shadow-teal-500/40 transition-all disabled:opacity-70 disabled:cursor-not-allowed border border-white/20"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 size={18} className="animate-spin" />
+                    Đang xử lý...
+                  </>
+                ) : (
+                  'Đăng ký nhận tin'
+                )}
+              </motion.button>
+
+              <div className="lg:hidden mt-6 text-center">
+                <p className="text-xs text-slate-500">Không spam. Hủy đăng ký bất kỳ lúc nào.</p>
+              </div>
+            </form>
           </div>
-
-          {/* Submit */}
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-teal-400 to-cyan-400 text-slate-900 text-sm font-bold shadow-lg shadow-teal-500/30 hover:shadow-xl hover:shadow-cyan-500/40 transition-all disabled:opacity-70 disabled:cursor-not-allowed border border-white/20"
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 size={18} className="animate-spin" />
-                Đang xử lý...
-              </>
-            ) : (
-              'Đăng ký nhận tin'
-            )}
-          </motion.button>
-        </form>
-
-        <p className="mt-5 text-center text-xs text-white/70 font-medium">
-          Không spam. Chỉ gửi thông tin ra mắt và tư vấn phù hợp.
-        </p>
-        <p className="mt-2 text-center text-[10px] text-white/40">
+        </div>
+        
+        <p className="mt-6 text-center text-[10px] text-slate-600 uppercase tracking-widest font-bold">
           Webhook-ready: Dữ liệu có thể gửi tới Google Sheets, Formspree, Web3Forms hoặc Make.
         </p>
       </motion.div>
     </section>
+  )
+}
+
+function CheckIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-teal-400">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
   )
 }

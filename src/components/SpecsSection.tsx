@@ -1,43 +1,59 @@
 import { specs } from '../data/specs'
 import { motion } from 'framer-motion'
 import { fadeUp, staggerContainer, viewportConfig } from '../utils/animations'
-import { useSectionTracking } from '../hooks/useSectionTracking'
 
 export default function SpecsSection() {
-  const sectionRef = useSectionTracking(
-    'specs',
-    'Bạn đang xem thông số kỹ thuật của PulseAI Band.'
-  )
+  // Key specs for the top row
+  const keySpecs = [
+    { title: '10 Days', subtitle: 'Thời lượng pin' },
+    { title: 'IP68', subtitle: 'Chống nước & bụi' },
+    { title: '1.8"', subtitle: 'AMOLED Display' },
+    { title: '5.3', subtitle: 'Bluetooth' },
+  ]
 
   return (
-    <section id="specs" ref={sectionRef} className="relative py-20 sm:py-28 overflow-hidden">
-      {/* Premium Background */}
-      <div className="absolute inset-0 bg-slate-50 dark:bg-slate-950" />
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTQ4LCAxNjMsIDE4NCwgMC4wNCkiLz48L3N2Zz4=')] opacity-50 pointer-events-none" />
-
+    <section id="specs" className="relative py-24 sm:py-32 overflow-hidden bg-white dark:bg-slate-950">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Header */}
         <motion.div
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-20"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-cyan-100/80 dark:bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 text-xs font-semibold mb-4 border border-cyan-200/60 dark:border-cyan-500/20">
-            Thông số kỹ thuật
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
-            Thông số kỹ thuật{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">
-              nổi bật
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">
+            Hoàn hảo đến <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-500 to-slate-800 dark:from-slate-300 dark:to-white">
+              từng chi tiết.
             </span>
           </h2>
         </motion.div>
 
-        {/* Specs grid */}
+        {/* Key Specs Row */}
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 mb-24 border-y border-slate-200/50 dark:border-slate-800/50 py-12"
+        >
+          {keySpecs.map((spec, idx) => (
+            <motion.div key={idx} variants={fadeUp} className="text-center">
+              <div className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white mb-2 tracking-tighter">
+                {spec.title}
+              </div>
+              <div className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+                {spec.subtitle}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Detailed Specs Grid */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -47,20 +63,13 @@ export default function SpecsSection() {
             <motion.div
               key={index}
               variants={fadeUp}
-              className="group relative bg-white/60 dark:bg-slate-900/40 backdrop-blur-xl rounded-2xl p-6 border border-white/40 dark:border-slate-700/50 shadow-[0_2px_10px_rgba(0,0,0,0.02)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.2)] hover:shadow-2xl hover:shadow-cyan-500/10 dark:hover:shadow-cyan-400/5 transition-all duration-500 hover:-translate-y-1.5 overflow-hidden"
+              className="flex flex-col border-t border-slate-200/60 dark:border-slate-800/60 pt-6"
             >
-              {/* Hover glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-transparent to-teal-500/0 group-hover:from-cyan-500/5 group-hover:to-teal-500/5 dark:group-hover:from-cyan-400/5 dark:group-hover:to-teal-400/5 transition-colors duration-500 pointer-events-none" />
-
-              <div className="relative w-11 h-11 rounded-xl bg-cyan-50 dark:bg-slate-800 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-500 border border-cyan-100 dark:border-slate-700">
-                <div className="absolute inset-0 bg-cyan-400/20 dark:bg-cyan-400/10 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <spec.icon size={20} className="text-cyan-600 dark:text-cyan-400 relative z-10" />
+              <div className="flex items-center gap-3 mb-4">
+                <spec.icon className="w-5 h-5 text-teal-500" />
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">{spec.label}</h3>
               </div>
-
-              <div className="relative z-10 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300">
-                {spec.label}
-              </div>
-              <div className="relative z-10 text-base font-bold text-slate-900 dark:text-white leading-snug">{spec.value}</div>
+              <p className="text-lg text-slate-600 dark:text-slate-400 font-medium">{spec.value}</p>
             </motion.div>
           ))}
         </motion.div>

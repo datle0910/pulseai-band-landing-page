@@ -14,16 +14,16 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/70 dark:bg-slate-950/80 border-b border-slate-200/60 dark:border-slate-800/60">
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-white/70 dark:bg-slate-950/70 border-b border-white/20 dark:border-slate-800/40 shadow-sm transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-500 to-cyan-400 flex items-center justify-center shadow-md shadow-teal-500/25 group-hover:shadow-lg group-hover:shadow-teal-500/30 transition-shadow">
-              <span className="text-white font-bold text-sm">P</span>
+            <div className="w-9 h-9 rounded-[10px] bg-gradient-to-br from-teal-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-teal-500/25 group-hover:shadow-teal-500/40 transition-all duration-300">
+              <span className="text-white font-black text-sm">P</span>
             </div>
-            <span className="text-lg font-bold text-slate-900 dark:text-white">
-              Pulse<span className="text-teal-500">AI</span> Band
+            <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white group-hover:opacity-80 transition-opacity">
+              PulseAI
             </span>
           </a>
 
@@ -46,9 +46,9 @@ export default function Navbar() {
             <a
               href="#newsletter"
               onClick={() => trackCtaClick('navbar')}
-              className="inline-flex items-center px-5 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 shadow-md shadow-teal-500/25 hover:shadow-lg hover:shadow-teal-500/30 transition-all"
+              className="inline-flex items-center px-6 py-2.5 rounded-full text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 shadow-md transition-all hover:scale-105"
             >
-              Đăng ký nhận tin
+              Pre-order
             </a>
           </div>
 
@@ -83,9 +83,9 @@ export default function Navbar() {
             <a
               href="#newsletter"
               onClick={() => { trackCtaClick('navbar'); setMobileOpen(false) }}
-              className="block text-center mt-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 shadow-md"
+              className="block text-center mt-4 px-5 py-3 rounded-xl text-sm font-bold text-white bg-slate-900 dark:bg-white dark:text-slate-900 shadow-md"
             >
-              Đăng ký nhận tin
+              Pre-order
             </a>
           </div>
         </div>

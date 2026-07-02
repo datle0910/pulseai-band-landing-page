@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ShoppingBag, Clock } from 'lucide-react'
+import { Clock } from 'lucide-react'
 import { fadeUp, staggerContainer, viewportConfig } from '../utils/animations'
 import { products } from '../data/products'
 import type { Product } from '../data/products'
@@ -25,60 +25,29 @@ export default function MiniStoreSection({
     .filter((p): p is Product => p !== undefined)
 
   return (
-    <section id="store" className="py-20 sm:py-28 bg-white dark:bg-slate-900 overflow-hidden">
+    <section id="store" className="py-24 sm:py-32 bg-slate-50 dark:bg-slate-950 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-20"
         >
-          <motion.div
-            variants={fadeUp}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-100 dark:bg-teal-500/10 text-teal-700 dark:text-teal-400 text-xs font-semibold mb-4 border border-teal-200/60 dark:border-teal-500/20"
-          >
-            <ShoppingBag size={14} />
-            Mini E-commerce
-          </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white"
+            className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight"
           >
-            Chọn phiên bản PulseAI Band phù hợp với bạn
+            Chọn phiên bản của bạn.
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="mt-4 text-lg text-slate-500 dark:text-slate-400"
+            className="mt-6 text-lg text-slate-600 dark:text-slate-400"
           >
-            Trải nghiệm mua sắm mini ngay trên landing page: chọn phiên bản, lưu yêu thích và thêm vào giỏ hàng chỉ trong vài giây.
+            Giao hàng miễn phí toàn quốc. Bảo hành 1 đổi 1 trong 12 tháng.
           </motion.p>
         </motion.div>
-
-        {/* Recently Viewed */}
-        {recentlyViewedProducts.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewportConfig}
-            className="mb-8 flex flex-col sm:flex-row items-center justify-center gap-3"
-          >
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-              <Clock size={14} />
-              Đã xem gần đây:
-            </div>
-            <div className="flex flex-wrap justify-center gap-2">
-              {recentlyViewedProducts.map((p) => (
-                <div
-                  key={p.id}
-                  className="px-3 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-full border border-slate-200 dark:border-slate-700"
-                >
-                  {p.name}
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        )}
 
         {/* Product Grid */}
         <motion.div
@@ -86,7 +55,7 @@ export default function MiniStoreSection({
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+          className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
         >
           {products.map((product) => (
             <motion.div key={product.id} variants={fadeUp}>
@@ -100,6 +69,32 @@ export default function MiniStoreSection({
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Recently Viewed - Moved below and made extremely subtle */}
+        {recentlyViewedProducts.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={viewportConfig}
+            className="mt-16 pt-8 border-t border-slate-200/50 dark:border-slate-800/50 flex flex-col items-center justify-center gap-4"
+          >
+            <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
+              <Clock size={14} />
+              Lịch sử xem:
+            </div>
+            <div className="flex flex-wrap justify-center gap-3">
+              {recentlyViewedProducts.map((p) => (
+                <div
+                  key={p.id}
+                  className="px-4 py-2 text-xs font-semibold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 rounded-lg shadow-sm border border-slate-100 dark:border-slate-800"
+                >
+                  {p.name}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
       </div>
     </section>
   )

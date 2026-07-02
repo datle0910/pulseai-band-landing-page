@@ -1,130 +1,111 @@
 import { Sunrise, Sun, Sunset, Moon } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
-import { motion } from 'framer-motion'
-import { fadeUp, staggerContainer, viewportConfig } from '../utils/animations'
-import { useSectionTracking } from '../hooks/useSectionTracking'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
-interface StoryItem {
-  icon: LucideIcon
-  time: string
-  title: string
-  description: string
-  iconColor: string
-  iconBg: string
-  darkIconBg: string
-}
-
-const storyItems: StoryItem[] = [
+const storyItems = [
   {
     icon: Sunrise,
-    time: 'Buổi sáng',
-    title: 'Đánh thức nhẹ nhàng',
-    description:
-      'PulseAI Band phát hiện giấc ngủ nông và rung nhẹ đánh thức bạn đúng lúc. Bạn mở mắt, nhìn Sleep Score 86 điểm hiển thị ngay trên cổ tay.',
-    iconColor: 'text-amber-500',
-    iconBg: 'bg-amber-50',
-    darkIconBg: 'dark:bg-amber-500/10',
+    time: 'Morning',
+    title: 'Khởi đầu ngày mới hoàn hảo',
+    description: 'PulseAI đánh thức bạn ở chu kỳ ngủ nông, giúp bạn thức dậy tỉnh táo. Sleep Score 86/100 hiện lên ngay trên màn hình.',
+    color: 'from-amber-400 to-orange-500',
+    bg: 'bg-amber-500/10'
   },
   {
     icon: Sun,
-    time: 'Ban ngày',
-    title: 'Theo dõi mọi hoạt động',
-    description:
-      'Từ cuộc họp đến buổi tập gym, PulseAI Band liên tục theo dõi nhịp tim, bước chân và mức độ căng thẳng. Khi stress tăng cao, AI gợi ý bạn nghỉ ngơi.',
-    iconColor: 'text-teal-500',
-    iconBg: 'bg-teal-50',
-    darkIconBg: 'dark:bg-teal-500/10',
+    time: 'Workday',
+    title: 'Theo dõi từng nhịp đập',
+    description: 'Stress tăng cao trước cuộc họp quan trọng? PulseAI nhận diện qua nhịp tim và nhắc nhở bạn thực hiện 1 phút hít thở sâu.',
+    color: 'from-teal-400 to-cyan-500',
+    bg: 'bg-teal-500/10'
   },
   {
     icon: Sunset,
-    time: 'Buổi tối',
-    title: 'Gợi ý thư giãn thông minh',
-    description:
-      'Dựa trên dữ liệu cả ngày, PulseAI Band đề xuất bài tập thở hoặc yoga nhẹ để cơ thể bạn chuẩn bị cho giấc ngủ chất lượng hơn.',
-    iconColor: 'text-violet-500',
-    iconBg: 'bg-violet-50',
-    darkIconBg: 'dark:bg-violet-500/10',
+    time: 'Evening',
+    title: 'Tối ưu hóa tập luyện',
+    description: 'Dựa trên năng lượng còn lại, AI gợi ý một buổi chạy nhẹ 30 phút thay vì tập nặng, giúp cơ thể phục hồi tốt hơn.',
+    color: 'from-violet-400 to-purple-500',
+    bg: 'bg-violet-500/10'
   },
   {
     icon: Moon,
-    time: 'Ban đêm',
+    time: 'Night',
     title: 'Phân tích giấc ngủ sâu',
-    description:
-      'Trong khi bạn ngủ, AI phân tích từng giai đoạn giấc ngủ sâu, nông và REM. Sáng hôm sau, báo cáo chi tiết đã sẵn sàng cho ngày mới.',
-    iconColor: 'text-indigo-500',
-    iconBg: 'bg-indigo-50',
-    darkIconBg: 'dark:bg-indigo-500/10',
+    description: 'Cảm biến SpO2 và nhịp tim hoạt động liên tục trong đêm, vẽ nên biểu đồ giấc ngủ chính xác đến từng phút.',
+    color: 'from-indigo-400 to-blue-500',
+    bg: 'bg-indigo-500/10'
   },
 ]
 
 export default function StorySection() {
-  const sectionRef = useSectionTracking('story', 'Bạn đang xem trải nghiệm một ngày cùng PulseAI Band.')
+  const containerRef = useRef<HTMLDivElement>(null)
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start center', 'end center']
+  })
 
   return (
-    <section id="story" ref={sectionRef} className="relative py-20 sm:py-28 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-teal-50/20 to-slate-50/80 dark:from-slate-950 dark:via-teal-900/10 dark:to-slate-900/80" />
-
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          className="text-center max-w-3xl mx-auto mb-16"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
-        >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-violet-100/80 dark:bg-violet-500/10 text-violet-700 dark:text-violet-400 text-xs font-semibold mb-4 border border-violet-200/60 dark:border-violet-500/20">
-            Trải nghiệm
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
-            Một ngày thông minh hơn cùng{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">
-              PulseAI Band
-            </span>
+    <section id="story" className="relative bg-slate-50 dark:bg-slate-950 py-24 sm:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div className="text-center mb-24">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Một ngày được tối ưu bởi AI.
           </h2>
-        </motion.div>
+        </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-slate-200 via-teal-200 to-slate-200 dark:from-slate-800 dark:via-teal-800/50 dark:to-slate-800" />
+        <div ref={containerRef} className="relative max-w-4xl mx-auto">
+          {/* Progress Line */}
+          <div className="absolute left-[27px] sm:left-1/2 top-0 bottom-0 w-1 bg-slate-200 dark:bg-slate-800 -translate-x-1/2 rounded-full overflow-hidden">
+            <motion.div 
+              className="absolute top-0 left-0 w-full bg-gradient-to-b from-amber-400 via-teal-400 to-indigo-500"
+              style={{ height: useTransform(scrollYProgress, [0, 1], ['0%', '100%']) }}
+            />
+          </div>
 
-          <motion.div
-            className="space-y-8 sm:space-y-12"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportConfig}
-          >
-            {storyItems.map((item, index) => (
-              <motion.div key={index} variants={fadeUp} className="relative flex gap-6 sm:gap-8 group">
-                {/* Timeline dot */}
-                <div className="relative z-10 flex-shrink-0">
-                  <div
-                    className={`w-12 h-12 sm:w-16 sm:h-16 rounded-2xl ${item.iconBg} ${item.darkIconBg} border border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow`}
-                  >
-                    <item.icon size={22} className={item.iconColor} />
+          <div className="space-y-24">
+            {storyItems.map((item, index) => {
+              const isEven = index % 2 === 0
+              return (
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, margin: "-100px" }}
+                  transition={{ duration: 0.6 }}
+                  className={`relative flex items-center justify-between flex-col sm:flex-row ${isEven ? 'sm:flex-row-reverse' : ''}`}
+                >
+                  
+                  {/* Empty space for grid alignment on desktop */}
+                  <div className="hidden sm:block sm:w-[45%]" />
+
+                  {/* Center Node */}
+                  <div className="absolute left-[27px] sm:left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-white dark:bg-slate-900 border-4 border-slate-50 dark:border-slate-950 shadow-xl flex items-center justify-center z-10">
+                    <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center`}>
+                      <item.icon size={20} className="text-white" />
+                    </div>
                   </div>
-                </div>
 
-                {/* Content card */}
-                <div className="flex-1 pb-2">
-                  <div className="group-hover:-translate-y-0.5 transition-transform duration-300">
-                    <span className={`inline-block text-xs font-bold ${item.iconColor} uppercase tracking-wider mb-1`}>
-                      {item.time}
-                    </span>
-                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 leading-relaxed">
-                      {item.description}
-                    </p>
+                  {/* Content Card */}
+                  <div className={`w-full sm:w-[45%] pl-20 sm:pl-0 ${isEven ? 'sm:pr-16 sm:text-right' : 'sm:pl-16 sm:text-left'}`}>
+                    <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-xl border border-slate-200/50 dark:border-slate-800/50 hover:shadow-2xl transition-shadow">
+                      <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest ${item.bg} text-slate-800 dark:text-white mb-4`}>
+                        {item.time}
+                      </span>
+                      <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
+                        {item.title}
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+
+                </motion.div>
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>

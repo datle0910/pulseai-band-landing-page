@@ -1,8 +1,10 @@
 import { Toaster } from 'react-hot-toast'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
+import ProductRevealSection from './components/ProductRevealSection'
 import FeatureSection from './components/FeatureSection'
 import AiInsightSection from './components/AiInsightSection'
+import AppEcosystemSection from './components/AppEcosystemSection'
 import SpecsSection from './components/SpecsSection'
 import StorySection from './components/StorySection'
 import NewsletterForm from './components/NewsletterForm'
@@ -35,8 +37,10 @@ function App() {
     <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-950 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-50">
       <Navbar />
       <HeroSection />
+      <ProductRevealSection />
       <FeatureSection />
       <AiInsightSection />
+      <AppEcosystemSection />
       <SpecsSection />
       <MiniStoreSection
         favoriteIds={favoriteIds}
