@@ -1,4 +1,4 @@
-import { Sunrise, Sun, Sunset, Moon } from 'lucide-react'
+import { Sunrise, Sun, Sunset, Moon, Heart, Zap, Sparkles } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { fadeUp, staggerContainer, viewportConfig } from '../utils/animations'
@@ -15,6 +15,7 @@ interface StoryItem {
   iconColor: string
   iconBg: string
   darkIconBg: string
+  type: 'morning' | 'workday' | 'training' | 'night'
 }
 
 const storyItems: StoryItem[] = [
@@ -30,6 +31,7 @@ const storyItems: StoryItem[] = [
     iconColor: 'text-amber-500',
     iconBg: 'bg-amber-50',
     darkIconBg: 'dark:bg-amber-500/10',
+    type: 'morning',
   },
   {
     icon: Sun,
@@ -43,6 +45,7 @@ const storyItems: StoryItem[] = [
     iconColor: 'text-teal-500',
     iconBg: 'bg-teal-50',
     darkIconBg: 'dark:bg-teal-500/10',
+    type: 'workday',
   },
   {
     icon: Sunset,
@@ -56,6 +59,7 @@ const storyItems: StoryItem[] = [
     iconColor: 'text-violet-500',
     iconBg: 'bg-violet-50',
     darkIconBg: 'dark:bg-violet-500/10',
+    type: 'training',
   },
   {
     icon: Moon,
@@ -69,6 +73,7 @@ const storyItems: StoryItem[] = [
     iconColor: 'text-indigo-500',
     iconBg: 'bg-indigo-50',
     darkIconBg: 'dark:bg-indigo-500/10',
+    type: 'night',
   },
 ]
 
@@ -78,8 +83,8 @@ export default function StorySection() {
   return (
     <section id="story" ref={sectionRef} className="relative py-24 sm:py-32 overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-300">
       
-      {/* Background Gradients */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-50/50 via-white to-slate-50/50 dark:from-slate-950 dark:via-slate-900/10 dark:to-slate-950 pointer-events-none" />
+      {/* Background radial layer */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,169,157,0.02),transparent_60%)] pointer-events-none" />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -91,10 +96,9 @@ export default function StorySection() {
           whileInView="visible"
           viewport={viewportConfig}
         >
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white leading-[1.1] tracking-tighter">
             Một ngày thông minh hơn cùng <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00A99D] to-[#06B6D4] dark:from-[#2DD4BF] dark:to-[#06B6D4]">
               PulseAI Band
             </span>
           </h2>
@@ -103,10 +107,10 @@ export default function StorySection() {
         {/* Timeline body */}
         <div className="relative">
           {/* Vertical Timeline center line */}
-          <div className="absolute left-6 sm:left-8 top-2 bottom-2 w-px bg-gradient-to-b from-slate-200 via-teal-200/40 to-slate-200 dark:from-slate-800 dark:via-teal-900/20 dark:to-slate-800" />
+          <div className="absolute left-6 sm:left-8 top-2 bottom-2 w-px bg-gradient-to-b from-slate-200 via-teal-200/40 to-slate-200 dark:from-slate-800/80 dark:via-teal-900/20 dark:to-slate-850" />
 
           <motion.div
-            className="space-y-12"
+            className="space-y-16"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -118,37 +122,86 @@ export default function StorySection() {
                 {/* Left Timeline Icon Container */}
                 <div className="relative z-10 flex-shrink-0">
                   <div
-                    className={`w-12 h-12 sm:w-16 sm:h-16 rounded-3xl ${item.iconBg} ${item.darkIconBg} border border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900/80 flex items-center justify-center shadow-sm group-hover:shadow-md transition-all duration-300`}
+                    className={`w-12 h-12 sm:w-16 sm:h-16 rounded-2xl ${item.iconBg} ${item.darkIconBg} border border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900/80 flex items-center justify-center shadow-sm group-hover:shadow-md transition-all duration-300`}
                   >
                     <item.icon size={22} className={item.iconColor} />
                   </div>
                 </div>
 
                 {/* Content Card Right */}
-                <div className="flex-1 pb-4 border-b border-slate-100 dark:border-slate-800/80 last:border-none">
-                  <div className="group-hover:-translate-y-0.5 transition-transform duration-300">
+                <div className="flex-1 pb-6 border-b border-slate-100 dark:border-slate-900 last:border-none">
+                  <div className="grid md:grid-cols-12 gap-6 items-start">
                     
-                    <span className={`inline-block text-[10px] font-black ${item.iconColor} uppercase tracking-widest mb-1.5`}>
-                      {item.time}
-                    </span>
-                    
-                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">
-                      {item.title}
-                    </h3>
-                    
-                    <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
-                      {item.description}
-                    </p>
+                    {/* Descriptions */}
+                    <div className="md:col-span-8 group-hover:-translate-y-0.5 transition-transform duration-300">
+                      <span className={`inline-block text-[10px] font-black ${item.iconColor} uppercase tracking-widest mb-1.5`}>
+                        {item.time}
+                      </span>
+                      
+                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">
+                        {item.title}
+                      </h3>
+                      
+                      <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4 font-medium">
+                        {item.description}
+                      </p>
 
-                    {/* Integrated Micro Visual metric box */}
-                    <div className="inline-flex flex-wrap items-center gap-4 bg-slate-50 dark:bg-slate-900/60 border border-slate-200/40 dark:border-slate-800/60 rounded-2xl p-4 w-full sm:w-auto">
-                      <div className="pr-4 border-r border-slate-200 dark:border-slate-800">
-                        <div className="text-[9px] text-slate-400 uppercase font-bold tracking-wider">{item.metricLabel}</div>
-                        <div className={`text-sm font-extrabold mt-0.5 ${item.iconColor}`}>{item.metric}</div>
+                      {/* Integrated Micro Visual metric box */}
+                      <div className="inline-flex flex-wrap items-center gap-4 bg-slate-50 dark:bg-slate-900/60 border border-slate-200/40 dark:border-slate-800/60 rounded-2xl p-4 w-full sm:w-auto">
+                        <div className="pr-4 border-r border-slate-200 dark:border-slate-800">
+                          <span className="text-[8px] text-slate-400 font-bold uppercase tracking-wider block">{item.metricLabel}</span>
+                          <span className={`text-xs font-black font-tabular block mt-0.5 ${item.iconColor}`}>{item.metric}</span>
+                        </div>
+                        <div>
+                          <span className="text-[8px] text-slate-400 font-bold uppercase tracking-wider block">Gợi ý từ AI</span>
+                          <span className="text-xs font-bold text-slate-800 dark:text-slate-300 block mt-0.5">{item.insight}</span>
+                        </div>
                       </div>
-                      <div>
-                        <div className="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Gợi ý từ AI</div>
-                        <div className="text-xs font-semibold text-slate-800 dark:text-slate-300 mt-0.5">{item.insight}</div>
+                    </div>
+
+                    {/* Mini Smartband Mockup Visual */}
+                    <div className="md:col-span-4 flex justify-center md:justify-end">
+                      <div className="w-24 h-32 rounded-2xl bg-gradient-to-b from-slate-200 to-slate-300 dark:from-slate-800 dark:to-slate-900 p-1 shadow-md border border-white/10 flex items-center justify-center shrink-0">
+                        <div className="w-full h-full rounded-xl bg-black p-1 flex flex-col justify-between items-center py-3 overflow-hidden relative">
+                          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 pointer-events-none rounded-xl" />
+                          <span className="text-[6px] text-slate-500 font-black tracking-widest uppercase">PulseAI</span>
+                          
+                          {/* Mini Display content according to milestone type */}
+                          {item.type === 'morning' && (
+                            <div className="my-auto flex flex-col items-center">
+                              <Moon size={16} className="text-violet-500 fill-violet-500/20 animate-pulse" />
+                              <span className="text-sm font-black text-white mt-1 font-tabular">86</span>
+                              <span className="text-[5px] text-slate-500 uppercase font-bold tracking-wider">Sleep</span>
+                            </div>
+                          )}
+                          
+                          {item.type === 'workday' && (
+                            <div className="my-auto flex flex-col items-center">
+                              <Zap size={16} className="text-teal-400 animate-pulse" />
+                              <span className="text-[8px] font-black text-white mt-1 uppercase">Stress: Low</span>
+                              <span className="text-[5px] text-slate-500 uppercase font-bold tracking-wider">HRV 48ms</span>
+                            </div>
+                          )}
+                          
+                          {item.type === 'training' && (
+                            <div className="my-auto flex flex-col items-center">
+                              <Heart size={16} className="text-rose-500 fill-rose-500 animate-pulse" />
+                              <span className="text-sm font-black text-white mt-1 font-tabular">142</span>
+                              <span className="text-[5px] text-slate-500 uppercase font-bold tracking-wider">Cardio</span>
+                            </div>
+                          )}
+
+                          {item.type === 'night' && (
+                            <div className="my-auto flex flex-col items-center">
+                              <Sparkles size={16} className="text-indigo-400 animate-pulse" />
+                              <span className="text-sm font-black text-white mt-1 font-tabular">82%</span>
+                              <span className="text-[5px] text-slate-500 uppercase font-bold tracking-wider">Recovery</span>
+                            </div>
+                          )}
+
+                          {/* Strap indicators */}
+                          <div className="w-5 h-0.5 bg-slate-700 rounded-full" />
+                        </div>
                       </div>
                     </div>
 

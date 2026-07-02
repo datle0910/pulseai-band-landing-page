@@ -33,7 +33,7 @@ function App() {
   } = useMiniCart()
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-950 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-50">
+    <main className="min-h-screen overflow-x-hidden bg-[#F5F7FA] text-[#0B1220] transition-colors duration-300 dark:bg-[#020617] dark:text-[#F8FAFC]">
       <Navbar />
       <HeroSection />
       <FeatureSection />

@@ -4,10 +4,10 @@ import { fadeUp, staggerContainer, viewportConfig } from '../utils/animations'
 
 export default function FeatureSection() {
   return (
-    <section id="features" className="relative py-24 sm:py-32 overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-300">
+    <section id="features" className="relative py-24 sm:py-32 overflow-hidden bg-[#F5F7FA] dark:bg-[#020617] transition-colors duration-300">
       
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-50/50 via-white to-slate-50/50 dark:from-slate-950 dark:via-slate-900/10 dark:to-slate-950 pointer-events-none" />
+      {/* Background gradients */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,169,157,0.03),transparent_50%)] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -19,18 +19,18 @@ export default function FeatureSection() {
           whileInView="visible"
           viewport={viewportConfig}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white leading-tight">
-            Sức khỏe của bạn, <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white leading-[1.1] tracking-tighter">
+            Sức khỏe của bạn,{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00A99D] to-[#06B6D4] dark:from-[#2DD4BF] dark:to-[#06B6D4]">
               được giải thích bằng dữ liệu.
             </span>
           </h2>
-          <p className="mt-6 text-base sm:text-lg text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
+          <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-2xl mx-auto">
             PulseAI Band kết hợp cảm biến sức khỏe, dữ liệu giấc ngủ và AI Health Insight để biến các chỉ số hằng ngày thành gợi ý dễ hiểu.
           </p>
         </motion.div>
 
-        {/* Bento Grid Layout */}
+        {/* Bento Grid */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-6 gap-6 lg:gap-8 auto-rows-[220px]"
           variants={staggerContainer}
@@ -39,165 +39,208 @@ export default function FeatureSection() {
           viewport={viewportConfig}
         >
           
-          {/* Card 1: AI Health Insight (Large - 3 cols / 2 rows - Dark Visual Theme) */}
-          <div className="md:col-span-3 md:row-span-2 relative group">
-            <div className="absolute -inset-1 rounded-[2.6rem] bg-gradient-to-r from-teal-500 to-cyan-500 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 blur-xl transition-all duration-500 pointer-events-none z-0" />
+          {/* Card 1: AI Health Insight (col-span-4, row-span-2) */}
+          <div className="md:col-span-4 md:row-span-2 relative group">
             <motion.div
               variants={fadeUp}
-              className="w-full h-full relative rounded-3xl bg-slate-900 dark:bg-slate-900/40 border border-slate-800 dark:border-slate-800/60 p-8 flex flex-col justify-between overflow-hidden z-10"
+              className="w-full h-full glass-panel rounded-3xl p-8 flex flex-col justify-between overflow-hidden relative"
             >
-              {/* Visual element top */}
-              <div className="flex justify-between items-start mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center text-white shadow-md">
-                  <Sparkles size={22} />
-                </div>
-                
-                {/* Mock AI Suggestion Chip */}
-                <div className="px-3.5 py-1.5 rounded-full bg-teal-500/20 border border-teal-500/30 flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-teal-400 animate-ping" />
-                  <span className="text-[10px] text-teal-400 font-extrabold uppercase tracking-wider">AI Suggestion</span>
-                </div>
-              </div>
-
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold text-white mb-2">AI Health Insight</h3>
-                <p className="text-sm text-slate-400 leading-relaxed">
-                  Phân tích nhịp tim nghỉ, giấc ngủ sâu và mức độ phục hồi để đưa ra gợi ý sinh hoạt dễ dàng thực hiện từng ngày, nâng cao thể lực.
-                </p>
-              </div>
-
-              {/* Subtle Abstract Graph */}
-              <div className="absolute right-0 bottom-0 opacity-20 pointer-events-none">
-                <svg width="200" height="150" viewBox="0 0 200 150">
-                  <path d="M10,130 Q40,40 80,100 T150,20 T200,90" fill="none" stroke="currentColor" strokeWidth="8" className="text-teal-500" />
-                </svg>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Card 2: Sleep & Recovery (Large - 3 cols / 2 rows - Indigo/Violet Gradient Theme) */}
-          <div className="md:col-span-3 md:row-span-2 relative group">
-            <div className="absolute -inset-1 rounded-[2.6rem] bg-gradient-to-r from-violet-500 to-indigo-500 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 blur-xl transition-all duration-500 pointer-events-none z-0" />
-            <motion.div
-              variants={fadeUp}
-              className="w-full h-full relative rounded-3xl bg-gradient-to-br from-indigo-50/50 to-violet-50/50 dark:from-slate-900/30 dark:to-indigo-950/20 border border-violet-100 dark:border-violet-950/50 p-8 flex flex-col justify-between overflow-hidden z-10"
-            >
-              <div className="flex justify-between items-start mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-500 flex items-center justify-center text-white shadow-md">
-                  <Moon size={22} />
-                </div>
-                
-                {/* Progress pill indicator */}
-                <div className="px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-[10px] text-violet-600 dark:text-violet-400 font-extrabold uppercase tracking-wider">
-                  Sleep Score: 86
-                </div>
-              </div>
-
               <div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Sleep & Recovery</h3>
-                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                  Theo dõi giấc ngủ sâu, thời gian tỉnh giấc và điểm phục hồi để bạn hiểu vì sao cơ thể mệt hoặc khỏe, xây dựng lối sống lành mạnh.
-                </p>
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center text-[#00A99D] dark:text-[#2DD4BF]">
+                    <Sparkles size={20} />
+                  </div>
+                  <div className="px-3 py-1 rounded-full bg-teal-500/5 border border-teal-500/20 text-[9px] text-[#00A99D] dark:text-[#2DD4BF] font-black uppercase tracking-wider">
+                    AI Insights Engine
+                  </div>
+                </div>
+
+                <div className="mt-6 grid grid-cols-3 gap-4">
+                  <div className="bg-[#EEF3F7]/50 dark:bg-slate-900/60 p-3 rounded-xl border border-slate-200/40 dark:border-slate-800/40">
+                    <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Recovery</span>
+                    <span className="text-base font-black text-slate-900 dark:text-white font-tabular">82%</span>
+                  </div>
+                  <div className="bg-[#EEF3F7]/50 dark:bg-slate-900/60 p-3 rounded-xl border border-slate-200/40 dark:border-slate-800/40">
+                    <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">HRV</span>
+                    <span className="text-base font-black text-slate-900 dark:text-white font-tabular">48 ms</span>
+                  </div>
+                  <div className="bg-[#EEF3F7]/50 dark:bg-slate-900/60 p-3 rounded-xl border border-slate-200/40 dark:border-slate-800/40">
+                    <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Sleep Score</span>
+                    <span className="text-base font-black text-slate-900 dark:text-white font-tabular">86</span>
+                  </div>
+                </div>
               </div>
 
-              {/* Custom Sleep Segment bar */}
-              <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden flex mt-4">
-                <div className="h-full w-[25%] bg-indigo-500" title="Deep Sleep" />
-                <div className="h-full w-[50%] bg-violet-500" title="Light Sleep" />
-                <div className="h-full w-[15%] bg-purple-400" title="REM Sleep" />
-                <div className="h-full w-[10%] bg-slate-300 dark:bg-slate-700" title="Awake" />
+              {/* AI Recommendation bubble */}
+              <div className="mt-4 p-4 rounded-2xl bg-teal-500/5 border border-teal-500/15 dark:border-teal-500/20 relative">
+                <div className="flex items-center gap-1.5 text-[#00A99D] dark:text-[#2DD4BF] text-[10px] font-black uppercase tracking-wide mb-1">
+                  <Sparkles size={11} />
+                  Gợi ý sức khỏe
+                </div>
+                <p className="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                  "Giấc ngủ sâu của bạn tăng 12% so với tuần trước. Hãy giữ lịch ngủ ổn định trước 23:00 để duy trì phục hồi cao."
+                </p>
               </div>
             </motion.div>
           </div>
 
-          {/* Card 3: Heart Rate (Medium - 3 cols / 1 row) */}
-          <div className="md:col-span-3 relative group">
-            <div className="absolute -inset-1 rounded-[2.6rem] bg-gradient-to-r from-rose-500/50 to-pink-500/50 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-15 blur-xl transition-all duration-500 pointer-events-none z-0" />
+          {/* Card 2: Sleep & Recovery (col-span-2, row-span-2) */}
+          <div className="md:col-span-2 md:row-span-2 relative group">
             <motion.div
               variants={fadeUp}
-              className="w-full h-full relative rounded-3xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 p-6 flex items-center justify-between overflow-hidden z-10"
+              className="w-full h-full glass-panel rounded-3xl p-8 flex flex-col justify-between overflow-hidden"
+            >
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center text-violet-500">
+                  <Moon size={20} />
+                </div>
+                <h3 className="text-lg font-black text-slate-900 dark:text-white tracking-tight mt-4">Giấc ngủ & Phục hồi</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1 leading-relaxed">
+                  Đo lường chi tiết chu kỳ giấc ngủ nông, sâu và REM để phục hồi tốt nhất.
+                </p>
+              </div>
+
+              {/* Circular progress visual and stage bars */}
+              <div className="mt-4 flex items-center justify-between gap-4">
+                <div className="relative w-16 h-16 shrink-0 flex items-center justify-center">
+                  <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                    <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-slate-200 dark:text-slate-800" />
+                    <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" strokeWidth="3" strokeDasharray="86 100" strokeLinecap="round" className="text-violet-500" />
+                  </svg>
+                  <span className="absolute text-sm font-black text-slate-900 dark:text-white font-tabular">86</span>
+                </div>
+
+                <div className="flex-1 space-y-1.5">
+                  <div>
+                    <div className="flex justify-between text-[9px] font-bold text-slate-400 uppercase tracking-wide">
+                      <span>Sâu (Deep)</span>
+                      <span className="font-tabular">2h 14m</span>
+                    </div>
+                    <div className="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden mt-0.5">
+                      <div className="w-[35%] h-full bg-violet-500 rounded-full" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between text-[9px] font-bold text-slate-400 uppercase tracking-wide">
+                      <span>REM</span>
+                      <span className="font-tabular">1h 28m</span>
+                    </div>
+                    <div className="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden mt-0.5">
+                      <div className="w-[20%] h-full bg-purple-400 rounded-full" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Card 3: Heart Rate (col-span-3, row-span-1) */}
+          <div className="md:col-span-3 relative group">
+            <motion.div
+              variants={fadeUp}
+              className="w-full h-full glass-panel rounded-3xl p-6 flex items-center justify-between overflow-hidden"
             >
               <div className="flex-1 pr-4">
-                <div className="flex items-center gap-2.5 mb-2">
-                  <Heart size={18} className="text-rose-500 fill-rose-500/20" />
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white">Nhịp tim 24/7</h3>
+                <div className="flex items-center gap-2 text-rose-500">
+                  <Heart size={16} className="fill-rose-500/20" />
+                  <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider">Nhịp tim 24/7</h3>
                 </div>
-                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                  Đo lường thời gian thực, tự động thông báo bất thường.
-                </p>
+                <div className="text-2xl font-black text-slate-900 dark:text-white mt-2 font-tabular">72 <span className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">BPM</span></div>
+                <span className="text-[10px] text-slate-400 dark:text-slate-500 font-bold block mt-1">HR nghỉ ngơi: 62 BPM</span>
               </div>
               
-              {/* Live Chart Mock */}
-              <div className="w-24 h-12 flex items-end opacity-60 dark:opacity-80">
-                <svg viewBox="0 0 100 40" className="w-full h-full">
-                  <path d="M0,25 Q15,10 30,30 T60,5 T90,25 L100,25" fill="none" stroke="#f43f5e" strokeWidth="2.5" strokeLinecap="round" />
+              {/* Dynamic SVG chart visual */}
+              <div className="w-32 h-14 opacity-80 shrink-0">
+                <svg viewBox="0 0 120 40" className="w-full h-full">
+                  <path d="M0,20 L15,20 L22,20 L27,5 L33,35 L38,15 L43,20 L60,20 L75,20 L80,5 L86,35 L91,15 L96,20 L120,20" fill="none" stroke="#f43f5e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
             </motion.div>
           </div>
 
-          {/* Card 4: SpO2 & Stress (Medium - 3 cols / 1 row) */}
+          {/* Card 4: SpO2 & Stress (col-span-3, row-span-1) */}
           <div className="md:col-span-3 relative group">
-            <div className="absolute -inset-1 rounded-[2.6rem] bg-gradient-to-r from-cyan-500/50 to-teal-500/50 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-15 blur-xl transition-all duration-500 pointer-events-none z-0" />
             <motion.div
               variants={fadeUp}
-              className="w-full h-full relative rounded-3xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 p-6 flex items-center justify-between overflow-hidden z-10"
+              className="w-full h-full glass-panel rounded-3xl p-6 flex items-center justify-between overflow-hidden"
             >
-              <div className="flex-1 pr-4">
-                <div className="flex items-center gap-2.5 mb-2">
-                  <Activity size={18} className="text-cyan-500" />
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white">SpO2 & Stress</h3>
+              <div className="flex-1 pr-6">
+                <div className="flex items-center gap-2 text-cyan-500">
+                  <Activity size={16} />
+                  <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider">SpO2 & Stress</h3>
                 </div>
-                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                  Theo dõi nồng độ Oxy trong máu để quản lý tinh thần chủ động.
-                </p>
+                <div className="text-2xl font-black text-slate-900 dark:text-white mt-2 font-tabular">98% <span className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">SpO2</span></div>
+                <span className="text-[10px] text-slate-400 dark:text-slate-500 font-bold block mt-1">Căng thẳng: Thấp (Low)</span>
               </div>
 
-              {/* Circular Ring Mock */}
-              <div className="relative w-12 h-12 flex items-center justify-center shrink-0">
-                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                  <path className="text-slate-200 dark:text-slate-800" strokeWidth="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                  <path className="text-cyan-500" strokeWidth="3.5" strokeDasharray="98, 100" strokeLinecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              {/* Dual progress bars indicator */}
+              <div className="w-24 shrink-0 space-y-2">
+                <div>
+                  <span className="text-[8px] text-slate-400 font-bold uppercase tracking-wider block">Oxy máu</span>
+                  <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden mt-0.5">
+                    <div className="w-[98%] h-full bg-cyan-500" />
+                  </div>
+                </div>
+                <div>
+                  <span className="text-[8px] text-slate-400 font-bold uppercase tracking-wider block">Áp lực</span>
+                  <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden mt-0.5">
+                    <div className="w-[20%] h-full bg-teal-500" />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Card 5: Battery (col-span-2, row-span-1) */}
+          <div className="md:col-span-2 relative group">
+            <motion.div
+              variants={fadeUp}
+              className="w-full h-full glass-panel rounded-3xl p-6 flex items-center gap-4 overflow-hidden"
+            >
+              <div className="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center text-[#00A99D] dark:text-[#2DD4BF] shrink-0">
+                <Battery size={20} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider">10 Ngày Pin</h3>
+                {/* 3 battery segments */}
+                <div className="flex items-center gap-1 mt-2">
+                  <div className="w-4 h-6 border-2 border-teal-500/80 rounded-sm p-[1.5px] flex flex-col gap-[1px] justify-end">
+                    <div className="w-full h-[30%] bg-[#00A99D] dark:bg-[#2DD4BF]" />
+                    <div className="w-full h-[30%] bg-[#00A99D] dark:bg-[#2DD4BF]" />
+                    <div className="w-full h-[30%] bg-[#00A99D] dark:bg-[#2DD4BF]" />
+                  </div>
+                  <span className="text-xs font-black text-slate-900 dark:text-white font-tabular">100%</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Card 6: Water Resistance (col-span-4, row-span-1) */}
+          <div className="md:col-span-4 relative group">
+            <motion.div
+              variants={fadeUp}
+              className="w-full h-full glass-panel rounded-3xl p-6 flex items-center justify-between overflow-hidden"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-500 shrink-0">
+                  <Droplets size={20} />
+                </div>
+                <div>
+                  <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider">Chống nước IP68</h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1 leading-relaxed max-w-[200px] sm:max-w-none">
+                    An tâm hoạt động dưới trời mưa, bơi lội hoặc vận động cường độ cao.
+                  </p>
+                </div>
+              </div>
+
+              {/* Droplets decoration */}
+              <div className="flex items-center gap-3 pr-2 shrink-0">
+                <span className="px-2.5 py-1 rounded-full bg-cyan-500/5 border border-cyan-500/20 text-[9px] text-cyan-600 dark:text-cyan-400 font-black uppercase tracking-wider">
+                  Daily Ready
+                </span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-cyan-500 shrink-0">
+                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
                 </svg>
-                <span className="absolute text-[9px] font-extrabold text-slate-800 dark:text-slate-200">98%</span>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Card 5: Battery (Small - 3 cols / 1 row - Tinted Teal Theme) */}
-          <div className="md:col-span-3 relative group">
-            <div className="absolute -inset-1 rounded-[2.6rem] bg-gradient-to-r from-teal-500/50 to-emerald-500/50 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-15 blur-xl transition-all duration-500 pointer-events-none z-0" />
-            <motion.div
-              variants={fadeUp}
-              className="w-full h-full relative rounded-3xl bg-teal-50/40 dark:bg-teal-950/10 border border-teal-100 dark:border-teal-950/30 p-6 flex items-center gap-6 overflow-hidden z-10"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-teal-500/10 flex items-center justify-center text-teal-500 shrink-0">
-                <Battery size={24} />
-              </div>
-              <div>
-                <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1">Pin 10 ngày</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                  Đồng hành bền bỉ không gián đoạn suốt hành trình tập luyện.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Card 6: Water Resistance (Small - 3 cols / 1 row - Tinted Cyan Theme) */}
-          <div className="md:col-span-3 relative group">
-            <div className="absolute -inset-1 rounded-[2.6rem] bg-gradient-to-r from-cyan-500/50 to-sky-500/50 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-15 blur-xl transition-all duration-500 pointer-events-none z-0" />
-            <motion.div
-              variants={fadeUp}
-              className="w-full h-full relative rounded-3xl bg-cyan-50/40 dark:bg-cyan-950/10 border border-cyan-100 dark:border-cyan-950/30 p-6 flex items-center gap-6 overflow-hidden z-10"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-500 shrink-0">
-                <Droplets size={24} />
-              </div>
-              <div>
-                <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1">Chống nước IP68</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                  Thoải mái tập luyện cường độ cao, bơi lội và đi mưa không lo ngại.
-                </p>
               </div>
             </motion.div>
           </div>

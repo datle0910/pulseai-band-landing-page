@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { fadeUp, staggerContainer, viewportConfig } from '../utils/animations'
 import { useSectionTracking } from '../hooks/useSectionTracking'
-import { ShieldCheck, Cpu, Feather, Smartphone, Heart, Sparkles } from 'lucide-react'
 
 export default function SpecsSection() {
   const sectionRef = useSectionTracking(
@@ -10,50 +9,44 @@ export default function SpecsSection() {
   )
 
   const topMetrics = [
-    { value: '10 ngày', label: 'Thời lượng Pin', desc: 'Dùng liên tục không ngắt quãng' },
-    { value: 'IP68', label: 'Chống nước', desc: 'An toàn đi bơi, đi mưa và bụi' },
-    { value: '1.8" AMOLED', label: 'Màn hình màu', desc: 'Tấm nền rực rỡ, độ tương phản cao' },
-    { value: 'Bluetooth 5.3', label: 'Kết nối ổn định', desc: 'Đồng bộ dữ liệu tức thời' },
+    { value: '10 Days', label: 'Battery Life', desc: 'Sử dụng liên tục không cần sạc' },
+    { value: 'IP68', label: 'Waterproof', desc: 'An toàn đi bơi, đi mưa và bụi bẩn' },
+    { value: '1.8"', label: 'AMOLED Screen', desc: 'Tấm nền rực rỡ, độ tương phản cao' },
+    { value: 'v5.3', label: 'Bluetooth', desc: 'Đồng bộ dữ liệu thời gian thực' },
   ]
 
   const detailedSpecs = [
     {
-      icon: Heart,
       label: 'Hệ thống Cảm biến',
-      value: 'Cảm biến nhịp tim quang học thế hệ mới, Cảm biến Oxy trong máu (SpO2), Cảm biến gia tốc 3 trục để theo dõi vận động chính xác.',
+      value: 'Cảm biến nhịp tim quang học thế hệ mới, Cảm biến Oxy trong máu (SpO2), Cảm biến gia tốc 3 trục theo dõi vận động.',
     },
     {
-      icon: Sparkles,
-      label: 'AI Insight',
-      value: 'Thuật toán học máy phân tích HRV và chu kỳ ngủ sâu để đề xuất thói quen phục hồi cá nhân hóa hằng ngày.',
+      label: 'AI Insights Engine',
+      value: 'Thuật toán học máy phân tích biến thiên nhịp tim (HRV) và chu kỳ giấc ngủ sâu để đề xuất phục hồi cá nhân hóa.',
     },
     {
-      icon: Feather,
-      label: 'Trọng lượng siêu nhẹ',
-      value: 'Chỉ 38g bao gồm cả dây đeo. Thiết kế tối ưu hóa công thái học để đeo thoải mái 24/7 khi ngủ và tập luyện.',
+      label: 'Trọng lượng thiết bị',
+      value: 'Chỉ 38g bao gồm cả dây đeo. Thiết kế tối ưu công thái học đeo thoải mái 24/7 khi ngủ và hoạt động mạnh.',
     },
     {
-      icon: Smartphone,
-      label: 'Tương thích thiết bị',
+      label: 'Tính tương thích',
       value: 'Hỗ trợ đồng bộ mượt mà với cả thiết bị chạy iOS 14.0 trở lên và Android 8.0 trở lên qua ứng dụng PulseAI.',
     },
     {
-      icon: ShieldCheck,
-      label: 'Chế độ Bảo hành',
+      label: 'Thời hạn bảo hành',
       value: 'Bảo hành chính hãng 1 đổi 1 trong vòng 12 tháng (đối với bản Lite và Pro) và 18 tháng (đối với bản Elite).',
     },
     {
-      icon: Cpu,
       label: 'Vật liệu chế tác',
-      value: 'Thân máy hợp kim Graphite/Titan cao cấp bo cong vát cạnh, dây đeo silicone chống kích ứng hoặc dây dệt Hybrid.',
+      value: 'Thân máy hợp kim Graphite/Titanium vát cạnh bo cong, dây đeo silicon cao cấp chống kích ứng hoặc dây dệt Hybrid.',
     },
   ]
 
   return (
-    <section id="specs" ref={sectionRef} className="relative py-24 sm:py-32 overflow-hidden bg-slate-50 dark:bg-slate-950/60 transition-colors duration-300">
+    <section id="specs" ref={sectionRef} className="relative py-24 sm:py-32 overflow-hidden bg-[#F5F7FA] dark:bg-[#020617] transition-colors duration-300">
       
-      {/* Background gradients */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-100/50 to-slate-50 dark:from-slate-900/30 dark:to-slate-950/80 pointer-events-none" />
+      {/* Background radial overlays */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(0,169,157,0.02),transparent_60%)] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -65,9 +58,9 @@ export default function SpecsSection() {
           whileInView="visible"
           viewport={viewportConfig}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white leading-[1.1] tracking-tighter">
             Thông số kỹ thuật{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00A99D] to-[#06B6D4] dark:from-[#2DD4BF] dark:to-[#06B6D4]">
               đẳng cấp.
             </span>
           </h2>
@@ -85,12 +78,12 @@ export default function SpecsSection() {
             <motion.div
               key={idx}
               variants={fadeUp}
-              className="bg-white dark:bg-slate-900/50 border border-slate-200/50 dark:border-slate-800/60 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300"
+              className="bg-white dark:bg-[#0B1220] border border-slate-200/60 dark:border-slate-800/80 rounded-3xl p-6 sm:p-8 shadow-sm transition-all duration-300"
             >
-              <div className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+              <div className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tighter font-tabular">
                 {item.value}
               </div>
-              <div className="text-sm font-bold text-teal-600 dark:text-teal-400 mt-2">
+              <div className="text-xs font-black text-[#00A99D] dark:text-[#2DD4BF] mt-3 uppercase tracking-wider">
                 {item.label}
               </div>
               <div className="text-xs text-slate-400 dark:text-slate-500 mt-1 font-medium">
@@ -100,9 +93,9 @@ export default function SpecsSection() {
           ))}
         </motion.div>
 
-        {/* Detailed Specs Grid */}
+        {/* Detailed Specs Grid (Minimalist, structured style) */}
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto"
+          className="max-w-4xl mx-auto border-t border-slate-200 dark:border-slate-800"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -112,17 +105,14 @@ export default function SpecsSection() {
             <motion.div
               key={idx}
               variants={fadeUp}
-              className="group relative bg-white dark:bg-slate-900/40 border border-slate-200/45 dark:border-slate-800/50 rounded-3xl p-6 flex flex-col hover:border-teal-200/60 dark:hover:border-teal-500/20 transition-all duration-300"
+              className="grid sm:grid-cols-3 gap-4 sm:gap-8 py-6 border-b border-slate-200 dark:border-slate-800 items-start hover:bg-slate-200/10 dark:hover:bg-slate-900/10 px-4 transition-colors"
             >
-              <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-teal-950/40 flex items-center justify-center text-teal-500 mb-5 border border-teal-100/50 dark:border-teal-900/20">
-                <item.icon size={20} />
-              </div>
-              <h3 className="text-base font-extrabold text-slate-900 dark:text-white mb-2">
+              <div className="text-xs font-black text-slate-800 dark:text-slate-200 uppercase tracking-widest sm:col-span-1">
                 {item.label}
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+              </div>
+              <div className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed sm:col-span-2">
                 {item.value}
-              </p>
+              </div>
             </motion.div>
           ))}
         </motion.div>

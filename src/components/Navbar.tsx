@@ -16,7 +16,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 h-16 backdrop-blur-xl bg-white/70 dark:bg-slate-950/75 border-b border-slate-200/40 dark:border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] transition-colors duration-300">
+    <nav className="fixed top-0 left-0 right-0 z-50 h-16 glass-panel transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex items-center justify-between h-full">
           {/* Logo */}
@@ -30,7 +30,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                className="text-[13px] font-bold text-slate-500 hover:text-[#00A99D] dark:text-slate-400 dark:hover:text-[#2DD4BF] transition-colors tracking-wide uppercase"
               >
                 {link.label}
               </a>
@@ -41,23 +41,23 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
             <a
-              href="#store"
+              href="#newsletter"
               onClick={() => trackCtaClick('navbar')}
-              className="inline-flex items-center px-5 py-2 rounded-full text-[13px] font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 transition-colors"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-slate-900 hover:bg-[#00A99D] dark:bg-white dark:text-slate-900 dark:hover:bg-[#2DD4BF] dark:hover:text-slate-950 transition-colors shadow-sm"
             >
-              Mua ngay
+              Đăng ký nhận tin
             </a>
           </div>
 
           {/* Mobile Actions */}
-          <div className="flex md:hidden items-center gap-1">
+          <div className="flex md:hidden items-center gap-1.5">
             <ThemeToggle />
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               aria-label="Toggle menu"
             >
-              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
@@ -71,26 +71,28 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden border-t border-slate-200/50 dark:border-slate-800/50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl overflow-hidden"
+            className="md:hidden border-t border-slate-200/50 dark:border-slate-800/50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl overflow-hidden shadow-xl"
           >
-            <div className="px-4 py-4 space-y-1">
+            <div className="px-4 py-5 space-y-2">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                  className="block px-4 py-3 rounded-xl text-sm font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 hover:text-[#00A99D] dark:hover:text-[#2DD4BF] transition-colors"
                 >
                   {link.label}
                 </a>
               ))}
-              <a
-                href="#store"
-                onClick={() => { trackCtaClick('navbar'); setMobileOpen(false) }}
-                className="block text-center mt-3 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-slate-900 dark:bg-white dark:text-slate-900"
-              >
-                Mua ngay
-              </a>
+              <div className="pt-2 border-t border-slate-100 dark:border-slate-900">
+                <a
+                  href="#newsletter"
+                  onClick={() => { trackCtaClick('navbar'); setMobileOpen(false) }}
+                  className="block text-center px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-slate-900 dark:bg-white dark:text-slate-900"
+                >
+                  Đăng ký nhận tin
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

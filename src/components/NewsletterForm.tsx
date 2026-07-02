@@ -112,7 +112,7 @@ export default function NewsletterForm() {
     <section id="newsletter" className="relative py-24 sm:py-32 overflow-hidden bg-slate-900 transition-colors duration-300">
       
       {/* Background radial effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(20,184,166,0.1),transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(45,212,191,0.08),transparent_50%)] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <motion.div
@@ -123,21 +123,21 @@ export default function NewsletterForm() {
         viewport={viewportConfig}
       >
         {/* Card Container */}
-        <div className="bg-slate-950/40 border border-slate-800 rounded-[2.5rem] p-8 sm:p-12 shadow-2xl relative overflow-hidden backdrop-blur-md">
+        <div className="bg-slate-950/45 border border-white/5 rounded-[2.5rem] p-8 sm:p-12 shadow-2xl relative overflow-hidden backdrop-blur-md">
           
           {/* Decorative Top Accent line */}
-          <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-teal-500 to-cyan-500" />
+          <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#00A99D] to-[#06B6D4] dark:from-[#2DD4BF] dark:to-[#06B6D4]" />
 
           {/* Header */}
           <div className="text-center mb-10">
             <div className="w-12 h-12 rounded-2xl bg-teal-500/10 flex items-center justify-center mx-auto mb-6 border border-teal-500/20 text-teal-400">
-              <Mail size={22} />
+              <Mail size={20} />
             </div>
 
-            <h2 className="text-3xl font-black text-white leading-tight">
+            <h2 className="text-3xl font-black text-white leading-[1.1] tracking-tighter">
               Sẵn sàng hiểu cơ thể mình rõ hơn?
             </h2>
-            <p className="mt-3.5 text-sm text-slate-400 max-w-md mx-auto leading-relaxed">
+            <p className="mt-3.5 text-xs sm:text-sm text-slate-400 max-w-md mx-auto leading-relaxed font-semibold">
               Đăng ký để nhận thông tin ra mắt, tư vấn phiên bản phù hợp và bản demo AI Health Insight.
             </p>
           </div>
@@ -149,7 +149,7 @@ export default function NewsletterForm() {
             <div>
               <div className="relative">
                 <User
-                  size={16}
+                  size={15}
                   className="absolute left-4.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none"
                 />
                 <input
@@ -158,15 +158,15 @@ export default function NewsletterForm() {
                   value={formData.fullName}
                   onChange={handleChange}
                   placeholder="Họ tên *"
-                  className={`w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-900/50 border text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all ${
+                  className={`w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-900/60 border text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/10 transition-all ${
                     errors.fullName
                       ? 'border-rose-500/50 focus:ring-rose-500/10'
-                      : 'border-slate-800 focus:border-slate-700'
+                      : 'border-white/5 focus:border-teal-500/55'
                   }`}
                 />
               </div>
               {errors.fullName && (
-                <p className="mt-1.5 text-xs text-rose-400 pl-1">{errors.fullName}</p>
+                <p className="mt-1.5 text-xs text-rose-400 pl-1 font-semibold">{errors.fullName}</p>
               )}
             </div>
 
@@ -174,7 +174,7 @@ export default function NewsletterForm() {
             <div>
               <div className="relative">
                 <Mail
-                  size={16}
+                  size={15}
                   className="absolute left-4.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none"
                 />
                 <input
@@ -183,15 +183,15 @@ export default function NewsletterForm() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Email *"
-                  className={`w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-900/50 border text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all ${
+                  className={`w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-900/60 border text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/10 transition-all ${
                     errors.email
                       ? 'border-rose-500/50 focus:ring-rose-500/10'
-                      : 'border-slate-800 focus:border-slate-700'
+                      : 'border-white/5 focus:border-teal-500/55'
                   }`}
                 />
               </div>
               {errors.email && (
-                <p className="mt-1.5 text-xs text-rose-400 pl-1">{errors.email}</p>
+                <p className="mt-1.5 text-xs text-rose-400 pl-1 font-semibold">{errors.email}</p>
               )}
             </div>
 
@@ -199,7 +199,7 @@ export default function NewsletterForm() {
             <div>
               <div className="relative">
                 <Phone
-                  size={16}
+                  size={15}
                   className="absolute left-4.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none"
                 />
                 <input
@@ -208,15 +208,15 @@ export default function NewsletterForm() {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="Số điện thoại (không bắt buộc)"
-                  className={`w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-900/50 border text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all ${
+                  className={`w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-900/60 border text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/10 transition-all ${
                     errors.phone
                       ? 'border-rose-500/50 focus:ring-rose-500/10'
-                      : 'border-slate-800 focus:border-slate-700'
+                      : 'border-white/5 focus:border-teal-500/55'
                   }`}
                 />
               </div>
               {errors.phone && (
-                <p className="mt-1.5 text-xs text-rose-400 pl-1">{errors.phone}</p>
+                <p className="mt-1.5 text-xs text-rose-400 pl-1 font-semibold">{errors.phone}</p>
               )}
             </div>
 
@@ -224,26 +224,26 @@ export default function NewsletterForm() {
             <div>
               <div className="relative">
                 <ChevronDown
-                  size={16}
+                  size={15}
                   className="absolute right-4.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none"
                 />
                 <select
                   name="interest"
                   value={formData.interest}
                   onChange={handleChange}
-                  className={`w-full appearance-none px-4.5 py-3.5 rounded-xl bg-slate-900/50 border text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all ${
+                  className={`w-full appearance-none px-4.5 py-3.5 rounded-xl bg-slate-900/60 border text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/10 transition-all ${
                     formData.interest ? 'text-white' : 'text-slate-500'
                   } ${
                     errors.interest
                       ? 'border-rose-500/50 focus:ring-rose-500/10'
-                      : 'border-slate-800 focus:border-slate-700'
+                      : 'border-white/5 focus:border-teal-500/55'
                   }`}
                 >
                   {interestOptions.map((opt) => (
                     <option
                       key={opt.value}
                       value={opt.value}
-                      className="bg-slate-900 text-white"
+                      className="bg-slate-950 text-white"
                     >
                       {opt.label}
                     </option>
@@ -251,21 +251,21 @@ export default function NewsletterForm() {
                 </select>
               </div>
               {errors.interest && (
-                <p className="mt-1.5 text-xs text-rose-400 pl-1">{errors.interest}</p>
+                <p className="mt-1.5 text-xs text-rose-400 pl-1 font-semibold">{errors.interest}</p>
               )}
             </div>
 
             {/* Submit */}
             <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-teal-500/25 hover:from-teal-600 hover:to-cyan-600 transition-all disabled:opacity-75 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-[#00A99D] to-[#06B6D4] dark:from-[#2DD4BF] dark:to-[#06B6D4] text-white text-xs font-black uppercase tracking-wider shadow-lg disabled:opacity-75 disabled:cursor-not-allowed transition-all"
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 size={15} className="animate-spin" />
+                  <Loader2 size={14} className="animate-spin" />
                   Đang gửi...
                 </>
               ) : (
@@ -275,8 +275,8 @@ export default function NewsletterForm() {
           </form>
 
           {/* Microcopy footer */}
-          <div className="mt-6 flex items-center justify-center gap-2 text-[10px] text-slate-500 font-extrabold uppercase tracking-widest">
-            <ShieldCheck size={14} className="text-teal-400" />
+          <div className="mt-6 flex items-center justify-center gap-2 text-[9px] text-slate-500 font-black uppercase tracking-widest">
+            <ShieldCheck size={13} className="text-teal-400" />
             Không spam. Chỉ gửi thông tin ra mắt và tư vấn phù hợp.
           </div>
           

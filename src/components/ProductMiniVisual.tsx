@@ -38,7 +38,7 @@ export default function ProductMiniVisual({ variant }: ProductMiniVisualProps) {
     <div className="relative w-full h-44 flex items-center justify-center">
       {/* Soft glow behind */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full blur-2xl pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full blur-2xl pointer-events-none"
         style={{ background: c.glowColor }}
       />
 
@@ -50,50 +50,50 @@ export default function ProductMiniVisual({ variant }: ProductMiniVisualProps) {
         transition={{ duration: 3, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
       >
         {/* Top strap */}
-        <div className={`mx-auto w-9 h-7 bg-gradient-to-b ${c.bandGrad} rounded-t-lg`} />
+        <div className={`mx-auto w-8 h-8 bg-gradient-to-b ${c.bandGrad} rounded-t-lg shadow-inner`} />
 
         {/* Watch body */}
-        <div className={`relative w-[4.5rem] h-[5.2rem] rounded-[1rem] bg-gradient-to-b ${c.frameGrad} p-[3px] shadow-xl`}>
+        <div className={`relative w-[3.8rem] h-[4.6rem] rounded-[0.85rem] bg-gradient-to-b ${c.frameGrad} p-[2.5px] shadow-lg border border-white/10`}>
           {/* Screen bezel */}
-          <div className="w-full h-full rounded-[0.85rem] bg-black p-[2px] overflow-hidden">
+          <div className="w-full h-full rounded-[0.7rem] bg-black p-[2px] overflow-hidden">
             {/* Screen */}
-            <div className="relative w-full h-full rounded-[0.75rem] bg-gradient-to-b from-slate-900 to-black flex flex-col items-center justify-center gap-1 overflow-hidden">
+            <div className="relative w-full h-full rounded-[0.6rem] bg-gradient-to-b from-slate-950 to-black flex flex-col items-center justify-center gap-1 overflow-hidden">
               {/* Glass reflection */}
               <div className="absolute top-0 right-0 w-[120%] h-1/3 bg-gradient-to-b from-white/8 to-transparent rotate-12 origin-top-right pointer-events-none" />
 
               {/* Mini pulse line */}
-              <svg viewBox="0 0 50 12" className="w-10 opacity-60">
+              <svg viewBox="0 0 50 12" className="w-8 opacity-60">
                 <polyline
                   points="0,6 8,6 12,2 16,10 20,4 24,8 28,6 50,6"
                   fill="none"
                   stroke={c.screenAccent}
-                  strokeWidth="1.5"
+                  strokeWidth="1.8"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
               </svg>
 
               {/* Metrics row */}
-              <div className="flex gap-2.5 mt-0.5">
+              <div className="flex gap-1.5 mt-0.5 font-tabular">
                 <div className="text-center">
-                  <div className="text-[10px] font-bold text-white leading-none">{c.metric1.value}</div>
-                  <div className="text-[6px] font-medium uppercase tracking-wider mt-0.5" style={{ color: c.metric1.color }}>{c.metric1.label}</div>
+                  <div className="text-[9px] font-black text-white leading-none">{c.metric1.value}</div>
+                  <div className="text-[5.5px] font-bold uppercase tracking-wider mt-0.5" style={{ color: c.metric1.color }}>{c.metric1.label}</div>
                 </div>
-                <div className="w-px h-4 bg-slate-700" />
+                <div className="w-px h-3 bg-slate-800" />
                 <div className="text-center">
-                  <div className="text-[10px] font-bold text-white leading-none">{c.metric2.value}</div>
-                  <div className="text-[6px] font-medium uppercase tracking-wider mt-0.5" style={{ color: c.metric2.color }}>{c.metric2.label}</div>
+                  <div className="text-[9px] font-black text-white leading-none">{c.metric2.value}</div>
+                  <div className="text-[5.5px] font-bold uppercase tracking-wider mt-0.5" style={{ color: c.metric2.color }}>{c.metric2.label}</div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Side button */}
-          <div className="absolute top-1/4 -right-[3px] w-[3px] h-4 bg-slate-500 dark:bg-slate-600 rounded-r-sm" />
+          <div className="absolute top-1/4 -right-[2px] w-[2.5px] h-3 bg-slate-500 rounded-r-sm" />
         </div>
 
         {/* Bottom strap */}
-        <div className={`mx-auto w-9 h-7 bg-gradient-to-t ${c.bandGrad} rounded-b-lg`} />
+        <div className={`mx-auto w-8 h-8 bg-gradient-to-t ${c.bandGrad} rounded-b-lg shadow-inner`} />
       </motion.div>
     </div>
   )
