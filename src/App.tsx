@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import FeatureSection from './components/FeatureSection'
 import AiInsightSection from './components/AiInsightSection'
+import AppEcosystemSection from './components/AppEcosystemSection'
 import SpecsSection from './components/SpecsSection'
 import StorySection from './components/StorySection'
 import NewsletterForm from './components/NewsletterForm'
@@ -37,6 +38,7 @@ function App() {
       <HeroSection />
       <FeatureSection />
       <AiInsightSection />
+      <AppEcosystemSection />
       <SpecsSection />
       <MiniStoreSection
         favoriteIds={favoriteIds}
