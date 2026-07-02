@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Mail, Loader2, User, Phone, ChevronDown } from 'lucide-react'
+import { Mail, Loader2, User, Phone, ChevronDown, ShieldCheck } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { validateNewsletterForm } from '../utils/validation'
 import { trackEvent } from '../utils/tracking'
@@ -109,166 +109,178 @@ export default function NewsletterForm() {
   }
 
   return (
-    <section id="newsletter" className="relative py-20 sm:py-28 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-cyan-500 dark:from-teal-900 dark:to-cyan-900" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.15),transparent_50%)]" />
+    <section id="newsletter" className="relative py-24 sm:py-32 overflow-hidden bg-slate-900 transition-colors duration-300">
+      
+      {/* Background radial effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(20,184,166,0.1),transparent_50%)] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <motion.div
-        className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 z-10"
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={viewportConfig}
       >
-        {/* Header */}
-        <div className="text-center mb-10">
-          <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mx-auto mb-6 border border-white/20">
-            <Mail size={24} className="text-white" />
+        {/* Card Container */}
+        <div className="bg-slate-950/40 border border-slate-800 rounded-[2.5rem] p-8 sm:p-12 shadow-2xl relative overflow-hidden backdrop-blur-md">
+          
+          {/* Decorative Top Accent line */}
+          <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-teal-500 to-cyan-500" />
+
+          {/* Header */}
+          <div className="text-center mb-10">
+            <div className="w-12 h-12 rounded-2xl bg-teal-500/10 flex items-center justify-center mx-auto mb-6 border border-teal-500/20 text-teal-400">
+              <Mail size={22} />
+            </div>
+
+            <h2 className="text-3xl font-black text-white leading-tight">
+              Sẵn sàng hiểu cơ thể mình rõ hơn?
+            </h2>
+            <p className="mt-3.5 text-sm text-slate-400 max-w-md mx-auto leading-relaxed">
+              Đăng ký để nhận thông tin ra mắt, tư vấn phiên bản phù hợp và bản demo AI Health Insight.
+            </p>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
-            Đăng ký nhận tin từ PulseAI Band
-          </h2>
-          <p className="mt-3 text-base text-teal-100/80">
-            Nhận thông tin mới nhất về sản phẩm, ưu đãi đặc biệt và mẹo chăm sóc sức khỏe.
-          </p>
+          {/* Form */}
+          <form onSubmit={handleSubmit} noValidate className="space-y-4">
+            
+            {/* Full name */}
+            <div>
+              <div className="relative">
+                <User
+                  size={16}
+                  className="absolute left-4.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none"
+                />
+                <input
+                  type="text"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  placeholder="Họ tên *"
+                  className={`w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-900/50 border text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all ${
+                    errors.fullName
+                      ? 'border-rose-500/50 focus:ring-rose-500/10'
+                      : 'border-slate-800 focus:border-slate-700'
+                  }`}
+                />
+              </div>
+              {errors.fullName && (
+                <p className="mt-1.5 text-xs text-rose-400 pl-1">{errors.fullName}</p>
+              )}
+            </div>
+
+            {/* Email */}
+            <div>
+              <div className="relative">
+                <Mail
+                  size={16}
+                  className="absolute left-4.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Email *"
+                  className={`w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-900/50 border text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all ${
+                    errors.email
+                      ? 'border-rose-500/50 focus:ring-rose-500/10'
+                      : 'border-slate-800 focus:border-slate-700'
+                  }`}
+                />
+              </div>
+              {errors.email && (
+                <p className="mt-1.5 text-xs text-rose-400 pl-1">{errors.email}</p>
+              )}
+            </div>
+
+            {/* Phone */}
+            <div>
+              <div className="relative">
+                <Phone
+                  size={16}
+                  className="absolute left-4.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none"
+                />
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Số điện thoại (không bắt buộc)"
+                  className={`w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-900/50 border text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all ${
+                    errors.phone
+                      ? 'border-rose-500/50 focus:ring-rose-500/10'
+                      : 'border-slate-800 focus:border-slate-700'
+                  }`}
+                />
+              </div>
+              {errors.phone && (
+                <p className="mt-1.5 text-xs text-rose-400 pl-1">{errors.phone}</p>
+              )}
+            </div>
+
+            {/* Interest */}
+            <div>
+              <div className="relative">
+                <ChevronDown
+                  size={16}
+                  className="absolute right-4.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none"
+                />
+                <select
+                  name="interest"
+                  value={formData.interest}
+                  onChange={handleChange}
+                  className={`w-full appearance-none px-4.5 py-3.5 rounded-xl bg-slate-900/50 border text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all ${
+                    formData.interest ? 'text-white' : 'text-slate-500'
+                  } ${
+                    errors.interest
+                      ? 'border-rose-500/50 focus:ring-rose-500/10'
+                      : 'border-slate-800 focus:border-slate-700'
+                  }`}
+                >
+                  {interestOptions.map((opt) => (
+                    <option
+                      key={opt.value}
+                      value={opt.value}
+                      className="bg-slate-900 text-white"
+                    >
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              {errors.interest && (
+                <p className="mt-1.5 text-xs text-rose-400 pl-1">{errors.interest}</p>
+              )}
+            </div>
+
+            {/* Submit */}
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-teal-500/25 hover:from-teal-600 hover:to-cyan-600 transition-all disabled:opacity-75 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? (
+                <>
+                  <Loader2 size={15} className="animate-spin" />
+                  Đang gửi...
+                </>
+              ) : (
+                'Đăng ký nhận tin'
+              )}
+            </motion.button>
+          </form>
+
+          {/* Microcopy footer */}
+          <div className="mt-6 flex items-center justify-center gap-2 text-[10px] text-slate-500 font-extrabold uppercase tracking-widest">
+            <ShieldCheck size={14} className="text-teal-400" />
+            Không spam. Chỉ gửi thông tin ra mắt và tư vấn phù hợp.
+          </div>
+          
         </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} noValidate className="space-y-4">
-          {/* Full name */}
-          <div>
-            <div className="relative">
-              <User
-                size={18}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none"
-              />
-              <input
-                type="text"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                placeholder="Họ tên *"
-                className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/15 backdrop-blur-sm border text-white placeholder-white/50 text-sm focus:outline-none focus:ring-2 transition-all ${
-                  errors.fullName
-                    ? 'border-red-300 focus:ring-red-300/50'
-                    : 'border-white/20 focus:ring-white/30'
-                }`}
-              />
-            </div>
-            {errors.fullName && (
-              <p className="mt-1.5 text-xs text-red-200 pl-1">{errors.fullName}</p>
-            )}
-          </div>
-
-          {/* Email */}
-          <div>
-            <div className="relative">
-              <Mail
-                size={18}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none"
-              />
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Email *"
-                className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/15 backdrop-blur-sm border text-white placeholder-white/50 text-sm focus:outline-none focus:ring-2 transition-all ${
-                  errors.email
-                    ? 'border-red-300 focus:ring-red-300/50'
-                    : 'border-white/20 focus:ring-white/30'
-                }`}
-              />
-            </div>
-            {errors.email && (
-              <p className="mt-1.5 text-xs text-red-200 pl-1">{errors.email}</p>
-            )}
-          </div>
-
-          {/* Phone */}
-          <div>
-            <div className="relative">
-              <Phone
-                size={18}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none"
-              />
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="Số điện thoại (không bắt buộc)"
-                className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/15 backdrop-blur-sm border text-white placeholder-white/50 text-sm focus:outline-none focus:ring-2 transition-all ${
-                  errors.phone
-                    ? 'border-red-300 focus:ring-red-300/50'
-                    : 'border-white/20 focus:ring-white/30'
-                }`}
-              />
-            </div>
-            {errors.phone && (
-              <p className="mt-1.5 text-xs text-red-200 pl-1">{errors.phone}</p>
-            )}
-          </div>
-
-          {/* Interest */}
-          <div>
-            <div className="relative">
-              <ChevronDown
-                size={18}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none"
-              />
-              <select
-                name="interest"
-                value={formData.interest}
-                onChange={handleChange}
-                className={`w-full appearance-none px-4 py-3.5 rounded-xl bg-white/15 backdrop-blur-sm border text-sm focus:outline-none focus:ring-2 transition-all ${
-                  formData.interest ? 'text-white' : 'text-white/50'
-                } ${
-                  errors.interest
-                    ? 'border-red-300 focus:ring-red-300/50'
-                    : 'border-white/20 focus:ring-white/30'
-                }`}
-              >
-                {interestOptions.map((opt) => (
-                  <option
-                    key={opt.value}
-                    value={opt.value}
-                    className="bg-teal-700 dark:bg-teal-900 text-white"
-                  >
-                    {opt.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-            {errors.interest && (
-              <p className="mt-1.5 text-xs text-red-200 pl-1">{errors.interest}</p>
-            )}
-          </div>
-
-          {/* Submit */}
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white text-teal-600 text-sm font-semibold shadow-lg shadow-teal-700/20 hover:shadow-xl hover:bg-teal-50 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 size={18} className="animate-spin" />
-                Đang gửi...
-              </>
-            ) : (
-              'Đăng ký nhận tin'
-            )}
-          </motion.button>
-        </form>
-
-        <p className="mt-4 text-center text-xs text-teal-200/60">
-          Chúng tôi tôn trọng quyền riêng tư của bạn. Hủy đăng ký bất cứ lúc nào.
-        </p>
       </motion.div>
     </section>
   )

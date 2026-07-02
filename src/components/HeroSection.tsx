@@ -1,144 +1,117 @@
-import { Sparkles, BatteryFull, Droplets } from 'lucide-react'
+import { Sparkles, BatteryFull, ShieldAlert, Cpu } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { trackCtaClick } from '../utils/tracking'
-import { fadeUp, scaleIn, staggerContainer, viewportConfig } from '../utils/animations'
-
-const badges = [
-  { icon: Sparkles, label: 'AI Health Tracking' },
-  { icon: BatteryFull, label: 'Pin 10 ngày' },
-  { icon: Droplets, label: 'Chống nước IP68' },
-]
+import { fadeUp, staggerContainer, viewportConfig } from '../utils/animations'
+import PremiumProductVisual from './PremiumProductVisual'
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-teal-50/40 to-cyan-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950" />
-      <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-teal-400/10 dark:bg-teal-400/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-400/10 dark:bg-cyan-400/5 rounded-full blur-3xl" />
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 pb-16 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+      
+      {/* Background Gradients */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-teal-50/20 to-cyan-50/30 dark:from-slate-950 dark:via-slate-900/10 dark:to-slate-950/80 pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-teal-400/5 dark:bg-teal-500/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-400/5 dark:bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Text content */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Text Left (lg:col-span-7) */}
           <motion.div
-            className="text-center lg:text-left"
+            className="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={viewportConfig}
           >
+            {/* Top Badge */}
             <motion.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-100/80 dark:bg-teal-500/10 text-teal-700 dark:text-teal-400 text-xs font-semibold mb-6 border border-teal-200/60 dark:border-teal-500/20"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/50 text-teal-700 dark:text-teal-400 text-xs font-bold uppercase tracking-wider mb-6 border border-teal-200/50 dark:border-teal-900/50"
             >
-              <Sparkles size={14} />
-              Công nghệ AI thế hệ mới
+              <Cpu size={14} className="animate-pulse" />
+              AI Health Wearable
             </motion.div>
 
-            <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight">
-              Pulse<span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">AI</span>{' '}
-              Band
+            {/* Headline */}
+            <motion.h1
+              variants={fadeUp}
+              className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white leading-[1.1] tracking-tight"
+            >
+              Hiểu cơ thể bạn <br className="hidden sm:block" />
+              trước khi cơ thể <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">lên tiếng.</span>
             </motion.h1>
 
-            <motion.p variants={fadeUp} className="mt-4 text-xl sm:text-2xl font-semibold text-slate-700 dark:text-slate-200">
-              Vòng tay thông minh theo dõi sức khỏe bằng AI
-            </motion.p>
-
-            <motion.p variants={fadeUp} className="mt-4 text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-              Hiểu cơ thể bạn tốt hơn mỗi ngày với công nghệ AI Health Tracking. Theo dõi nhịp tim, giấc ngủ và vận động – tất cả trong một thiết bị nhỏ gọn trên cổ tay.
+            {/* Subheadline */}
+            <motion.p
+              variants={fadeUp}
+              className="mt-6 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed font-medium"
+            >
+              PulseAI Band theo dõi nhịp tim, giấc ngủ, vận động và mức độ phục hồi hằng ngày, sau đó chuyển dữ liệu thành những gợi ý sức khỏe dễ hiểu bằng AI.
             </motion.p>
 
             {/* CTA Buttons */}
-            <motion.div variants={fadeUp} className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <motion.div
+              variants={fadeUp}
+              className="mt-8 flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+            >
+              <a
+                href="#store"
+                onClick={() => trackCtaClick('hero_buy')}
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wider text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 shadow-xl transition-all"
+              >
+                Mua Ngay
+              </a>
               <a
                 href="#features"
-                onClick={() => trackCtaClick('hero')}
-                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 shadow-lg shadow-teal-500/25 hover:shadow-xl hover:shadow-teal-500/30 transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-teal-500/50 dark:hover:border-teal-500/50 transition-all shadow-sm"
               >
                 Khám phá tính năng
               </a>
-              <a
-                href="#specs"
-                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-teal-300 dark:hover:border-teal-500/50 hover:text-teal-600 dark:hover:text-teal-400 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
-              >
-                Xem thông số
-              </a>
             </motion.div>
 
-            {/* Badges */}
-            <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-3 justify-center lg:justify-start">
-              {badges.map((badge) => (
-                <div
-                  key={badge.label}
-                  className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/80 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/50 shadow-sm text-sm text-slate-600 dark:text-slate-300"
-                >
-                  <badge.icon size={16} className="text-teal-500" />
-                  {badge.label}
+            {/* Support Stat Icons / Trust indicators */}
+            <motion.div
+              variants={fadeUp}
+              className="mt-12 pt-8 border-t border-slate-200/60 dark:border-slate-800/60 w-full flex flex-wrap justify-center lg:justify-start gap-8"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-teal-950/40 flex items-center justify-center border border-teal-100 dark:border-teal-900/30 text-teal-600 dark:text-teal-400">
+                  <BatteryFull size={20} />
                 </div>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          {/* Product Mockup - CSS only smartband */}
-          <motion.div
-            className="flex justify-center lg:justify-end"
-            variants={scaleIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportConfig}
-          >
-            <div className="relative">
-              {/* Glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-400/20 to-cyan-400/20 dark:from-teal-400/10 dark:to-cyan-400/10 rounded-full blur-3xl scale-110" />
-
-              {/* Watch body */}
-              <div className="relative w-56 h-72 sm:w-64 sm:h-80">
-                {/* Top band */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-b from-slate-300 to-slate-400 dark:from-slate-600 dark:to-slate-700 rounded-t-2xl" />
-
-                {/* Watch case */}
-                <div className="absolute top-14 left-1/2 -translate-x-1/2 w-44 h-44 sm:w-52 sm:h-52 rounded-[2rem] bg-gradient-to-br from-slate-800 to-slate-900 shadow-2xl shadow-slate-900/50 border border-slate-700/50 flex items-center justify-center p-3">
-                  {/* Screen */}
-                  <div className="w-full h-full rounded-[1.4rem] bg-gradient-to-br from-slate-950 to-slate-900 border border-slate-700/30 flex flex-col items-center justify-center gap-2 p-4 overflow-hidden">
-                    {/* Screen content */}
-                    <div className="text-[10px] text-slate-500 font-medium">PulseAI Band</div>
-                    <div className="text-3xl sm:text-4xl font-bold text-white">72</div>
-                    <div className="text-xs text-teal-400 font-medium">BPM</div>
-
-                    {/* Heart animation line */}
-                    <svg viewBox="0 0 120 30" className="w-full mt-1 opacity-80">
-                      <polyline
-                        fill="none"
-                        stroke="#14b8a6"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        points="0,15 20,15 25,15 30,5 35,25 40,10 45,20 50,15 70,15 75,15 80,5 85,25 90,10 95,20 100,15 120,15"
-                      />
-                    </svg>
-
-                    {/* Bottom stats */}
-                    <div className="flex gap-4 mt-1">
-                      <div className="text-center">
-                        <div className="text-[10px] text-cyan-400 font-semibold">SpO2</div>
-                        <div className="text-xs text-white font-bold">98%</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-[10px] text-violet-400 font-semibold">Sleep</div>
-                        <div className="text-xs text-white font-bold">86</div>
-                      </div>
-                    </div>
-                  </div>
+                <div>
+                  <div className="text-sm font-extrabold text-slate-900 dark:text-white">10 ngày</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Sử dụng pin liên tục</div>
                 </div>
-
-                {/* Side button */}
-                <div className="absolute top-20 -right-0.5 sm:top-24 w-1.5 h-8 bg-gradient-to-b from-slate-600 to-slate-700 rounded-r-sm" />
-
-                {/* Bottom band */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-t from-slate-300 to-slate-400 dark:from-slate-600 dark:to-slate-700 rounded-b-2xl" />
               </div>
-            </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-cyan-50 dark:bg-cyan-950/40 flex items-center justify-center border border-cyan-100 dark:border-cyan-900/30 text-cyan-600 dark:text-cyan-400">
+                  <ShieldAlert size={20} />
+                </div>
+                <div>
+                  <div className="text-sm font-extrabold text-slate-900 dark:text-white">IP68</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Chống nước & Bụi tối đa</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-violet-50 dark:bg-violet-950/40 flex items-center justify-center border border-violet-100 dark:border-violet-900/30 text-violet-600 dark:text-violet-400">
+                  <Sparkles size={20} />
+                </div>
+                <div>
+                  <div className="text-sm font-extrabold text-slate-900 dark:text-white">24/7 AI</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Theo dõi chủ động</div>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
+
+          {/* Graphic Right (lg:col-span-5) */}
+          <div className="lg:col-span-5 flex justify-center items-center">
+            <PremiumProductVisual />
+          </div>
+
         </div>
       </div>
     </section>

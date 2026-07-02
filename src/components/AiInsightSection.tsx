@@ -1,108 +1,176 @@
-import { Moon, Heart, Zap } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { Sparkles, Moon, Heart, Zap, Activity, Brain } from 'lucide-react'
 import { fadeUp, scaleIn, staggerContainer, viewportConfig } from '../utils/animations'
-
-const metrics = [
-  { icon: Moon, label: 'Sleep Score', value: '86', color: 'text-violet-400', bg: 'bg-violet-500/10' },
-  { icon: Heart, label: 'Heart Rate', value: '72 bpm', color: 'text-rose-400', bg: 'bg-rose-500/10' },
-  { icon: Zap, label: 'Recovery', value: 'Good', color: 'text-emerald-400', bg: 'bg-emerald-500/10' },
-]
+import { healthMetrics } from '../data/healthMetrics'
 
 export default function AiInsightSection() {
   return (
-    <section id="ai-insight" className="relative py-20 sm:py-28 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-3xl" />
+    <section id="ai-insight" className="relative py-24 sm:py-32 overflow-hidden bg-slate-900 transition-colors duration-300">
+      
+      {/* Background patterns */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(20,184,166,0.06),transparent_50%)] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Text */}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Text Left (lg:col-span-5) */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={viewportConfig}
+            className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left"
           >
-            <motion.span variants={fadeUp} className="inline-block px-4 py-1.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-semibold mb-4 border border-teal-500/20">
+            <motion.span
+              variants={fadeUp}
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-bold uppercase tracking-wider mb-4 border border-teal-500/20"
+            >
+              <Brain size={14} />
               AI Health Insight
             </motion.span>
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-              AI Health Insight giúp bạn{' '}
+
+            <motion.h2
+              variants={fadeUp}
+              className="text-3xl sm:text-4xl font-extrabold text-white leading-tight"
+            >
+              Cá nhân hóa tối đa nhờ{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">
-                hiểu cơ thể mình rõ hơn
+                trợ lý sức khỏe AI
               </span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="mt-5 text-base sm:text-lg text-slate-400 leading-relaxed">
-              PulseAI Band phân tích dữ liệu nhịp tim, giấc ngủ và vận động hằng ngày để đưa ra gợi ý cá nhân hóa, giúp bạn cải thiện thói quen sống một cách khoa học hơn.
+
+            <motion.p
+              variants={fadeUp}
+              className="mt-6 text-slate-400 leading-relaxed"
+            >
+              Không chỉ hiển thị những chỉ số vô hồn. PulseAI phân tích mối liên hệ phức tạp giữa giấc ngủ sâu, biến thiên nhịp tim (HRV) và cường độ hoạt động để đưa ra những phân tích cụ thể nhất dành riêng cho bạn.
             </motion.p>
 
-            {/* Metrics */}
-            <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-4">
-              {metrics.map((metric) => (
-                <div
-                  key={metric.label}
-                  className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm"
-                >
-                  <div className={`w-10 h-10 rounded-xl ${metric.bg} flex items-center justify-center`}>
-                    <metric.icon size={18} className={metric.color} />
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-400">{metric.label}</div>
-                    <div className="text-sm font-bold text-white">{metric.value}</div>
-                  </div>
+            {/* Quick Metrics grid */}
+            <motion.div
+              variants={fadeUp}
+              className="mt-8 grid grid-cols-2 gap-4 w-full"
+            >
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center text-violet-400">
+                  <Moon size={18} />
                 </div>
-              ))}
+                <div>
+                  <div className="text-[10px] text-slate-500 font-bold uppercase">Sleep Score</div>
+                  <div className="text-sm font-extrabold text-white">{healthMetrics.sleepScore}</div>
+                </div>
+              </div>
+
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-rose-500/10 flex items-center justify-center text-rose-400">
+                  <Heart size={18} />
+                </div>
+                <div>
+                  <div className="text-[10px] text-slate-500 font-bold uppercase">Resting HR</div>
+                  <div className="text-sm font-extrabold text-white">{healthMetrics.restingHeartRate} bpm</div>
+                </div>
+              </div>
+
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-400">
+                  <Zap size={18} />
+                </div>
+                <div>
+                  <div className="text-[10px] text-slate-500 font-bold uppercase">Recovery</div>
+                  <div className="text-sm font-extrabold text-white">{healthMetrics.recovery}%</div>
+                </div>
+              </div>
+
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                  <Activity size={18} />
+                </div>
+                <div>
+                  <div className="text-[10px] text-slate-500 font-bold uppercase">Stress Level</div>
+                  <div className="text-sm font-extrabold text-white">{healthMetrics.stressLevel}</div>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
 
-          {/* Dashboard mock */}
+          {/* Graphic Dashboard Right (lg:col-span-7) */}
           <motion.div
-            className="flex justify-center"
+            className="lg:col-span-7 flex justify-center"
             variants={scaleIn}
             initial="hidden"
             whileInView="visible"
             viewport={viewportConfig}
           >
-            <div className="w-full max-w-md">
-              {/* Main insight card */}
-              <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-6 sm:p-8 shadow-2xl">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
-                  <span className="text-xs font-semibold text-teal-400 uppercase tracking-wide">AI Insight</span>
-                </div>
+            <div className="w-full max-w-lg bg-slate-950/80 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-black relative overflow-hidden">
+              
+              {/* Outer Decorative glow */}
+              <div className="absolute -top-12 -right-12 w-40 h-40 bg-teal-500/10 rounded-full blur-2xl" />
 
-                <p className="text-white font-medium leading-relaxed">
-                  Giấc ngủ sâu giảm <span className="text-amber-400 font-bold">18%</span> so với trung bình tuần.
+              {/* Title bar */}
+              <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
+                <div className="flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 rounded-full bg-teal-400 animate-pulse" />
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Live Dashboard Mockup</span>
+                </div>
+                <div className="text-xs text-slate-500 font-semibold">Cập nhật: Vừa xong</div>
+              </div>
+
+              {/* AI Recommendation Widget */}
+              <div className="bg-teal-950/20 border border-teal-500/30 rounded-2xl p-5 mb-6 relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-3 text-teal-500/20">
+                  <Sparkles size={36} />
+                </div>
+                <div className="flex items-center gap-2 text-teal-400 font-extrabold text-xs uppercase tracking-wider mb-2">
+                  <Sparkles size={14} className="text-teal-400" />
+                  AI Coach Đề Xuất
+                </div>
+                <p className="text-sm text-teal-100/90 leading-relaxed font-medium">
+                  "{healthMetrics.aiInsight}"
                 </p>
+              </div>
 
-                <div className="mt-4 p-4 rounded-xl bg-teal-500/10 border border-teal-500/20">
-                  <p className="text-sm text-teal-300 leading-relaxed">
-                    <span className="font-semibold">💡 Gợi ý:</span> Hạn chế caffeine sau 16:00 và thư giãn 10 phút trước khi ngủ.
-                  </p>
-                </div>
-
-                {/* Sleep chart mock */}
-                <div className="mt-6">
-                  <div className="flex items-end justify-between gap-1.5 h-20">
-                    {[40, 65, 55, 80, 45, 70, 60, 85, 50, 75, 90, 55].map((h, i) => (
-                      <div
-                        key={i}
-                        className="flex-1 rounded-t-sm bg-gradient-to-t from-teal-500/60 to-cyan-400/40"
-                        style={{ height: `${h}%` }}
-                      />
+              <div className="grid sm:grid-cols-2 gap-6">
+                {/* Weekly Sleep Trend Chart */}
+                <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4">
+                  <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-4">Chất lượng giấc ngủ (%)</div>
+                  <div className="flex items-end justify-between gap-2 h-24 pt-2">
+                    {healthMetrics.weeklySleepTrend.map((val, idx) => (
+                      <div key={idx} className="flex-1 flex flex-col items-center gap-1">
+                        <div
+                          className="w-full bg-gradient-to-t from-violet-500 to-indigo-400 rounded-t-sm"
+                          style={{ height: `${(val / 100) * 80}px` }}
+                        />
+                        <span className="text-[9px] text-slate-600 font-bold">
+                          {['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'][idx]}
+                        </span>
+                      </div>
                     ))}
                   </div>
-                  <div className="flex justify-between mt-2">
-                    <span className="text-[10px] text-slate-500">22:00</span>
-                    <span className="text-[10px] text-slate-500">02:00</span>
-                    <span className="text-[10px] text-slate-500">06:00</span>
+                </div>
+
+                {/* Weekly Activity bars */}
+                <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4">
+                  <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-4">Vận động (Phút)</div>
+                  <div className="flex items-end justify-between gap-2 h-24 pt-2">
+                    {healthMetrics.weeklyActivity.map((val, idx) => (
+                      <div key={idx} className="flex-1 flex flex-col items-center gap-1">
+                        <div
+                          className="w-full bg-gradient-to-t from-teal-500 to-cyan-400 rounded-t-sm"
+                          style={{ height: `${(val / 100) * 80}px` }}
+                        />
+                        <span className="text-[9px] text-slate-600 font-bold">
+                          {['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'][idx]}
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
+
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>

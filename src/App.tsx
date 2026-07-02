@@ -5,6 +5,7 @@ import FeatureSection from './components/FeatureSection'
 import AiInsightSection from './components/AiInsightSection'
 import SpecsSection from './components/SpecsSection'
 import StorySection from './components/StorySection'
+import TrustSection from './components/TrustSection'
 import NewsletterForm from './components/NewsletterForm'
 import Footer from './components/Footer'
 import ChatbotWidget from './components/ChatbotWidget'
@@ -46,6 +47,7 @@ function App() {
         onViewProduct={markProductViewed}
       />
       <StorySection />
+      <TrustSection />
       <NewsletterForm />
       <Footer />
       <ChatbotWidget />
